@@ -10,7 +10,9 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
-    public Coordinate() {}
+
+    public Coordinate() {
+    }
 
     @Override
     public boolean equals(Object o) {
