@@ -1,21 +1,20 @@
-# Fabrik spiel:
+# Factory game:
 
-> In diesem spiel geht es darum formen abzubauen
-> und in andere formen nach bestimten kriterien
-> zu verwandeln
+> In this game, the objective is to mine shapes
+> and transform them into other shapes according to certain criteria
 
-### Transportiere items von machine zu machine mithilfe von fließbändern
+### Transport items from machine to machine using conveyor belts
 
 ## Main gameplay loop:
 
-Main hub (Alle n chuncks kleinere)
-Geforderte formen zum hub bringen Freischalten von land und machinen Upgraden von machinen
+Main hub (All n chunks smaller ones)
+Bring required shapes to the hubs. Unlock land and machines. Upgrade machines.
 
 - Grid based
-- Unlimtierte resourcen
+- Unlimited resources
 - Base building
-- verabeitungs
-- logik
+- processing
+- logic
 
 ## Preview
 
