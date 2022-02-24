@@ -1,5 +1,7 @@
 package com.yes.yes.utils;
 
+import com.yes.yes.world.Chunk;
+
 import java.util.Objects;
 
 public class Coordinate {
@@ -14,6 +16,7 @@ public class Coordinate {
     public Coordinate() {
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,5 +28,19 @@ public class Coordinate {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public static Coordinate WorldToChunkCoordinate(Coordinate worldPos) {
+        int chunksize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
+
+        return new Coordinate(worldPos.x / chunksize, worldPos.y / chunksize);
+    }
+
+    public static Coordinate WorldToChunkBlock(Coordinate worldPos) {
+        int chunksize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
+        worldPos.x = worldPos.x % chunksize;
+        worldPos.y = worldPos.y % chunksize;
+
+        return new Coordinate(worldPos.x / Chunk.ENTITY_SIZE, worldPos.y / Chunk.ENTITY_SIZE);
     }
 }

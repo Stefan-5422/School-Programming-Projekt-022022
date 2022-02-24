@@ -7,17 +7,19 @@ import javafx.scene.layout.VBox;
 
 public class GameManager {
     VBox root;
+    World world;
+
+    public World getWorld() {
+        return world;
+    }
 
     public GameManager(VBox root) {
         this.root = root;
     }
 
     public void setup() {
-        World world = new World();
+        world = new World();
 
         root.getChildren().add(world);
-
-        world.getChunk(new Coordinate(1, 1)).setEntity(new TestMachine(), new Coordinate(1, 1));
-        world.getChunk(new Coordinate(1, 1)).setEntity(new TestMachine(), new Coordinate(1, 2));
     }
 }
