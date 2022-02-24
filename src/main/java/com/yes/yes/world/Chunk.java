@@ -7,8 +7,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Chunk extends GridPane {
-    private static final int CHUNK_SIZE = 8;
-    private static final double ENTITY_SIZE = 50;
+    public static final int CHUNK_SIZE = 8;
+    public static final int ENTITY_SIZE = 50;
     private final Entity[] data = new Entity[CHUNK_SIZE * CHUNK_SIZE];
 
     public Chunk() {
@@ -23,7 +23,6 @@ public class Chunk extends GridPane {
 
 
                 Rectangle rect = new Rectangle(ENTITY_SIZE, ENTITY_SIZE);
-                //rect.setFill(Color.color((i+j*16)/257d,(i+j*16)/257d, (i+j*16)/257d,1)); //DEBUG CODE
                 rect.setFill(null);
                 rect.setStroke(Color.BLACK);
                 rect.strokeWidthProperty().set(0.5);
