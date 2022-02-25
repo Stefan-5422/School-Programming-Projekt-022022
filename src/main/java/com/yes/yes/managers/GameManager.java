@@ -2,6 +2,9 @@ package com.yes.yes.managers;
 
 import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.utils.Coordinate;
+import com.yes.yes.utils.EntityRegistry;
+import com.yes.yes.utils.RegistryEntry;
+import com.yes.yes.utils.exceptions.AlreadyExistsException;
 import com.yes.yes.world.World;
 import javafx.scene.layout.VBox;
 
@@ -17,9 +20,15 @@ public class GameManager {
         this.root = root;
     }
 
-    public void setup() {
+    public void initialize() {
         world = new World();
 
         root.getChildren().add(world);
+
+        try {
+            EntityRegistry.register(new RegistryEntry("test","test machine", TestMachine.class));
+        } catch (AlreadyExistsException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.yes.yes.world;
 
 import com.yes.yes.utils.Coordinate;
-import com.yes.yes.utils.exceptions.ChunkAlreadyExistsException;
+import com.yes.yes.utils.exceptions.AlreadyExistsException;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -26,8 +26,6 @@ public class World extends GridPane {
         Chunk chunk = getChunk(pos);
         this.getChildren().remove(chunk);
         loadedChunks.remove(pos);
-
-        System.out.println("Unloading: " + pos.x + "; " + pos.y);
     }
 
     public void load(Coordinate pos) {
@@ -36,14 +34,13 @@ public class World extends GridPane {
         Chunk chunk = getChunk(pos);
         this.add(chunk, pos.x, pos.y);
         loadedChunks.put(pos, chunk);
-        System.out.println("Loading: " + pos.x + "; " + pos.y);
     }
 
-    public void addChunk(Coordinate pos) throws ChunkAlreadyExistsException {
+    public void addChunk(Coordinate pos) throws AlreadyExistsException {
         if (chunks.get(pos) == null) {
             chunks.put(pos, new Chunk());
         } else {
-            throw new ChunkAlreadyExistsException();
+            throw new AlreadyExistsException("Chunk already exists");
         }
     }
 

@@ -1,5 +1,6 @@
 package com.yes.yes.managers;
 
+import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.utils.Coordinate;
 import com.yes.yes.world.Chunk;
 import com.yes.yes.world.World;
@@ -23,7 +24,7 @@ public class PlayerManager {
         this.world = world;
     }
 
-    public void setup() {
+    public void initialize() {
         Scene scene = world.getScene();
         scene.setOnKeyPressed(this::ProcessKeyPress);
 
@@ -49,14 +50,11 @@ public class PlayerManager {
         double offset = +Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
 
-        System.out.println("World pos:  X: " + (-world.getTranslateX() + offset) + "; Y: " + (-world.getTranslateY() + offset));
-
         //NOTE: WHAT???
 
 
         int chunkX = -(int) Math.floor((world.getTranslateX() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
         int chunkY = -(int) Math.floor((world.getTranslateY() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
-        System.out.println("Chunk pos:  X: " + chunkX + "; Y: " + chunkY);
 
         if (chunkX < chunkPos.x) {
             for (int i = 0; i < 6; i++) {
@@ -88,7 +86,5 @@ public class PlayerManager {
 
 
         chunkPos = new Coordinate(chunkX, chunkY);
-
-        //world.load(new Coordinate(chunkX, chunkY));
     }
 }
