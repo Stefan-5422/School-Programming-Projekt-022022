@@ -1,7 +1,9 @@
 package com.yes.yes.managers;
 
-import com.yes.yes.entities.machines.TestMachine;
+import com.yes.yes.ui.BuildBox;
 import com.yes.yes.utils.Coordinate;
+import com.yes.yes.utils.Entity;
+import com.yes.yes.utils.EntityRegistry;
 import com.yes.yes.world.Chunk;
 import com.yes.yes.world.World;
 import javafx.scene.Scene;
@@ -9,6 +11,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class PlayerManager {
 
@@ -18,15 +22,32 @@ public class PlayerManager {
     final KeyCombination downKey = new KeyCodeCombination(KeyCode.S);
 
     World world;
+    BuildBox buildBox;
     Coordinate chunkPos = new Coordinate(0, 0);
 
-    public PlayerManager(World world) {
+    public PlayerManager(World world, BuildBox buildBox) {
         this.world = world;
+        this.buildBox = buildBox;
     }
 
     public void initialize() {
         Scene scene = world.getScene();
         scene.setOnKeyPressed(this::ProcessKeyPress);
+
+        world.setOnMouseClicked((e) ->
+        {
+            System.out.println("X:" + e.getX() + " Y:" + e.getY());
+            Coordinate mouseCoordinate = new Coordinate((int)e.getX(), (int)e.getY());
+            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
+            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
+            System.out.println("Chunk: X:" + chunkCoordinate.x + " Y:" + chunkCoordinate.y);
+            System.out.println("Block: X:" + blockCoordinate.x + " Y:" + blockCoordinate.y);
+
+            try {
+                world.getChunk(chunkCoordinate).setEntity((Entity) EntityRegistry.getEntity(buildBox.getSelectedEntity()).getEntity().getConstructor().newInstance(),blockCoordinate);
+            } catch (Exception ignored) {}
+        }
+        );
 
         world.setTranslateX(Integer.MAX_VALUE / -5000);
         world.setTranslateY(Integer.MAX_VALUE / -5000);
@@ -47,7 +68,7 @@ public class PlayerManager {
             world.setTranslateY(world.getTranslateY() - 45);
         }
 
-        double offset = +Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
+        double offset = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
 
         //NOTE: WHAT???

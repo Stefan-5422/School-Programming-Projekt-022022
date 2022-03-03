@@ -12,7 +12,6 @@ public class TestBehaviour extends Component {
 
     @Override
     public void initialize() {
-        System.out.println(EntityRegistry.getEntity("test").toString());
     }
 
     @Override

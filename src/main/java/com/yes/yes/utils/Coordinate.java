@@ -31,15 +31,15 @@ public class Coordinate {
     }
 
     public static Coordinate WorldToChunkCoordinate(Coordinate worldPos) {
-        int chunksize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
+        int chunkSize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
-        return new Coordinate(worldPos.x / chunksize, worldPos.y / chunksize);
+        return new Coordinate(worldPos.x / chunkSize, worldPos.y / chunkSize);
     }
 
     public static Coordinate WorldToChunkBlock(Coordinate worldPos) {
-        int chunksize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
-        worldPos.x = worldPos.x % chunksize;
-        worldPos.y = worldPos.y % chunksize;
+        int chunkSize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
+        worldPos.x = worldPos.x % chunkSize;
+        worldPos.y = worldPos.y % chunkSize;
 
         return new Coordinate(worldPos.x / Chunk.ENTITY_SIZE, worldPos.y / Chunk.ENTITY_SIZE);
     }

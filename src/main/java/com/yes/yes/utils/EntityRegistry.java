@@ -2,6 +2,7 @@ package com.yes.yes.utils;
 
 import com.yes.yes.utils.exceptions.AlreadyExistsException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class EntityRegistry {
@@ -19,5 +20,8 @@ public abstract class EntityRegistry {
         return entities.get(name);
     }
 
+    public static ArrayList<String> getKeys() {
+        return entities.keySet().stream().collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+    }
 }
 

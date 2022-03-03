@@ -2,6 +2,9 @@ package com.yes.yes.world;
 
 import com.yes.yes.utils.Coordinate;
 import com.yes.yes.utils.Entity;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -34,8 +37,11 @@ public class Chunk extends GridPane {
     }
 
     public void setEntity(Entity component, Coordinate pos) {
+        removeEntity(pos);
         data[pos.x + pos.y * CHUNK_SIZE] = component;
         this.add(component, pos.x, pos.y);
+        GridPane.setValignment(component, VPos.CENTER);
+        GridPane.setHalignment(component, HPos.CENTER);
     }
 
     public void removeEntity(Coordinate pos) {
