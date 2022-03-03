@@ -1,8 +1,6 @@
 package com.yes.yes;
 
-import com.yes.yes.managers.GameManager;
-import com.yes.yes.managers.PlayerManager;
-import com.yes.yes.utils.Coordinate;
+import com.yes.yes.managers.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
@@ -14,11 +12,14 @@ public class MainController {
 
     public void initialize() {
         GameManager gameManager = new GameManager(root);
-        gameManager.setup();
+        gameManager.initialize();
 
         Platform.runLater(() -> {
-            PlayerManager playerManager = new PlayerManager(gameManager.getWorld());
-            playerManager.setup();
+            UiManager uiManager = new UiManager(root);
+            uiManager.initialize();
+
+            PlayerManager playerManager = new PlayerManager(gameManager.getWorld(), uiManager.getBuildBox());
+            playerManager.initialize();
         });
 
     }

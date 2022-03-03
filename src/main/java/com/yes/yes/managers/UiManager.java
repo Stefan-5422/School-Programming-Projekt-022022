@@ -13,6 +13,10 @@ public class UiManager {
 
     public void initialize() {
         buildBox = new BuildBox();
-        root.getChildren().add(0,buildBox);
+        root.getChildren().add(0, buildBox);
+    }
+
+    public BuildBox getBuildBox() {
+        return buildBox;
     }
 }
