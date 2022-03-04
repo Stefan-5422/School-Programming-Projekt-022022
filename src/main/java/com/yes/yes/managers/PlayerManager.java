@@ -1,6 +1,8 @@
 package com.yes.yes.managers;
 
+import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.ui.BuildBox;
+import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Coordinate;
 import com.yes.yes.utils.Entity;
 import com.yes.yes.utils.EntityRegistry;
@@ -35,18 +37,23 @@ public class PlayerManager {
         scene.setOnKeyPressed(this::ProcessKeyPress);
 
         world.setOnMouseClicked((e) ->
-        {
-            System.out.println("X:" + e.getX() + " Y:" + e.getY());
-            Coordinate mouseCoordinate = new Coordinate((int)e.getX(), (int)e.getY());
-            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
-            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
-            System.out.println("Chunk: X:" + chunkCoordinate.x + " Y:" + chunkCoordinate.y);
-            System.out.println("Block: X:" + blockCoordinate.x + " Y:" + blockCoordinate.y);
+                {
+                    Coordinate mouseCoordinate = new Coordinate((int) e.getX(), (int) e.getY());
+                    Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
+                    Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
 
-            try {
-                world.getChunk(chunkCoordinate).setEntity((Entity) EntityRegistry.getEntity(buildBox.getSelectedEntity()).getEntity().getConstructor().newInstance(),blockCoordinate);
-            } catch (Exception ignored) {}
-        }
+                    try {
+                        Class[] types = new Class[1];
+                        types[0] = BlockContainer.class;
+
+                        BlockContainer blockContainer = new BlockContainer(world, blockCoordinate, chunkCoordinate);
+                        Entity entity = (Entity) EntityRegistry.getEntity(buildBox.getSelectedEntity()).getEntity().getConstructor(types).newInstance(blockContainer);
+
+                        world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
         );
 
         world.setTranslateX(Integer.MAX_VALUE / -5000);
