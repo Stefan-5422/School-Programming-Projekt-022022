@@ -3,7 +3,10 @@ package com.yes.yes.utils;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class GlobalEventHandler {
+public class GlobalEventHandler {
+    private GlobalEventHandler() {
+    }
+
     private static final EventHandler handler = new EventHandler();
 
     public static <T> void addListener(String eventName, Consumer<T> function) {

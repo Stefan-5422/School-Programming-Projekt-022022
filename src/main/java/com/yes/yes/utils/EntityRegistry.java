@@ -5,7 +5,10 @@ import com.yes.yes.utils.exceptions.AlreadyExistsException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class EntityRegistry {
+public class EntityRegistry {
+    private EntityRegistry() {
+    }
+
     private static final HashMap<String, RegistryEntry> entities = new HashMap<>();
 
     public static void register(RegistryEntry entry) throws AlreadyExistsException {
