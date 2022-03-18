@@ -1,6 +1,5 @@
 package com.yes.yes.managers;
 
-import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.ui.BuildBox;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Coordinate;
@@ -14,14 +13,12 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class PlayerManager {
 
-    final KeyCombination leftKey = new KeyCodeCombination(KeyCode.A);
-    final KeyCombination rightKey = new KeyCodeCombination(KeyCode.D);
-    final KeyCombination upKey = new KeyCodeCombination(KeyCode.W);
-    final KeyCombination downKey = new KeyCodeCombination(KeyCode.S);
+    static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
+    static final KeyCombination RIGHT_KEY = new KeyCodeCombination(KeyCode.D);
+    static final KeyCombination UP_KEY = new KeyCodeCombination(KeyCode.W);
+    static final KeyCombination DOWN_KEY = new KeyCodeCombination(KeyCode.S);
 
     World world;
     BuildBox buildBox;
@@ -61,54 +58,57 @@ public class PlayerManager {
     }
 
     void ProcessKeyPress(KeyEvent key) {
-        if (leftKey.match(key)) {
+        if (LEFT_KEY.match(key)) {
             world.setTranslateX(world.getTranslateX() + 45);
         }
-        if (rightKey.match(key)) {
+        if (RIGHT_KEY.match(key)) {
 
             world.setTranslateX(world.getTranslateX() - 45);
         }
-        if (upKey.match(key)) {
+        if (UP_KEY.match(key)) {
             world.setTranslateY(world.getTranslateY() + 45);
         }
-        if (downKey.match(key)) {
+        if (DOWN_KEY.match(key)) {
             world.setTranslateY(world.getTranslateY() - 45);
         }
 
         double offset = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
 
-        //NOTE: WHAT???
+        //TODO: Calculate amount of chunks based on window size
+
+        int loadedChunksX = 5;
+        int loadedChunksY = 5;
 
 
         int chunkX = -(int) Math.floor((world.getTranslateX() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
         int chunkY = -(int) Math.floor((world.getTranslateY() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
 
         if (chunkX < chunkPos.x) {
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < loadedChunksY; i++) {
                 world.load(new Coordinate(chunkX, chunkY + i));
-                world.unload(new Coordinate(chunkPos.x + 5, chunkY + i));
+                world.unload(new Coordinate(chunkPos.x + loadedChunksX - 1, chunkY + i));
             }
         }
 
         if (chunkX > chunkPos.x) {
-            for (int i = 0; i < 6; i++) {
-                world.load(new Coordinate(chunkX + 5, chunkY + i));
+            for (int i = 0; i < loadedChunksY; i++) {
+                world.load(new Coordinate(chunkX + loadedChunksX - 1, chunkY + i));
                 world.unload(new Coordinate(chunkPos.x, chunkY + i));
             }
         }
 
         if (chunkY > chunkPos.y) {
-            for (int i = 0; i < 6; i++) {
-                world.load(new Coordinate(chunkX + i, chunkY + 5));
+            for (int i = 0; i < loadedChunksX; i++) {
+                world.load(new Coordinate(chunkX + i, chunkY + loadedChunksY - 1));
                 world.unload(new Coordinate(chunkX + i, chunkPos.y));
             }
         }
 
         if (chunkY < chunkPos.y) {
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < loadedChunksX; i++) {
                 world.load(new Coordinate(chunkX + i, chunkY));
-                world.unload(new Coordinate(chunkX + i, chunkPos.y + 5));
+                world.unload(new Coordinate(chunkX + i, chunkPos.y + loadedChunksY - 1));
             }
         }
 

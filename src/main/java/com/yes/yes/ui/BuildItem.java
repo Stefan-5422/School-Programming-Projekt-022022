@@ -1,6 +1,5 @@
 package com.yes.yes.ui;
 
-import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.EntityRegistry;
 import com.yes.yes.world.Chunk;
 import javafx.scene.Node;
