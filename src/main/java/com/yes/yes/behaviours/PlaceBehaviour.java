@@ -12,8 +12,7 @@ public class PlaceBehaviour extends Component {
     }
 
     @Override
-    public void initialize()
-    {
+    public void initialize() {
         for (int x = -1; x < 2; x++) {
             for (int y = -1; y < 2; y++) {
                 try {
@@ -21,7 +20,6 @@ public class PlaceBehaviour extends Component {
 
                     if (entity != null) {
                         entity.trigger("placed", parent);
-                        System.out.println(entity.getClass().getSimpleName());
                     }
                 } catch (IllegalAccessException ex) {
                     ex.printStackTrace();

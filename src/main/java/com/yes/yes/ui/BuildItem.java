@@ -5,18 +5,17 @@ import com.yes.yes.world.Chunk;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 public class BuildItem extends javafx.scene.layout.StackPane {
-    String display_name;
-    String name;
-    Class<?> entity;
+    private final String display_name;
+    private final String name;
 
-    public BuildItem(String name, Function<String, Void> onClick) {
+    public BuildItem(String name, Consumer<String> onClick) {
         super();
 
-        this.display_name = EntityRegistry.getEntity(name).getDisplayName();
-        this.entity = EntityRegistry.getEntity(name).getEntity();
+        this.display_name = EntityRegistry.getEntry(name).getDisplayName();
+        Class<?> entity = EntityRegistry.getEntry(name).getEntity();
         this.name = name;
 
         this.prefWidth(Chunk.ENTITY_SIZE);
@@ -33,7 +32,7 @@ public class BuildItem extends javafx.scene.layout.StackPane {
         button.setStyle("-fx-background-color: null; -fx-border-color: null");
         button.setPrefSize(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
         button.setMinSize(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
-        button.setOnAction((e) -> onClick.apply(this.name));
+        button.setOnAction((e) -> onClick.accept(this.name));
 
         this.getChildren().add(button);
     }

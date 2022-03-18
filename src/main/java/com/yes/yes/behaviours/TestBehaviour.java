@@ -11,9 +11,13 @@ public class TestBehaviour extends Component {
         super(entity, blockContainer);
     }
 
+    private void onNeighborPlaced(Entity entity) {
+        System.out.println(parent.getClass().getSimpleName() + " > \"" + entity.getClass().getSimpleName() + "\" got placed in the radius.");
+    }
+
     @Override
     public void initialize() {
-
+        parent.addListener("placed", this::onNeighborPlaced);
     }
 
     @Override

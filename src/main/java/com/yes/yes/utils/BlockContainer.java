@@ -3,17 +3,8 @@ package com.yes.yes.utils;
 import com.yes.yes.world.Chunk;
 import com.yes.yes.world.World;
 
-public class BlockContainer {
-    final World world;
-    final Coordinate blockCoordinate;
-    final Coordinate chunkCoordinate;
+public record BlockContainer(World world, Coordinate blockCoordinate, Coordinate chunkCoordinate) {
     final static int MAX_RADIUS = 2;
-
-    public BlockContainer(World world, Coordinate blockCoordinate, Coordinate chunkCoordinate) {
-        this.world = world;
-        this.blockCoordinate = blockCoordinate;
-        this.chunkCoordinate = chunkCoordinate;
-    }
 
     public Entity getBlock(Coordinate offset) throws IllegalAccessException {
         if (Math.abs(offset.x) > MAX_RADIUS || Math.abs(offset.y) > MAX_RADIUS)

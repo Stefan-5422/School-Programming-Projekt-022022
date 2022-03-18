@@ -1,7 +1,7 @@
 package com.yes.yes.utils;
 
 public abstract class Component {
-    protected Entity parent;
+    protected final Entity parent;
     protected final BlockContainer blockContainer;
 
     public Component(Entity entity, BlockContainer blockContainer) {
@@ -10,5 +10,6 @@ public abstract class Component {
     }
 
     public abstract void initialize();
+
     public abstract void update();
 }

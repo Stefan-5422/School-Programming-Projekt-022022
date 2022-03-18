@@ -2,18 +2,19 @@ package com.yes.yes.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class EventHandler {
-    private final HashMap<String, ArrayList<Function<Object, Void>>> events = new HashMap<>();
+    private final HashMap<String, ArrayList<Consumer<Object>>> events = new HashMap<>();
 
 
-
-    public void addListener(String eventName, Function<Object, Void> function) {
+    public <T> void addListener(String eventName, Consumer<T> function) {
         if (!events.containsKey(eventName)) {
             events.put(eventName, new ArrayList<>());
         }
-        events.get(eventName).add(function);
+
+        events.get(eventName).add((e) -> function.accept((T) e));
     }
 
     public void removeListener(String eventName, Function<Object, Void> function) throws IllegalArgumentException {
@@ -21,13 +22,13 @@ public class EventHandler {
         if (!events.containsKey(eventName)) {
             throw new IllegalArgumentException("Event " + eventName + " does not exist!");
         }
+        //noinspection SuspiciousMethodCalls
         events.get(eventName).remove(function);
     }
 
-    public void trigger(String eventName, Object parameter) {
-        //TODO: Check if this needs null checking
+    public <T> void trigger(String eventName, T parameter) {
         if (events.containsKey(eventName)) {
-            events.get(eventName).forEach(e -> e.apply(parameter));
+            events.get(eventName).forEach(e -> e.accept(parameter));
         }
     }
 }

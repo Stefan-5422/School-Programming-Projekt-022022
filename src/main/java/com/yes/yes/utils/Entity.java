@@ -2,12 +2,13 @@ package com.yes.yes.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public abstract class Entity extends javafx.scene.Group {
-    private ArrayList<Component> behaviours = new ArrayList<>();
-    private final HashMap<String, Object> data = new HashMap<String, Object>();
+    private final HashMap<String, Object> data = new HashMap<>();
     private final EventHandler handler = new EventHandler();
+    private ArrayList<Component> behaviours = new ArrayList<>();
     private int rotation;
 
     public final void addBehaviour(Component behaviour) {
@@ -40,7 +41,7 @@ public abstract class Entity extends javafx.scene.Group {
         return (T) data.get(key);
     }
 
-    public final void addListener(String eventName, Function<Object, Void> function) {
+    public final <T> void addListener(String eventName, Consumer<T> function) {
         handler.addListener(eventName, function);
     }
 

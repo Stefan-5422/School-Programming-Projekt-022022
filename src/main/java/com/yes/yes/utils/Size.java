@@ -3,15 +3,12 @@ package com.yes.yes.utils;
 import java.util.Objects;
 
 public class Size {
-    public int x;
-    public int y;
+    public final int x;
+    public final int y;
 
     public Size(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public Size() {
     }
 
     @Override

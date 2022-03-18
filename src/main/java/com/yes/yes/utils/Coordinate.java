@@ -13,23 +13,6 @@ public class Coordinate {
         this.y = y;
     }
 
-    public Coordinate() {
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Coordinate)) return false;
-        Coordinate that = (Coordinate) o;
-        return x == that.x && y == that.y;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-
     public static Coordinate WorldToChunkCoordinate(Coordinate worldPos) {
         int chunkSize = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
@@ -42,5 +25,17 @@ public class Coordinate {
         worldPos.y = worldPos.y % chunkSize;
 
         return new Coordinate(worldPos.x / Chunk.ENTITY_SIZE, worldPos.y / Chunk.ENTITY_SIZE);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coordinate that)) return false;
+        return x == that.x && y == that.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

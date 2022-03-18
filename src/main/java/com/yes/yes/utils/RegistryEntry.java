@@ -1,15 +1,6 @@
 package com.yes.yes.utils;
 
-public class RegistryEntry {
-    String name;
-    String displayName;
-    Class<?> entity;
-
-    public RegistryEntry(String name, String displayName, Class<?> entity) {
-        this.name = name;
-        this.displayName = displayName;
-        this.entity = entity;
-    }
+public record RegistryEntry(String name, String displayName, Class<?> entity) {
 
     public String getName() {
         return name;

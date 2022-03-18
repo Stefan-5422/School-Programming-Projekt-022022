@@ -1,11 +1,12 @@
 package com.yes.yes.utils;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public abstract class GlobalEventHandler {
     private static final EventHandler handler = new EventHandler();
 
-    public static void addListener(String eventName, Function<Object, Void> function) {
+    public static <T> void addListener(String eventName, Consumer<T> function) {
         handler.addListener(eventName, function);
     }
 

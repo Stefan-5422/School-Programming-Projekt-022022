@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class EntityRegistry {
-    static HashMap<String, RegistryEntry> entities = new HashMap<>();
+    private static final HashMap<String, RegistryEntry> entities = new HashMap<>();
 
     public static void register(RegistryEntry entry) throws AlreadyExistsException {
         if (entities.containsKey(entry.getName())) {
@@ -16,7 +16,7 @@ public abstract class EntityRegistry {
         }
     }
 
-    public static RegistryEntry getEntity(String name) {
+    public static RegistryEntry getEntry(String name) {
         return entities.get(name);
     }
 

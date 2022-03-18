@@ -5,17 +5,9 @@ import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 
-import java.util.function.Function;
-
 public class BuildBox extends javafx.scene.Group {
     String selectedEntity;
 
-
-    Function<String, Void> changeItem = i -> {
-        System.out.println(i);
-        this.selectedEntity = i;
-        return null;
-    };
 
     public BuildBox() {
         ScrollPane pane = new ScrollPane();
@@ -32,7 +24,12 @@ public class BuildBox extends javafx.scene.Group {
 
         Platform.runLater(() -> pane.prefWidthProperty().bind(this.getScene().getWindow().widthProperty()));
 
-        EntityRegistry.getKeys().forEach(e -> hbox.getChildren().add(new BuildItem(e, changeItem)));
+        EntityRegistry.getKeys().forEach(e -> hbox.getChildren().add(new BuildItem(e, this::changeItem)));
+    }
+
+    private void changeItem(String name) {
+        System.out.println(name);
+        this.selectedEntity = name;
     }
 
     public String getSelectedEntity() {

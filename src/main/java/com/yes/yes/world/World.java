@@ -16,9 +16,9 @@ public class World extends GridPane {
         super();
         //HACK: Move the world by Integer.MAX_VALUE/-1000 in order to avoid -indexes
         //      So we need to generate all the column indexes to make alignment correct
-        for (int i = 0; i < (Integer.MAX_VALUE/1000/(Chunk.CHUNK_SIZE*Chunk.ENTITY_SIZE)); i++) {
-            this.getRowConstraints().add(new RowConstraints(Chunk.CHUNK_SIZE*Chunk.ENTITY_SIZE));
-            this.getColumnConstraints().add(new ColumnConstraints(Chunk.CHUNK_SIZE*Chunk.ENTITY_SIZE));
+        for (int i = 0; i < (Integer.MAX_VALUE / 1000 / (Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE)); i++) {
+            this.getRowConstraints().add(new RowConstraints(Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE));
+            this.getColumnConstraints().add(new ColumnConstraints(Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE));
         }
     }
 
@@ -29,7 +29,7 @@ public class World extends GridPane {
     }
 
     public void load(Coordinate pos) {
-        if(loadedChunks.containsKey(pos)) return;
+        if (loadedChunks.containsKey(pos)) return;
 
         Chunk chunk = getChunk(pos);
         this.add(chunk, pos.x, pos.y);

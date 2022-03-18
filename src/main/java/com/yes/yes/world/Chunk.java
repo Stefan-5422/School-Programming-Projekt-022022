@@ -3,7 +3,6 @@ package com.yes.yes.world;
 import com.yes.yes.utils.Coordinate;
 import com.yes.yes.utils.Entity;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;

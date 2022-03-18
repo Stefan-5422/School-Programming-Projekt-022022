@@ -1,10 +1,7 @@
 package com.yes.yes.managers;
 
 import com.yes.yes.ui.BuildBox;
-import com.yes.yes.utils.BlockContainer;
-import com.yes.yes.utils.Coordinate;
-import com.yes.yes.utils.Entity;
-import com.yes.yes.utils.EntityRegistry;
+import com.yes.yes.utils.*;
 import com.yes.yes.world.Chunk;
 import com.yes.yes.world.World;
 import javafx.scene.Scene;
@@ -15,14 +12,14 @@ import javafx.scene.input.KeyEvent;
 
 public class PlayerManager {
 
-    static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
-    static final KeyCombination RIGHT_KEY = new KeyCodeCombination(KeyCode.D);
-    static final KeyCombination UP_KEY = new KeyCodeCombination(KeyCode.W);
-    static final KeyCombination DOWN_KEY = new KeyCodeCombination(KeyCode.S);
+    private static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
+    private static final KeyCombination RIGHT_KEY = new KeyCodeCombination(KeyCode.D);
+    private static final KeyCombination UP_KEY = new KeyCodeCombination(KeyCode.W);
+    private static final KeyCombination DOWN_KEY = new KeyCodeCombination(KeyCode.S);
 
-    World world;
-    BuildBox buildBox;
-    Coordinate chunkPos = new Coordinate(0, 0);
+    private final World world;
+    private final BuildBox buildBox;
+    private Coordinate chunkPos = new Coordinate(0, 0);
 
     public PlayerManager(World world, BuildBox buildBox) {
         this.world = world;
@@ -40,11 +37,16 @@ public class PlayerManager {
                     Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
 
                     try {
-                        Class[] types = new Class[1];
+                        Class<?>[] types = new Class<?>[1];
                         types[0] = BlockContainer.class;
 
                         BlockContainer blockContainer = new BlockContainer(world, blockCoordinate, chunkCoordinate);
-                        Entity entity = (Entity) EntityRegistry.getEntity(buildBox.getSelectedEntity()).getEntity().getConstructor(types).newInstance(blockContainer);
+                        RegistryEntry registryEntry = EntityRegistry.getEntry(buildBox.getSelectedEntity());
+
+                        if (registryEntry == null)
+                            return;
+
+                        Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
 
                         world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
                     } catch (Exception ex) {
@@ -53,11 +55,11 @@ public class PlayerManager {
                 }
         );
 
-        world.setTranslateX(Integer.MAX_VALUE / -5000);
-        world.setTranslateY(Integer.MAX_VALUE / -5000);
+        world.setTranslateX(Integer.MAX_VALUE / -5000d);
+        world.setTranslateY(Integer.MAX_VALUE / -5000d);
     }
 
-    void ProcessKeyPress(KeyEvent key) {
+    private void ProcessKeyPress(KeyEvent key) {
         if (LEFT_KEY.match(key)) {
             world.setTranslateX(world.getTranslateX() + 45);
         }

@@ -4,8 +4,8 @@ import com.yes.yes.ui.BuildBox;
 import javafx.scene.layout.VBox;
 
 public class UiManager {
-    VBox root;
-    BuildBox buildBox;
+    private final VBox root;
+    private BuildBox buildBox;
 
     public UiManager(VBox root) {
         this.root = root;

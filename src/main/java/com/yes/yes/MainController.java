@@ -1,6 +1,8 @@
 package com.yes.yes;
 
-import com.yes.yes.managers.*;
+import com.yes.yes.managers.GameManager;
+import com.yes.yes.managers.PlayerManager;
+import com.yes.yes.managers.UiManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
@@ -8,7 +10,7 @@ import javafx.scene.layout.VBox;
 
 public class MainController {
     @FXML
-    VBox root;
+    private VBox root;
 
     public void initialize() {
         GameManager gameManager = new GameManager(root);
