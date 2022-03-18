@@ -1,9 +1,14 @@
 package com.yes.yes.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Function;
 
 public abstract class Entity extends javafx.scene.Group {
     private ArrayList<Component> behaviours = new ArrayList<>();
+    private final HashMap<String, Object> data = new HashMap<String, Object>();
+    private final EventHandler handler = new EventHandler();
+    private int rotation;
 
     public final void addBehaviour(Component behaviour) {
         behaviours.add(behaviour);
@@ -25,5 +30,25 @@ public abstract class Entity extends javafx.scene.Group {
             System.out.println("Updating " + behaviour.getClass().getSimpleName());
             behaviour.update();
         }
+    }
+
+    public final void setData(String key, Object value) {
+        data.put(key, value);
+    }
+
+    public final <T> T getData(String key) {
+        return (T) data.get(key);
+    }
+
+    public final void addListener(String eventName, Function<Object, Void> function) {
+        handler.addListener(eventName, function);
+    }
+
+    public final void removeListener(String eventName, Function<Object, Void> function) {
+        handler.removeListener(eventName, function);
+    }
+
+    public final void trigger(String eventName, Object parameter) {
+        handler.trigger(eventName, parameter);
     }
 }
