@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 public class TestMachine2 extends Entity {
     public TestMachine2() {
         super();
-        this.getChildren().add(new Rectangle(25, 25));
+        this.getChildren().add(new Rectangle(50, 50));
     }
 
     public TestMachine2(BlockContainer blockContainer) {

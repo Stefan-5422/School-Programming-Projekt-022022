@@ -1,12 +1,14 @@
 package com.yes.yes.behaviours;
 
-import com.yes.yes.utils.BlockContainer;
-import com.yes.yes.utils.Component;
-import com.yes.yes.utils.Coordinate;
-import com.yes.yes.utils.Entity;
+import com.yes.yes.entities.parts.Square;
+import com.yes.yes.utils.*;
 
 public class PlaceBehaviour extends Component {
 
+    /**
+     * @param entity
+     * @param blockContainer
+     */
     public PlaceBehaviour(Entity entity, BlockContainer blockContainer) {
         super(entity, blockContainer);
     }
@@ -26,6 +28,13 @@ public class PlaceBehaviour extends Component {
                 }
             }
         }
+        Item item = new Item();
+        for (int i = 0; i < 4; i++) {
+            for (int i1 = 0; i1 < 4; i1++) {
+                item.setPart(i, i1, new Square());
+            }
+        }
+        parent.getChildren().add(item);
     }
 
     @Override
