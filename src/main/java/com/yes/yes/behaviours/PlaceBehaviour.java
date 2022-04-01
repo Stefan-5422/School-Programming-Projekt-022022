@@ -5,10 +5,6 @@ import com.yes.yes.utils.*;
 
 public class PlaceBehaviour extends Component {
 
-    /**
-     * @param entity
-     * @param blockContainer
-     */
     public PlaceBehaviour(Entity entity, BlockContainer blockContainer) {
         super(entity, blockContainer);
     }
@@ -34,7 +30,7 @@ public class PlaceBehaviour extends Component {
                 item.setPart(i, i1, new Square());
             }
         }
-        parent.getChildren().add(item);
+      //  parent.getChildren().add(item);
     }
 
     @Override

@@ -76,12 +76,10 @@ public class PlayerManager {
 
         double offset = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
+        int loadedChunksX = (int) Math.ceil(world.getScene().getWidth() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
+        int loadedChunksY = (int) Math.ceil(world.getScene().getHeight() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
 
-        //TODO: Calculate amount of chunks based on window size
-
-        int loadedChunksX = 5;
-        int loadedChunksY = 5;
-
+        System.out.println("X:" + loadedChunksX + " Y:" + loadedChunksY);
 
         int chunkX = -(int) Math.floor((world.getTranslateX() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
         int chunkY = -(int) Math.floor((world.getTranslateY() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
