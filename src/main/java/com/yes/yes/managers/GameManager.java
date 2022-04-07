@@ -28,7 +28,7 @@ public class GameManager {
 
         try {
             EntityRegistry.register(new RegistryEntry("test", "test machine", TestMachine.class));
-            EntityRegistry.register(new RegistryEntry("test2", "test machine", TestMachine2.class));
+            EntityRegistry.register(new RegistryEntry("test2", "test machine2", TestMachine2.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }
