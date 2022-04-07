@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EntityRegistry {
+    private static final HashMap<String, RegistryEntry> entities = new HashMap<>();
+
     private EntityRegistry() {
     }
-
-    private static final HashMap<String, RegistryEntry> entities = new HashMap<>();
 
     public static void register(RegistryEntry entry) throws AlreadyExistsException {
         if (entities.containsKey(entry.getName())) {

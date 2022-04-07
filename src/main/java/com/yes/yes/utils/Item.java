@@ -8,10 +8,9 @@ public class Item extends javafx.scene.Group {
             throw new IllegalArgumentException("Argument out of range");
         }
 
-        if(parts[layer][section] != null) {
+        if (parts[layer][section] != null) {
             this.getChildren().remove(parts[layer][section]);
         }
-
 
 
         parts[layer][section] = part;

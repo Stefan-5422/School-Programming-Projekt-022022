@@ -5,10 +5,7 @@ import com.yes.yes.utils.*;
 import com.yes.yes.world.Chunk;
 import com.yes.yes.world.World;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.*;
 
 public class PlayerManager {
 
@@ -30,38 +27,37 @@ public class PlayerManager {
         Scene scene = world.getScene();
         scene.setOnKeyPressed(this::ProcessKeyPress);
 
-       scene.widthProperty().addListener((e)-> loadAllOnScreen());
-       scene.heightProperty().addListener((e)-> loadAllOnScreen());
+        scene.widthProperty().addListener((e) -> loadAllOnScreen());
+        scene.heightProperty().addListener((e) -> loadAllOnScreen());
 
-        world.setOnMouseClicked((e) ->
-                {
-                    Coordinate mouseCoordinate = new Coordinate((int) e.getX(), (int) e.getY());
-                    Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
-                    Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
-
-                    try {
-                        Class<?>[] types = new Class<?>[1];
-                        types[0] = BlockContainer.class;
-
-                        BlockContainer blockContainer = new BlockContainer(world, blockCoordinate, chunkCoordinate);
-                        RegistryEntry registryEntry = EntityRegistry.getEntry(buildBox.getSelectedEntity());
-
-                        if (registryEntry == null)
-                            return;
-
-                        Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
-
-                        world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-        );
-
+        world.setOnMouseClicked(this::ProcessClick);
         world.setTranslateX(Integer.MAX_VALUE / -5000d);
         world.setTranslateY(Integer.MAX_VALUE / -5000d);
 
         loadAllOnScreen();
+    }
+
+    private void ProcessClick(MouseEvent mouse) {
+        Coordinate mouseCoordinate = new Coordinate((int) mouse.getX(), (int) mouse.getY());
+        Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
+        Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
+
+        try {
+            Class<?>[] types = new Class<?>[1];
+            types[0] = BlockContainer.class;
+
+            BlockContainer blockContainer = new BlockContainer(world, blockCoordinate, chunkCoordinate);
+            RegistryEntry registryEntry = EntityRegistry.getEntry(buildBox.getSelectedEntity());
+
+            if (registryEntry == null)
+                return;
+
+            Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
+
+            world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void ProcessKeyPress(KeyEvent key) {
@@ -113,8 +109,7 @@ public class PlayerManager {
         chunkPos = new Coordinate(chunkPosition.x, chunkPosition.y);
     }
 
-    private void loadAllOnScreen()
-    {
+    private void loadAllOnScreen() {
         Size loadedChunks = getAmountOfLoadedChunks();
         Coordinate chunkPosition = getCurrentChunkPosition();
 
@@ -125,18 +120,16 @@ public class PlayerManager {
         }
     }
 
-    private Coordinate getCurrentChunkPosition()
-    {
+    private Coordinate getCurrentChunkPosition() {
         double offset = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
 
         int chunkX = -(int) Math.floor((world.getTranslateX() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
         int chunkY = -(int) Math.floor((world.getTranslateY() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
 
-        return new Coordinate(chunkX,chunkY);
+        return new Coordinate(chunkX, chunkY);
     }
 
-    private Size getAmountOfLoadedChunks()
-    {
+    private Size getAmountOfLoadedChunks() {
         int loadedChunksX = (int) Math.ceil(world.getScene().getWidth() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
         int loadedChunksY = (int) Math.ceil(world.getScene().getHeight() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
 

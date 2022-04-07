@@ -30,7 +30,7 @@ public class PlaceBehaviour extends Component {
                 item.setPart(i, i1, new Square());
             }
         }
-      //  parent.getChildren().add(item);
+        //  parent.getChildren().add(item);
     }
 
     @Override
