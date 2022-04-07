@@ -30,6 +30,9 @@ public class PlayerManager {
         Scene scene = world.getScene();
         scene.setOnKeyPressed(this::ProcessKeyPress);
 
+       scene.widthProperty().addListener((e)-> loadAllOnScreen());
+       scene.heightProperty().addListener((e)-> loadAllOnScreen());
+
         world.setOnMouseClicked((e) ->
                 {
                     Coordinate mouseCoordinate = new Coordinate((int) e.getX(), (int) e.getY());
@@ -57,6 +60,8 @@ public class PlayerManager {
 
         world.setTranslateX(Integer.MAX_VALUE / -5000d);
         world.setTranslateY(Integer.MAX_VALUE / -5000d);
+
+        loadAllOnScreen();
     }
 
     private void ProcessKeyPress(KeyEvent key) {
@@ -64,7 +69,6 @@ public class PlayerManager {
             world.setTranslateX(world.getTranslateX() + 45);
         }
         if (RIGHT_KEY.match(key)) {
-
             world.setTranslateX(world.getTranslateX() - 45);
         }
         if (UP_KEY.match(key)) {
@@ -74,45 +78,68 @@ public class PlayerManager {
             world.setTranslateY(world.getTranslateY() - 45);
         }
 
+
+        Size loadedChunks = getAmountOfLoadedChunks();
+        Coordinate chunkPosition = getCurrentChunkPosition();
+
+        if (chunkPosition.x < chunkPos.x) {
+            for (int i = 0; i < loadedChunks.y; i++) {
+                world.load(new Coordinate(chunkPosition.x, chunkPosition.y + i));
+                world.unload(new Coordinate(chunkPos.x + loadedChunks.x - 1, chunkPosition.y + i));
+            }
+        }
+
+        if (chunkPosition.x > chunkPos.x) {
+            for (int i = 0; i < loadedChunks.y; i++) {
+                world.load(new Coordinate(chunkPosition.x + loadedChunks.x - 1, chunkPosition.y + i));
+                world.unload(new Coordinate(chunkPos.x, chunkPosition.y + i));
+            }
+        }
+
+        if (chunkPosition.y > chunkPos.y) {
+            for (int i = 0; i < loadedChunks.x; i++) {
+                world.load(new Coordinate(chunkPosition.x + i, chunkPosition.y + loadedChunks.y - 1));
+                world.unload(new Coordinate(chunkPosition.x + i, chunkPos.y));
+            }
+        }
+
+        if (chunkPosition.y < chunkPos.y) {
+            for (int i = 0; i < loadedChunks.x; i++) {
+                world.load(new Coordinate(chunkPosition.x + i, chunkPosition.y));
+                world.unload(new Coordinate(chunkPosition.x + i, chunkPos.y + loadedChunks.y - 1));
+            }
+        }
+
+        chunkPos = new Coordinate(chunkPosition.x, chunkPosition.y);
+    }
+
+    private void loadAllOnScreen()
+    {
+        Size loadedChunks = getAmountOfLoadedChunks();
+        Coordinate chunkPosition = getCurrentChunkPosition();
+
+        for (int y = 0; y < loadedChunks.y; y++) {
+            for (int x = 0; x < loadedChunks.x; x++) {
+                world.load(new Coordinate(chunkPosition.x + x, chunkPosition.y + y));
+            }
+        }
+    }
+
+    private Coordinate getCurrentChunkPosition()
+    {
         double offset = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
-
-        int loadedChunksX = (int) Math.ceil(world.getScene().getWidth() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
-        int loadedChunksY = (int) Math.ceil(world.getScene().getHeight() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
-
-        System.out.println("X:" + loadedChunksX + " Y:" + loadedChunksY);
 
         int chunkX = -(int) Math.floor((world.getTranslateX() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
         int chunkY = -(int) Math.floor((world.getTranslateY() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
 
-        if (chunkX < chunkPos.x) {
-            for (int i = 0; i < loadedChunksY; i++) {
-                world.load(new Coordinate(chunkX, chunkY + i));
-                world.unload(new Coordinate(chunkPos.x + loadedChunksX - 1, chunkY + i));
-            }
-        }
+        return new Coordinate(chunkX,chunkY);
+    }
 
-        if (chunkX > chunkPos.x) {
-            for (int i = 0; i < loadedChunksY; i++) {
-                world.load(new Coordinate(chunkX + loadedChunksX - 1, chunkY + i));
-                world.unload(new Coordinate(chunkPos.x, chunkY + i));
-            }
-        }
+    private Size getAmountOfLoadedChunks()
+    {
+        int loadedChunksX = (int) Math.ceil(world.getScene().getWidth() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
+        int loadedChunksY = (int) Math.ceil(world.getScene().getHeight() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
 
-        if (chunkY > chunkPos.y) {
-            for (int i = 0; i < loadedChunksX; i++) {
-                world.load(new Coordinate(chunkX + i, chunkY + loadedChunksY - 1));
-                world.unload(new Coordinate(chunkX + i, chunkPos.y));
-            }
-        }
-
-        if (chunkY < chunkPos.y) {
-            for (int i = 0; i < loadedChunksX; i++) {
-                world.load(new Coordinate(chunkX + i, chunkY));
-                world.unload(new Coordinate(chunkX + i, chunkPos.y + loadedChunksY - 1));
-            }
-        }
-
-
-        chunkPos = new Coordinate(chunkX, chunkY);
+        return new Size(loadedChunksX, loadedChunksY);
     }
 }
