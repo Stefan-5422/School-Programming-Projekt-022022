@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-<VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="20.0"
       fx:controller="com.yes.yes.MainController" fx:id="root">
 </VBox>

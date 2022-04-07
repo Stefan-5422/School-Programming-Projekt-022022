@@ -22,13 +22,13 @@ public class World extends GridPane {
         }
     }
 
-    public void unload(Coordinate pos) {
+    public void unloadChunk(Coordinate pos) {
         Chunk chunk = getChunk(pos);
         this.getChildren().remove(chunk);
         loadedChunks.remove(pos);
     }
 
-    public void load(Coordinate pos) {
+    public void loadChunk(Coordinate pos) {
         if (loadedChunks.containsKey(pos)) return;
 
         Chunk chunk = getChunk(pos);
@@ -51,5 +51,11 @@ public class World extends GridPane {
             chunks.put(pos, c);
         }
         return c;
+    }
+
+    public void unloadAllChunks() {
+        for (Coordinate coordinate : chunks.keySet()) {
+            unloadChunk(coordinate);
+        }
     }
 }

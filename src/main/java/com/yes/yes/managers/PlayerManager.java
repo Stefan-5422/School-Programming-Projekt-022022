@@ -27,14 +27,14 @@ public class PlayerManager {
         Scene scene = world.getScene();
         scene.setOnKeyPressed(this::ProcessKeyPress);
 
-        scene.widthProperty().addListener((e) -> loadAllOnScreen());
-        scene.heightProperty().addListener((e) -> loadAllOnScreen());
+        scene.widthProperty().addListener((e) -> redrawChunks());
+        scene.heightProperty().addListener((e) -> redrawChunks());
 
         world.setOnMouseClicked(this::ProcessClick);
         world.setTranslateX(Integer.MAX_VALUE / -5000d);
         world.setTranslateY(Integer.MAX_VALUE / -5000d);
 
-        loadAllOnScreen();
+        redrawChunks();
     }
 
     private void ProcessClick(MouseEvent mouse) {
@@ -75,47 +75,49 @@ public class PlayerManager {
         }
 
 
-        Size loadedChunks = getAmountOfLoadedChunks();
+        Size preferredAmountOfChunks = getPreferredAmountOfChunks();
         Coordinate chunkPosition = getCurrentChunkPosition();
 
         if (chunkPosition.x < chunkPos.x) {
-            for (int i = 0; i < loadedChunks.y; i++) {
-                world.load(new Coordinate(chunkPosition.x, chunkPosition.y + i));
-                world.unload(new Coordinate(chunkPos.x + loadedChunks.x - 1, chunkPosition.y + i));
+            for (int i = 0; i < preferredAmountOfChunks.y; i++) {
+                world.loadChunk(new Coordinate(chunkPosition.x, chunkPosition.y + i));
+                world.unloadChunk(new Coordinate(chunkPos.x + preferredAmountOfChunks.x - 1, chunkPosition.y + i));
             }
         }
 
         if (chunkPosition.x > chunkPos.x) {
-            for (int i = 0; i < loadedChunks.y; i++) {
-                world.load(new Coordinate(chunkPosition.x + loadedChunks.x - 1, chunkPosition.y + i));
-                world.unload(new Coordinate(chunkPos.x, chunkPosition.y + i));
+            for (int i = 0; i < preferredAmountOfChunks.y; i++) {
+                world.loadChunk(new Coordinate(chunkPosition.x + preferredAmountOfChunks.x - 1, chunkPosition.y + i));
+                world.unloadChunk(new Coordinate(chunkPos.x, chunkPosition.y + i));
             }
         }
 
         if (chunkPosition.y > chunkPos.y) {
-            for (int i = 0; i < loadedChunks.x; i++) {
-                world.load(new Coordinate(chunkPosition.x + i, chunkPosition.y + loadedChunks.y - 1));
-                world.unload(new Coordinate(chunkPosition.x + i, chunkPos.y));
+            for (int i = 0; i < preferredAmountOfChunks.x; i++) {
+                world.loadChunk(new Coordinate(chunkPosition.x + i, chunkPosition.y + preferredAmountOfChunks.y - 1));
+                world.unloadChunk(new Coordinate(chunkPosition.x + i, chunkPos.y));
             }
         }
 
         if (chunkPosition.y < chunkPos.y) {
-            for (int i = 0; i < loadedChunks.x; i++) {
-                world.load(new Coordinate(chunkPosition.x + i, chunkPosition.y));
-                world.unload(new Coordinate(chunkPosition.x + i, chunkPos.y + loadedChunks.y - 1));
+            for (int i = 0; i < preferredAmountOfChunks.x; i++) {
+                world.loadChunk(new Coordinate(chunkPosition.x + i, chunkPosition.y));
+                world.unloadChunk(new Coordinate(chunkPosition.x + i, chunkPos.y + preferredAmountOfChunks.y - 1));
             }
         }
 
         chunkPos = new Coordinate(chunkPosition.x, chunkPosition.y);
     }
 
-    private void loadAllOnScreen() {
-        Size loadedChunks = getAmountOfLoadedChunks();
+    private void redrawChunks() {
+        Size preferredAmountOfChunks = getPreferredAmountOfChunks();
         Coordinate chunkPosition = getCurrentChunkPosition();
 
-        for (int y = 0; y < loadedChunks.y; y++) {
-            for (int x = 0; x < loadedChunks.x; x++) {
-                world.load(new Coordinate(chunkPosition.x + x, chunkPosition.y + y));
+        world.unloadAllChunks();
+
+        for (int y = 0; y < preferredAmountOfChunks.y; y++) {
+            for (int x = 0; x < preferredAmountOfChunks.x; x++) {
+                world.loadChunk(new Coordinate(chunkPosition.x + x, chunkPosition.y + y));
             }
         }
     }
@@ -129,7 +131,7 @@ public class PlayerManager {
         return new Coordinate(chunkX, chunkY);
     }
 
-    private Size getAmountOfLoadedChunks() {
+    private Size getPreferredAmountOfChunks() {
         int loadedChunksX = (int) Math.ceil(world.getScene().getWidth() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
         int loadedChunksY = (int) Math.ceil(world.getScene().getHeight() / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE) + 1;
 
