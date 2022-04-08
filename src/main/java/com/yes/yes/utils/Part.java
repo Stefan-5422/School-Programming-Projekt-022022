@@ -1,5 +1,6 @@
 package com.yes.yes.utils;
 
+import com.yes.yes.world.Chunk;
 import javafx.scene.Node;
 
 public abstract class Part extends javafx.scene.Group {
@@ -14,6 +15,7 @@ public abstract class Part extends javafx.scene.Group {
     public void rotate(int quarters) {
 
         this.getTransforms().clear();
-        this.getTransforms().add(new javafx.scene.transform.Rotate(quarters % 4 * 90, 1, 1));
+        this.getTransforms().add(new javafx.scene.transform.Rotate(quarters % 4 * 90, 0, 0));
     }
+
 }

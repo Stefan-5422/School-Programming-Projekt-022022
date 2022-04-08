@@ -1,5 +1,6 @@
 package com.yes.yes.entities.machines;
 
+import com.yes.yes.behaviours.ItemBehaviour;
 import com.yes.yes.behaviours.PlaceBehaviour;
 import com.yes.yes.behaviours.TestBehaviour;
 import com.yes.yes.utils.BlockContainer;
@@ -16,5 +17,6 @@ public class TestMachine2 extends Entity {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
         this.addBehaviour(new TestBehaviour(this, blockContainer));
+        this.addBehaviour(new ItemBehaviour(this, blockContainer));
     }
 }

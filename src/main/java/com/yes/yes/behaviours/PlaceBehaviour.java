@@ -24,13 +24,6 @@ public class PlaceBehaviour extends Component {
                 }
             }
         }
-        Item item = new Item();
-        for (int i = 0; i < 4; i++) {
-            for (int i1 = 0; i1 < 4; i1++) {
-                item.setPart(i, i1, new Square());
-            }
-        }
-        //  parent.getChildren().add(item);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.yes.yes.utils;
 
+import javafx.scene.transform.Scale;
+
 public class Item extends javafx.scene.Group {
     final Part[][] parts = new Part[4][4];
 
@@ -12,6 +14,9 @@ public class Item extends javafx.scene.Group {
             this.getChildren().remove(parts[layer][section]);
         }
 
+        part.rotate(section);
+
+        part.getTransforms().add(new Scale(-layer*0.25f+1f, -layer*0.25f+1f));
 
         parts[layer][section] = part;
         this.getChildren().add(part);
