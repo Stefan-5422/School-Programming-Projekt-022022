@@ -11,6 +11,10 @@ public abstract class Entity extends javafx.scene.Group {
     private ArrayList<Component> behaviours = new ArrayList<>();
     private int rotation;
 
+    public Entity() {
+        GlobalEventHandler.addListener("TimerTick",(__)->update());
+    }
+
     public final void addBehaviour(Component behaviour) {
         behaviours.add(behaviour);
         behaviour.initialize();
@@ -28,7 +32,7 @@ public abstract class Entity extends javafx.scene.Group {
 
     public final void update() {
         for (Component behaviour : behaviours) {
-            System.out.println("Updating " + behaviour.getClass().getSimpleName());
+            //System.out.println("Updating " + behaviour.getClass().getSimpleName());
             behaviour.update();
         }
     }

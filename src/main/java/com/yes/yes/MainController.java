@@ -3,7 +3,9 @@ package com.yes.yes;
 import com.yes.yes.managers.GameManager;
 import com.yes.yes.managers.PlayerManager;
 import com.yes.yes.managers.UiManager;
+import com.yes.yes.utils.GlobalEventHandler;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 

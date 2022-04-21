@@ -22,7 +22,7 @@ public class TestBehaviour extends Component {
 
     @Override
     public void update() {
-        System.out.println("Updating " + parent.getClass().getSimpleName());
+        /*System.out.println("Updating " + parent.getClass().getSimpleName());
         for (int x = -1; x < 2; x++) {
             for (int y = -1; y < 2; y++) {
                 try {
@@ -36,6 +36,6 @@ public class TestBehaviour extends Component {
                     ex.printStackTrace();
                 }
             }
-        }
+        }*/
     }
 }

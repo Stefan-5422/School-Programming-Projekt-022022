@@ -3,10 +3,15 @@ package com.yes.yes.managers;
 import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.entities.machines.TestMachine2;
 import com.yes.yes.utils.EntityRegistry;
+import com.yes.yes.utils.GlobalEventHandler;
 import com.yes.yes.utils.RegistryEntry;
 import com.yes.yes.utils.exceptions.AlreadyExistsException;
 import com.yes.yes.world.World;
 import javafx.scene.layout.VBox;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class GameManager {
     private final VBox root;
@@ -32,5 +37,11 @@ public class GameManager {
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }
+
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(() -> GlobalEventHandler.trigger("TimerTick", null), 0, 3, TimeUnit.SECONDS);
+
+        GlobalEventHandler.addListener("closing",(__)->executor.shutdown());
     }
 }
