@@ -23,7 +23,7 @@ public class ItemBehaviour extends Component {
         System.out.println("Running item update");
         Platform.runLater(() -> {
             this.itemGroup.getChildren().clear();
-            this.itemGroup.getChildren().add(this.parent.getData(dataKey));
+            this.itemGroup.getChildren().add(item);
         });
         System.out.println("Finished item update");
     }

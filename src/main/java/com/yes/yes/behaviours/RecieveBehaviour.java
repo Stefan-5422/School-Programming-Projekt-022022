@@ -41,8 +41,8 @@ public class RecieveBehaviour extends Component {
     }
 
     void receive(Item item) {
-        if (offerer == null)
-            return;
+        if (offerer == null) return;
+        if(this.parent.getData(dataKey) != null) return;
 
         this.parent.setData(dataKey, item);
         this.parent.trigger(dataKey + "Changed", item);

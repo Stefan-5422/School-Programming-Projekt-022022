@@ -1,5 +1,6 @@
 package com.yes.yes.managers;
 
+import com.yes.yes.entities.machines.ConveyorBelt;
 import com.yes.yes.entities.machines.GeneratorMachine;
 import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.entities.machines.TestMachine2;
@@ -36,6 +37,7 @@ public class GameManager {
             EntityRegistry.register(new RegistryEntry("test", "test receive machine", TestMachine.class));
             EntityRegistry.register(new RegistryEntry("test2", "test offer machine", TestMachine2.class));
             EntityRegistry.register(new RegistryEntry("generator", "generator", GeneratorMachine.class));
+            EntityRegistry.register(new RegistryEntry("conveyorBelt", "Conveyor Belt", ConveyorBelt.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }

@@ -58,7 +58,7 @@ public class PlayerManager {
 
             Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
             world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
-            entity.setRotation(random.nextInt(0,4));
+            //entity.setRotation(random.nextInt(0,4));
             entity.initialize();
         } catch (Exception ex) {
             ex.printStackTrace();
