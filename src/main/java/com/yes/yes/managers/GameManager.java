@@ -1,5 +1,6 @@
 package com.yes.yes.managers;
 
+import com.yes.yes.entities.machines.GeneratorMachine;
 import com.yes.yes.entities.machines.TestMachine;
 import com.yes.yes.entities.machines.TestMachine2;
 import com.yes.yes.utils.EntityRegistry;
@@ -32,16 +33,29 @@ public class GameManager {
         world.toBack();
 
         try {
-            EntityRegistry.register(new RegistryEntry("test", "test machine", TestMachine.class));
-            EntityRegistry.register(new RegistryEntry("test2", "test machine2", TestMachine2.class));
+            EntityRegistry.register(new RegistryEntry("test", "test receive machine", TestMachine.class));
+            EntityRegistry.register(new RegistryEntry("test2", "test offer machine", TestMachine2.class));
+            EntityRegistry.register(new RegistryEntry("generator", "generator", GeneratorMachine.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }
 
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleAtFixedRate(() -> GlobalEventHandler.trigger("TimerTick", null), 0, 3, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(() -> {
+            try {
+                GlobalEventHandler.trigger("timerTick", null);
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+            System.out.println("Finished tick!");
+        }, 0, 1, TimeUnit.SECONDS);
 
-        GlobalEventHandler.addListener("closing",(__)->executor.shutdown());
+        GlobalEventHandler.addListener("timerTick", (__) -> {
+            System.out.println("Tick!");
+        });
+        GlobalEventHandler.addListener("closing", (__) -> executor.shutdown());
     }
 }

@@ -12,12 +12,11 @@ public abstract class Entity extends javafx.scene.Group {
     private int rotation;
 
     public Entity() {
-        GlobalEventHandler.addListener("TimerTick",(__)->update());
+        GlobalEventHandler.addListener("timerTick", (__) -> update());
     }
 
     public final void addBehaviour(Component behaviour) {
         behaviours.add(behaviour);
-        behaviour.initialize();
     }
 
     public final void removeBehaviour(Component behaviour) {
@@ -31,10 +30,15 @@ public abstract class Entity extends javafx.scene.Group {
     }
 
     public final void update() {
+        //System.out.println("Updating: " + getClass().getSimpleName());
         for (Component behaviour : behaviours) {
             //System.out.println("Updating " + behaviour.getClass().getSimpleName());
             behaviour.update();
         }
+    }
+
+    public final void initialize() {
+        behaviours.forEach(Component::initialize);
     }
 
     public final void setData(String key, Object value) {
@@ -55,5 +59,17 @@ public abstract class Entity extends javafx.scene.Group {
 
     public final void trigger(String eventName, Object parameter) {
         handler.trigger(eventName, parameter);
+    }
+
+    public int getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(int rotation) {
+        rotation %= 4;
+
+        if (rotation != this.rotation) this.trigger("rotate", rotation);
+        this.rotation = rotation;
+        setRotate(rotation * 90);
     }
 }

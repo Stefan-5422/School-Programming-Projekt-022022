@@ -7,6 +7,8 @@ import com.yes.yes.world.World;
 import javafx.scene.Scene;
 import javafx.scene.input.*;
 
+import java.util.Random;
+
 public class PlayerManager {
 
     private static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
@@ -37,6 +39,8 @@ public class PlayerManager {
         redrawChunks();
     }
 
+    Random random = new Random();
+
     private void ProcessClick(MouseEvent mouse) {
         Coordinate mouseCoordinate = new Coordinate((int) mouse.getX(), (int) mouse.getY());
         Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
@@ -53,8 +57,9 @@ public class PlayerManager {
                 return;
 
             Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
-
             world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
+            entity.setRotation(random.nextInt(0,4));
+            entity.initialize();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -6,12 +6,12 @@ import com.yes.yes.world.World;
 public record BlockContainer(World world, Coordinate blockCoordinate, Coordinate chunkCoordinate) {
     final static int MAX_RADIUS = 2;
 
-    public Entity getBlock(Coordinate offset) throws IllegalAccessException {
+    public Entity getBlockAbsolute(Coordinate offset) throws IllegalAccessException {
         if (Math.abs(offset.x) > MAX_RADIUS || Math.abs(offset.y) > MAX_RADIUS)
             throw new IllegalAccessException();
 
         Coordinate localChunkCoordinate = new Coordinate(chunkCoordinate.x, chunkCoordinate.y);
-        Coordinate localBlockCoordinate = new Coordinate(blockCoordinate.x - offset.x, blockCoordinate.y + offset.y);
+        Coordinate localBlockCoordinate = new Coordinate(blockCoordinate.x + offset.x, blockCoordinate.y + offset.y);
 
         while (localBlockCoordinate.x < 0) {
             localBlockCoordinate.x += Chunk.CHUNK_SIZE;
@@ -35,5 +35,13 @@ public record BlockContainer(World world, Coordinate blockCoordinate, Coordinate
 
         Chunk chunk = world.getChunk(localChunkCoordinate);
         return chunk.getEntity(localBlockCoordinate);
+    }
+
+    // Only works with a valid direction
+    public final Entity getBlockRelative(Coordinate direction, int rotation) throws IllegalAccessException {
+        for (int i = 0; i < rotation % 4; i++) {
+            direction = Direction.rotateRight(direction);
+        }
+        return getBlockAbsolute(direction);
     }
 }

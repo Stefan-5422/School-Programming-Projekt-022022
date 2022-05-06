@@ -2,7 +2,7 @@ package com.yes.yes.utils;
 
 import javafx.scene.transform.Scale;
 
-public class Item extends javafx.scene.Group {
+public class Item extends javafx.scene.Group implements Cloneable {
     final Part[][] parts = new Part[4][4];
 
     public void setPart(int layer, int section, Part part) throws IllegalArgumentException {
@@ -16,7 +16,7 @@ public class Item extends javafx.scene.Group {
 
         part.rotate(section);
 
-        part.getTransforms().add(new Scale(-layer*0.25f+1f, -layer*0.25f+1f));
+        part.getTransforms().add(new Scale(-layer * 0.25f + 1f, -layer * 0.25f + 1f));
 
         parts[layer][section] = part;
         this.getChildren().add(part);
@@ -49,5 +49,24 @@ public class Item extends javafx.scene.Group {
                 parts[i][j].rotate(quarters);
             }
         }
+    }
+
+
+    @Override
+    public Item clone() {
+        Item clone = new Item();
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                Class<?>[] types = new Class<?>[0];
+
+                try {
+                    clone.setPart(i, j, this.getPart(i, j).getClass().getConstructor(types).newInstance());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return clone;
     }
 }
