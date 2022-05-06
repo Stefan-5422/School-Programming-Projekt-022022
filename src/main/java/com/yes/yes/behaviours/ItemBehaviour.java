@@ -43,5 +43,6 @@ public class ItemBehaviour extends Component {
 
     @Override
     public void update() {
+        System.out.println("Destroyed:" + parent.getData("destroyed"));
     }
 }

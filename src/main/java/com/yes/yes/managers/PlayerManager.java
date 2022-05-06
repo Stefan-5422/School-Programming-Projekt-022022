@@ -27,21 +27,19 @@ public class PlayerManager {
 
     public void initialize() {
         Scene scene = world.getScene();
-        scene.setOnKeyPressed(this::ProcessKeyPress);
+        scene.setOnKeyPressed(this::processKeyPress);
 
         scene.widthProperty().addListener((e) -> redrawChunks());
         scene.heightProperty().addListener((e) -> redrawChunks());
 
-        world.setOnMouseClicked(this::ProcessClick);
+        world.setOnMouseClicked(this::processClick);
         world.setTranslateX(Integer.MAX_VALUE / -5000d);
         world.setTranslateY(Integer.MAX_VALUE / -5000d);
 
         redrawChunks();
     }
 
-    Random random = new Random();
-
-    private void ProcessClick(MouseEvent mouse) {
+    private void processClick(MouseEvent mouse) {
         Coordinate mouseCoordinate = new Coordinate((int) mouse.getX(), (int) mouse.getY());
         Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
         Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
@@ -57,15 +55,24 @@ public class PlayerManager {
                 return;
 
             Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
-            world.getChunk(chunkCoordinate).setEntity(entity, blockCoordinate);
-            //entity.setRotation(random.nextInt(0,4));
+
+            Chunk chunk = world.getChunk(chunkCoordinate);
+            Entity oldEntity = chunk.getEntity(blockCoordinate);
+
+            if(oldEntity != null && oldEntity.getClass().getSimpleName() == entity.getClass().getSimpleName()) {
+                oldEntity.setData("destroyed", true);
+                entity.setRotation(oldEntity.getRotation() + 1);
+            }
+
+            chunk.setEntity(entity, blockCoordinate);
+
             entity.initialize();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private void ProcessKeyPress(KeyEvent key) {
+    private void processKeyPress(KeyEvent key) {
         if (LEFT_KEY.match(key)) {
             world.setTranslateX(world.getTranslateX() + 45);
         }

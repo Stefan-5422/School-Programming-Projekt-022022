@@ -26,7 +26,7 @@ public class ConveyorBehaviour extends Component {
 
     @Override
     public void update() {
-        if (count >= delay) {
+        if (count > delay) {
             if (parent.getData(offerDataKey) != null) return;
             if (parent.getData(receiveDataKey) == null) return;
 
@@ -40,6 +40,7 @@ public class ConveyorBehaviour extends Component {
         if(isConveyed && parent.getData(offerDataKey) == null)
         {
             parent.setData(receiveDataKey, null);
+            parent.trigger(receiveDataKey + "Changed", null);
             isConveyed = false;
         }
     }
