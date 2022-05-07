@@ -58,6 +58,8 @@ public class RecieveBehaviour extends Component {
     public void destroy() {
         this.parent.removeListener("offerItem", this, this::receive);
         this.parent.removeListener("placed", this, this::placed);
+        
+        offerer = null;
     }
 
 }

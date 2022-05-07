@@ -65,5 +65,7 @@ public class OfferBehaviour extends Component {
     public void destroy() {
         this.parent.removeListener("itemAccepted", this, this::itemAccepted);
         this.parent.removeListener("placed", this,this::placed);
+
+        receiver = null;
     }
 }
