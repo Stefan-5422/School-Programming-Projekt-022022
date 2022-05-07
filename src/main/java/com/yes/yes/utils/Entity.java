@@ -12,7 +12,7 @@ public abstract class Entity extends javafx.scene.Group {
     private int rotation;
 
     public Entity() {
-        GlobalEventHandler.addListener("timerTick", (__) -> update());
+        GlobalEventHandler.addListener("timerTick", this, (__) -> update());
     }
 
     public final void addBehaviour(Component behaviour) {
@@ -21,9 +21,13 @@ public abstract class Entity extends javafx.scene.Group {
 
     public final void removeBehaviour(Component behaviour) {
         ArrayList<Component> components = new ArrayList<>();
-        for (Component b : behaviours) {
-            if (!b.getClass().equals(behaviour.getClass())) {
-                components.add(b);
+        for (Component component : behaviours) {
+            if (!component.getClass().equals(behaviour.getClass())) {
+                components.add(component);
+            }
+            else
+            {
+                component.destroy();
             }
         }
         behaviours = components;
@@ -41,6 +45,14 @@ public abstract class Entity extends javafx.scene.Group {
         behaviours.forEach(Component::initialize);
     }
 
+    public final void destroy()
+    {
+        GlobalEventHandler.removeListener("timerTick",this, (__) -> update());
+        for (Component component : behaviours) {
+            component.destroy();
+        }
+    }
+
     public final void setData(String key, Object value) {
         data.put(key, value);
     }
@@ -49,12 +61,12 @@ public abstract class Entity extends javafx.scene.Group {
         return (T) data.get(key);
     }
 
-    public final <T> void addListener(String eventName, Consumer<T> function) {
-        handler.addListener(eventName, function);
+    public final <T> void addListener(String eventName, Object object, Consumer<T> function) {
+        handler.addListener(eventName, object, function);
     }
 
-    public final <T> void removeListener(String eventName, Consumer<T> function) {
-        handler.removeListener(eventName, function);
+    public final <T> void removeListener(String eventName, Object object, Consumer<T> function) {
+        handler.removeListener(eventName, object, function);
     }
 
     public final void trigger(String eventName, Object parameter) {

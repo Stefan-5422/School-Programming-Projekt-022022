@@ -12,4 +12,5 @@ public abstract class Component {
     public abstract void initialize();
 
     public abstract void update();
+    public abstract void destroy();
 }

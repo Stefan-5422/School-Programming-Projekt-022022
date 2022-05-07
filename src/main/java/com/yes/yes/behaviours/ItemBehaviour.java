@@ -23,14 +23,15 @@ public class ItemBehaviour extends Component {
         System.out.println("Running item update");
         Platform.runLater(() -> {
             this.itemGroup.getChildren().clear();
-            this.itemGroup.getChildren().add(item);
+            if (item != null)
+                this.itemGroup.getChildren().add(item);
         });
         System.out.println("Finished item update");
     }
 
     @Override
     public void initialize() {
-        parent.addListener(dataKey + "Changed", this::itemChanged);
+        parent.addListener(dataKey + "Changed", this, this::itemChanged);
 
         itemGroup = new VBox();
         itemGroup.setAlignment(Pos.CENTER);
@@ -44,5 +45,10 @@ public class ItemBehaviour extends Component {
     @Override
     public void update() {
         System.out.println("Destroyed:" + parent.getData("destroyed"));
+    }
+
+    @Override
+    public void destroy() {
+        parent.removeListener(dataKey + "Changed", this, this::itemChanged);
     }
 }

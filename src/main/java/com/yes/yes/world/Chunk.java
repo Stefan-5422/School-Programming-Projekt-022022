@@ -45,7 +45,11 @@ public class Chunk extends GridPane {
 
     public void removeEntity(Coordinate pos) {
         Entity entity = getEntity(pos);
-        entity.setData("destroyed", true);
+
+        if (entity != null) {
+            entity.setData("destroyed", true);
+            entity.destroy();
+        }
         this.getChildren().remove(entity);
         data[pos.x + pos.y * CHUNK_SIZE] = null;
     }

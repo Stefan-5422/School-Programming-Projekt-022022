@@ -30,4 +30,9 @@ public class PlaceBehaviour extends Component {
     public void update() {
 
     }
+
+    @Override
+    public void destroy() {
+
+    }
 }

@@ -26,4 +26,9 @@ public class GeneratorBehaviour extends Component {
         this.parent.setData(dataKey, item.clone());
         System.out.println("generate");
     }
+
+    @Override
+    public void destroy() {
+
+    }
 }

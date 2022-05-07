@@ -44,4 +44,9 @@ public class ConveyorBehaviour extends Component {
             isConveyed = false;
         }
     }
+
+    @Override
+    public void destroy() {
+
+    }
 }

@@ -36,8 +36,8 @@ public class RecieveBehaviour extends Component {
             e.printStackTrace();
         }
 
-        this.parent.addListener("offerItem", this::receive);
-        this.parent.addListener("placed", this::placed);
+        this.parent.addListener("offerItem", this, this::receive);
+        this.parent.addListener("placed", this, this::placed);
     }
 
     void receive(Item item) {
@@ -52,6 +52,12 @@ public class RecieveBehaviour extends Component {
     @Override
     public void update() {
 
+    }
+
+    @Override
+    public void destroy() {
+        this.parent.removeListener("offerItem", this, this::receive);
+        this.parent.removeListener("placed", this, this::placed);
     }
 
 }

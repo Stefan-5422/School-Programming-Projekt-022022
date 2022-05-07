@@ -55,9 +55,9 @@ public class GameManager {
             System.out.println("Finished tick!");
         }, 0, 1, TimeUnit.SECONDS);
 
-        GlobalEventHandler.addListener("timerTick", (__) -> {
+        GlobalEventHandler.addListener("timerTick", this, (__) -> {
             System.out.println("Tick!");
         });
-        GlobalEventHandler.addListener("closing", (__) -> executor.shutdown());
+        GlobalEventHandler.addListener("closing", this, (__) -> executor.shutdown());
     }
 }

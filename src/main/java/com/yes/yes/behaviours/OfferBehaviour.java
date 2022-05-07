@@ -47,8 +47,8 @@ public class OfferBehaviour extends Component {
             e.printStackTrace();
         }
 
-        this.parent.addListener("itemAccepted", this::itemAccepted);
-        this.parent.addListener("placed", this::placed);
+        this.parent.addListener("itemAccepted", this, this::itemAccepted);
+        this.parent.addListener("placed", this,this::placed);
     }
 
     @Override
@@ -59,5 +59,11 @@ public class OfferBehaviour extends Component {
         if (item == null) return;
 
         this.receiver.trigger("offerItem", item);
+    }
+
+    @Override
+    public void destroy() {
+        this.parent.removeListener("itemAccepted", this, this::itemAccepted);
+        this.parent.removeListener("placed", this,this::placed);
     }
 }
