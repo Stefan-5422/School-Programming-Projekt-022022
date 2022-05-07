@@ -13,7 +13,7 @@ public class GlobalEventHandler {
         handler.addListener(eventName, function);
     }
 
-    public static void removeListener(String eventName, Function<Object, Void> function) {
+    public static <T> void removeListener(String eventName, Consumer<T> function) {
         handler.removeListener(eventName, function);
     }
 

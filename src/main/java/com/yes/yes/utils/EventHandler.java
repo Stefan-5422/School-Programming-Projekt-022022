@@ -17,7 +17,7 @@ public class EventHandler {
         events.get(eventName).add((e) -> function.accept((T) e));
     }
 
-    public void removeListener(String eventName, Function<Object, Void> function) throws IllegalArgumentException {
+    public <T> void removeListener(String eventName, Consumer<T> function) throws IllegalArgumentException {
         //NOTE: This needs to be called otherwise memory leak
         if (!events.containsKey(eventName)) {
             throw new IllegalArgumentException("Event " + eventName + " does not exist!");
