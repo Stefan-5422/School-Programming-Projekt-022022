@@ -60,7 +60,6 @@ public class PlayerManager {
             Entity oldEntity = chunk.getEntity(blockCoordinate);
 
             if(oldEntity != null && oldEntity.getClass().getSimpleName() == entity.getClass().getSimpleName()) {
-                oldEntity.setData("destroyed", true);
                 entity.setRotation(oldEntity.getRotation() + 1);
             }
 
