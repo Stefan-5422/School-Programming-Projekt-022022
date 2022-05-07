@@ -47,7 +47,6 @@ public class Chunk extends GridPane {
         Entity entity = getEntity(pos);
 
         if (entity != null) {
-            entity.setData("destroyed", true);
             entity.destroy();
         }
         this.getChildren().remove(entity);

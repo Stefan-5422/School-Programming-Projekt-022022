@@ -20,13 +20,13 @@ public class ItemBehaviour extends Component {
     }
 
     private void itemChanged(Item item) {
-        System.out.println("Running item update");
+        //System.out.println("Running item update");
         Platform.runLater(() -> {
             this.itemGroup.getChildren().clear();
             if (item != null)
                 this.itemGroup.getChildren().add(item);
         });
-        System.out.println("Finished item update");
+        //System.out.println("Finished item update");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ItemBehaviour extends Component {
 
     @Override
     public void update() {
-        System.out.println("Destroyed:" + parent.getData("destroyed"));
+
     }
 
     @Override

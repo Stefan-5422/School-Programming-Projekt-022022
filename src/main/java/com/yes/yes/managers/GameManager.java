@@ -52,11 +52,11 @@ public class GameManager {
             {
                 ex.printStackTrace();
             }
-            System.out.println("Finished tick!");
+            //System.out.println("Finished tick!");
         }, 0, 1, TimeUnit.SECONDS);
 
         GlobalEventHandler.addListener("timerTick", this, (__) -> {
-            System.out.println("Tick!");
+            //System.out.println("Tick!");
         });
         GlobalEventHandler.addListener("closing", this, (__) -> executor.shutdown());
     }

@@ -7,8 +7,6 @@ import com.yes.yes.world.World;
 import javafx.scene.Scene;
 import javafx.scene.input.*;
 
-import java.util.Random;
-
 public class PlayerManager {
 
     private static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
@@ -19,6 +17,7 @@ public class PlayerManager {
     private final World world;
     private final BuildBox buildBox;
     private Coordinate chunkPos = new Coordinate(0, 0);
+    private int currentRotation = 0;
 
     public PlayerManager(World world, BuildBox buildBox) {
         this.world = world;
@@ -44,6 +43,7 @@ public class PlayerManager {
         Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
         Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
 
+
         try {
             Class<?>[] types = new Class<?>[1];
             types[0] = BlockContainer.class;
@@ -59,9 +59,14 @@ public class PlayerManager {
             Chunk chunk = world.getChunk(chunkCoordinate);
             Entity oldEntity = chunk.getEntity(blockCoordinate);
 
-            if(oldEntity != null && oldEntity.getClass().getSimpleName() == entity.getClass().getSimpleName()) {
-                entity.setRotation(oldEntity.getRotation() + 1);
+            if (oldEntity != null && oldEntity.getClass().getSimpleName() == entity.getClass().getSimpleName()) {
+                if (mouse.getButton() == MouseButton.PRIMARY)
+                    currentRotation = oldEntity.getRotation() + 1;
+                else
+                    currentRotation = oldEntity.getRotation() - 1;
             }
+
+            entity.setRotation(currentRotation);
 
             chunk.setEntity(entity, blockCoordinate);
 
