@@ -2,7 +2,6 @@ package com.yes.yes.behaviours;
 
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Component;
-import com.yes.yes.utils.Coordinate;
 import com.yes.yes.utils.Entity;
 
 public class TestBehaviour extends Component {
@@ -41,6 +40,6 @@ public class TestBehaviour extends Component {
 
     @Override
     public void destroy() {
-        parent.removeListener("placed", this, this::onNeighborPlaced);
+        parent.removeListener("placed", this);
     }
 }

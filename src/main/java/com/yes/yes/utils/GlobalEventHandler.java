@@ -14,7 +14,7 @@ public class GlobalEventHandler {
     }
 
     public static <T> void removeListener(String eventName, Object object, Consumer<T> function) {
-        handler.removeListener(eventName, object, function);
+        handler.removeListener(eventName, object);
     }
 
     public static void trigger(String eventName, Object parameter) {

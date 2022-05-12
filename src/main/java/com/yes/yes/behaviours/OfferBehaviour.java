@@ -63,8 +63,8 @@ public class OfferBehaviour extends Component {
 
     @Override
     public void destroy() {
-        this.parent.removeListener("itemAccepted", this, this::itemAccepted);
-        this.parent.removeListener("placed", this,this::placed);
+        this.parent.removeListener("itemAccepted", this);
+        this.parent.removeListener("placed", this);
 
         receiver = null;
     }

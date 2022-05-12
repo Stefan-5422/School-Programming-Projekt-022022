@@ -15,12 +15,12 @@ public class EventHandler {
         events.get(eventName).put(object, (e) -> function.accept((T) e));
     }
 
-    public <T> void removeListener(String eventName, Object object, Consumer<T> function) throws IllegalArgumentException {
+    public <T> void removeListener(String eventName, Object object) throws IllegalArgumentException {
         //NOTE: This needs to be called otherwise memory leak
         if (!events.containsKey(eventName)) {
             throw new IllegalArgumentException("Event " + eventName + " does not exist!");
         }
-        //noinspection SuspiciousMethodCalls
+
         events.get(eventName).remove(object);
     }
 

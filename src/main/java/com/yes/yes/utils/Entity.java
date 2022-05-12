@@ -65,8 +65,8 @@ public abstract class Entity extends javafx.scene.Group {
         handler.addListener(eventName, object, function);
     }
 
-    public final <T> void removeListener(String eventName, Object object, Consumer<T> function) {
-        handler.removeListener(eventName, object, function);
+    public final <T> void removeListener(String eventName, Object object) {
+        handler.removeListener(eventName, object);
     }
 
     public final void trigger(String eventName, Object parameter) {

@@ -49,6 +49,6 @@ public class ItemBehaviour extends Component {
 
     @Override
     public void destroy() {
-        parent.removeListener(dataKey + "Changed", this, this::itemChanged);
+        parent.removeListener(dataKey + "Changed", this);
     }
 }
