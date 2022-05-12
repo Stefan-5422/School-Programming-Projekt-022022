@@ -7,17 +7,24 @@ import com.yes.yes.world.World;
 import javafx.scene.Scene;
 import javafx.scene.input.*;
 
+import java.security.Key;
+
 public class PlayerManager {
 
     private static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
     private static final KeyCombination RIGHT_KEY = new KeyCodeCombination(KeyCode.D);
     private static final KeyCombination UP_KEY = new KeyCodeCombination(KeyCode.W);
     private static final KeyCombination DOWN_KEY = new KeyCodeCombination(KeyCode.S);
+    private static final KeyCombination DELETE_KEY = new KeyCodeCombination(KeyCode.X);
+    private static final KeyCombination HOME_KEY = new KeyCodeCombination(KeyCode.INSERT);
 
     private final World world;
     private final BuildBox buildBox;
+    private static final Coordinate START_POSITION = new Coordinate(Integer.MAX_VALUE / -5000,Integer.MAX_VALUE / -5000);
+
     private Coordinate chunkPos = new Coordinate(0, 0);
     private int currentRotation = 0;
+    private Coordinate currentMousePosition;
 
     public PlayerManager(World world, BuildBox buildBox) {
         this.world = world;
@@ -32,8 +39,9 @@ public class PlayerManager {
         scene.heightProperty().addListener((e) -> redrawChunks());
 
         world.setOnMouseClicked(this::processClick);
-        world.setTranslateX(Integer.MAX_VALUE / -5000d);
-        world.setTranslateY(Integer.MAX_VALUE / -5000d);
+        world.setTranslateX(START_POSITION.x);
+        world.setTranslateY(START_POSITION.y);
+        world.setOnMouseMoved((mouse)-> currentMousePosition = new Coordinate((int) mouse.getX(), (int) mouse.getY()));
 
         redrawChunks();
     }
@@ -88,6 +96,19 @@ public class PlayerManager {
         }
         if (DOWN_KEY.match(key)) {
             world.setTranslateY(world.getTranslateY() - 45);
+        }
+        if(DELETE_KEY.match(key)) {
+            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(currentMousePosition);
+            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(currentMousePosition);
+
+            Chunk chunk = world.getChunk(chunkCoordinate);
+            chunk.removeEntity(blockCoordinate);
+        }
+        if(HOME_KEY.match(key))
+        {
+            world.setTranslateX(START_POSITION.x);
+            world.setTranslateY(START_POSITION.y);
+            redrawChunks();
         }
 
 

@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Stefan/Documents/code/School-Programming-Projekt-022022/src</OriginalElement>
+  <nodes>
+    <node x="1718.0904436860112" y="958.0">com.yes.yes.ui.BuildBox</node>
+    <node x="823.632110352678" y="803.0">com.yes.yes.behaviours.TestRecieveBeahaviour</node>
+    <node x="194.94105517634057" y="93.0">com.yes.yes.utils.GlobalEventHandler</node>
+    <node x="184.71188850967053" y="958.0">com.yes.yes.entities.machines.TestMachine2</node>
+    <node x="278.14938850967394" y="0.0">com.yes.yes.utils.EventHandler</node>
+    <node x="603.8328711604111" y="688.0">com.yes.yes.utils.Component</node>
+    <node x="46.19507252560015" y="803.0">com.yes.yes.behaviours.TestOffererBehaviour</node>
+    <node x="116.49953782707757" y="688.0">com.yes.yes.entities.parts.Square</node>
+    <node x="441.7495378270776" y="803.0">com.yes.yes.behaviours.TestBehaviour</node>
+    <node x="1731.5868885096704" y="553.0">com.yes.yes.utils.RegistryEntry</node>
+    <node x="1251.2154436860112" y="323.0">com.yes.yes.world.Chunk</node>
+    <node x="730.7118885096705" y="958.0">com.yes.yes.entities.machines.TestMachine</node>
+    <node x="584.3404436860112" y="553.0">com.yes.yes.utils.BlockContainer</node>
+    <node x="1703.2535551763372" y="1142.0">com.yes.yes.MainController</node>
+    <node x="1468.1285551763406" y="438.0">com.yes.yes.world.World</node>
+    <node x="1835.4202218430073" y="323.0">com.yes.yes.utils.Direction</node>
+    <node x="1681.5904436860112" y="803.0">com.yes.yes.ui.BuildItem</node>
+    <node x="1046.632110352678" y="803.0">com.yes.yes.behaviours.OfferBehaviour</node>
+    <node x="211.44105517634057" y="178.0">com.yes.yes.YesApplication</node>
+    <node x="1759.0904436860112" y="688.0">com.yes.yes.utils.EntityRegistry</node>
+    <node x="298.4202218430072" y="553.0">com.yes.yes.utils.Part</node>
+    <node x="606.7495378270776" y="803.0">com.yes.yes.behaviours.PlaceBehaviour</node>
+    <node x="273.7495378270776" y="803.0">com.yes.yes.behaviours.ItemBehaviour</node>
+    <node x="1326.3785551763406" y="178.0">com.yes.yes.utils.Coordinate</node>
+    <node x="609.6702218430073" y="178.0">com.yes.yes.utils.Entity</node>
+    <node x="1366.2154436860112" y="323.0">com.yes.yes.utils.exceptions.AlreadyExistsException</node>
+    <node x="1886.7495378270776" y="1061.0">com.yes.yes.managers.PlayerManager</node>
+    <node x="301.4202218430072" y="688.0">com.yes.yes.utils.Item</node>
+    <node x="1298.082871160411" y="1061.0">com.yes.yes.managers.GameManager</node>
+    <node x="1975.8785551763372" y="958.0">com.yes.yes.utils.Size</node>
+    <node x="1716.2535551763372" y="1061.0">com.yes.yes.managers.UiManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.EntityRegistry" relationship="DEPENDENCY">
+      <point x="-50.33333333333337" y="-15.5" />
+      <point x="1911.9162044937443" y="1040.0" />
+      <point x="1705.0035551763372" y="1040.0" />
+      <point x="1705.0035551763372" y="1020.0" />
+      <point x="1876.8404436860112" y="1020.0" />
+      <point x="1876.8404436860112" y="771.0" />
+      <point x="1830.5904436860112" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Entity" target="com.yes.yes.utils.EventHandler" relationship="TO_ONE">
+      <point x="29.666666666666657" y="-15.5" />
+      <point x="683.8368885096739" y="151.0" />
+      <point x="664.6702218430073" y="151.0" />
+      <point x="664.6702218430073" y="62.0" />
+      <point x="353.14938850967394" y="62.0" />
+      <point x="353.14938850967394" y="52.0" />
+      <point x="383.14938850967394" y="52.0" />
+      <point x="35.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.entities.parts.Square" relationship="CREATE">
+      <point x="24.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine" target="com.yes.yes.utils.Entity" relationship="GENERALIZATION">
+      <point x="45.333333333333314" y="-15.5" />
+      <point x="844.0452218430039" y="936.0" />
+      <point x="1208.132110352678" y="936.0" />
+      <point x="1208.132110352678" y="626.0" />
+      <point x="1135.9162044937443" y="626.0" />
+      <point x="1135.9162044937443" y="301.0" />
+      <point x="47.944610352677955" y="301.0" />
+      <point x="47.944610352677955" y="251.0" />
+      <point x="620.7952218430073" y="251.0" />
+      <point x="-33.375" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.utils.Item" relationship="CREATE">
+      <point x="24.0" y="-15.5" />
+      <point x="165.49953782707757" y="761.0" />
+      <point x="321.9202218430072" y="761.0" />
+      <point x="-20.5" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.world.Chunk" relationship="DEPENDENCY">
+      <point x="-50.33333333333337" y="-15.5" />
+      <point x="1911.9162044937443" y="1040.0" />
+      <point x="1705.0035551763372" y="1040.0" />
+      <point x="1705.0035551763372" y="1020.0" />
+      <point x="1571.6285551763406" y="1020.0" />
+      <point x="1571.6285551763406" y="406.0" />
+      <point x="1419.9242391922667" y="406.0" />
+      <point x="1419.9242391922667" y="376.0" />
+      <point x="1330.382110352678" y="376.0" />
+      <point x="31.666666666666686" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.world.World" relationship="DEPENDENCY">
+      <point x="-50.33333333333337" y="-15.5" />
+      <point x="1911.9162044937443" y="1040.0" />
+      <point x="1705.0035551763372" y="1040.0" />
+      <point x="1705.0035551763372" y="1020.0" />
+      <point x="1538.1285551763406" y="1020.0" />
+      <point x="1538.1285551763406" y="501.0" />
+      <point x="1504.6285551763406" y="501.0" />
+      <point x="1504.6285551763406" y="491.0" />
+      <point x="1483.6285551763406" y="491.0" />
+      <point x="-31.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.OfferBehaviour" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="5.6843418860808015E-14" y="-15.5" />
+      <point x="1122.132110352678" y="781.0" />
+      <point x="1129.586888509674" y="781.0" />
+      <point x="1129.586888509674" y="771.0" />
+      <point x="1095.5" y="771.0" />
+      <point x="1095.5" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestBehaviour" target="com.yes.yes.utils.Component" relationship="GENERALIZATION">
+      <point x="36.25" y="-15.5" />
+      <point x="550.4995378270776" y="771.0" />
+      <point x="669.8328711604111" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine2" target="com.yes.yes.behaviours.TestBehaviour" relationship="CREATE">
+      <point x="48.0" y="-15.5" />
+      <point x="304.71188850967053" y="936.0" />
+      <point x="459.96188850967053" y="936.0" />
+      <point x="459.96188850967053" y="896.0" />
+      <point x="514.2495378270776" y="896.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Component" target="com.yes.yes.utils.BlockContainer" relationship="TO_ONE">
+      <point x="-33.0" y="-15.5" />
+      <point x="636.8328711604111" y="666.0" />
+      <point x="617.0904436860112" y="666.0" />
+      <point x="617.0904436860112" y="626.0" />
+      <point x="660.3404436860112" y="626.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.World" target="com.yes.yes.world.Chunk" relationship="TO_MANY">
+      <point x="-31.0" y="-15.5" />
+      <point x="1483.6285551763406" y="416.0" />
+      <point x="1264.7154436860112" y="416.0" />
+      <point x="1264.7154436860112" y="386.0" />
+      <point x="1267.0487770193445" y="386.0" />
+      <point x="-31.666666666666686" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="798.7118885096705" y="916.0" />
+      <point x="813.132110352678" y="916.0" />
+      <point x="813.132110352678" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine" target="com.yes.yes.behaviours.PlaceBehaviour" relationship="CREATE">
+      <point x="-45.33333333333334" y="-15.5" />
+      <point x="753.3785551763372" y="936.0" />
+      <point x="627.4618885096705" y="936.0" />
+      <point x="627.4618885096705" y="916.0" />
+      <point x="682.7495378270776" y="916.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.ItemBehaviour" target="com.yes.yes.utils.Item" relationship="DEPENDENCY">
+      <point x="-37.0" y="-15.5" />
+      <point x="310.7495378270776" y="781.0" />
+      <point x="348.2495378270776" y="781.0" />
+      <point x="348.2495378270776" y="761.0" />
+      <point x="362.9202218430072" y="761.0" />
+      <point x="20.5" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.OfferBehaviour" target="com.yes.yes.utils.Coordinate" relationship="DEPENDENCY">
+      <point x="5.6843418860808015E-14" y="-15.5" />
+      <point x="1122.132110352678" y="781.0" />
+      <point x="1129.586888509674" y="781.0" />
+      <point x="1130.4162044937443" y="656.0" />
+      <point x="1156.2118885096706" y="656.0" />
+      <point x="1156.2118885096706" y="281.0" />
+      <point x="1389.3785551763406" y="281.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Item" target="com.yes.yes.utils.Part" relationship="TO_ONE">
+      <point x="20.5" y="-15.5" />
+      <point x="26.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.GlobalEventHandler" target="com.yes.yes.utils.EventHandler" relationship="TO_ONE">
+      <point x="45.75" y="-15.5" />
+      <point x="332.19105517634057" y="62.0" />
+      <point x="353.14938850967394" y="62.0" />
+      <point x="353.14938850967394" y="52.0" />
+      <point x="383.14938850967394" y="52.0" />
+      <point x="35.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestRecieveBeahaviour" target="com.yes.yes.utils.Component" relationship="GENERALIZATION">
+      <point x="-50.75" y="-15.5" />
+      <point x="874.382110352678" y="771.0" />
+      <point x="669.8328711604111" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Entity" target="com.yes.yes.utils.GlobalEventHandler" relationship="DEPENDENCY">
+      <point x="-29.66666666666667" y="-15.5" />
+      <point x="624.5035551763406" y="151.0" />
+      <point x="286.44105517634057" y="151.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Component" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="33.0" y="-15.5" />
+      <point x="702.8328711604111" y="666.0" />
+      <point x="746.8404436860112" y="666.0" />
+      <point x="746.8404436860112" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Entity" target="com.yes.yes.utils.Component" relationship="DEPENDENCY">
+      <point x="11.125" y="15.5" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="746.8404436860112" y="271.0" />
+      <point x="746.8404436860112" y="666.0" />
+      <point x="702.8328711604111" y="666.0" />
+      <point x="33.0" y="-15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.world.World" relationship="TO_ONE">
+      <point x="0.0" y="-15.5" />
+      <point x="1373.082871160411" y="1030.0" />
+      <point x="1431.4202218430073" y="1030.0" />
+      <point x="1431.4202218430073" y="531.0" />
+      <point x="1526.8785551763406" y="531.0" />
+      <point x="1526.8785551763406" y="491.0" />
+      <point x="1545.6285551763406" y="491.0" />
+      <point x="31.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.Coordinate" relationship="TO_ONE">
+      <point x="50.33333333333337" y="-15.5" />
+      <point x="2012.5828711604108" y="1040.0" />
+      <point x="2131.7159058589336" y="1040.0" />
+      <point x="2131.7159058589336" y="251.0" />
+      <point x="1896.4202218430073" y="251.0" />
+      <point x="1896.4202218430073" y="241.0" />
+      <point x="1431.3785551763406" y="241.0" />
+      <point x="42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.utils.Entity" relationship="TO_ONE">
+      <point x="-72.0" y="-15.5" />
+      <point x="70.19507252560015" y="781.0" />
+      <point x="64.49999999999977" y="781.0" />
+      <point x="64.49999999999977" y="291.0" />
+      <point x="597.4202218430073" y="291.0" />
+      <point x="597.4202218430073" y="241.0" />
+      <point x="643.0452218430073" y="241.0" />
+      <point x="-11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.BlockContainer" target="com.yes.yes.utils.Coordinate" relationship="CREATE">
+      <point x="38.0" y="-15.5" />
+      <point x="698.3404436860112" y="501.0" />
+      <point x="665.8404436860112" y="501.0" />
+      <point x="665.8404436860112" y="261.0" />
+      <point x="797.6702218430073" y="261.0" />
+      <point x="797.6702218430073" y="231.0" />
+      <point x="1347.3785551763406" y="231.0" />
+      <point x="-42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.Coordinate" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1962.2495378270776" y="1040.0" />
+      <point x="2012.2535551763406" y="1040.0" />
+      <point x="2012.2535551763406" y="1010.0" />
+      <point x="2065.378555176337" y="1010.0" />
+      <point x="2065.378555176337" y="261.0" />
+      <point x="797.6702218430073" y="261.0" />
+      <point x="797.6702218430073" y="231.0" />
+      <point x="1347.3785551763406" y="231.0" />
+      <point x="-42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.ui.BuildBox" target="com.yes.yes.utils.EntityRegistry" relationship="DEPENDENCY">
+      <point x="27.5" y="-15.5" />
+      <point x="1800.5904436860112" y="936.0" />
+      <point x="1830.5904436860112" y="936.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.OfferBehaviour" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="5.6843418860808015E-14" y="-15.5" />
+      <point x="1122.132110352678" y="781.0" />
+      <point x="1129.586888509674" y="781.0" />
+      <point x="1129.586888509674" y="646.0" />
+      <point x="1156.2118885096706" y="646.0" />
+      <point x="1156.2118885096706" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.ui.BuildItem" target="com.yes.yes.utils.EntityRegistry" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="1739.0904436860112" y="781.0" />
+      <point x="1726.6285551763406" y="781.0" />
+      <point x="1726.6285551763406" y="761.0" />
+      <point x="1830.5904436860112" y="761.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine2" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="256.71188850967053" y="936.0" />
+      <point x="252.4202218430072" y="936.0" />
+      <point x="252.4202218430072" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.Chunk" target="com.yes.yes.utils.Entity" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1298.7154436860112" y="241.0" />
+      <point x="687.5452218430073" y="241.0" />
+      <point x="33.375" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.utils.EntityRegistry" relationship="DEPENDENCY">
+      <point x="-50.0" y="-15.5" />
+      <point x="1323.0828711604108" y="1040.0" />
+      <point x="798.7118885096705" y="1040.0" />
+      <point x="798.7118885096705" y="1030.0" />
+      <point x="1267.049239192267" y="1030.0" />
+      <point x="1267.049239192267" y="771.0" />
+      <point x="1830.5904436860112" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.ui.BuildBox" relationship="DEPENDENCY">
+      <point x="-50.33333333333337" y="-15.5" />
+      <point x="1911.9162044937443" y="1040.0" />
+      <point x="1705.0035551763372" y="1040.0" />
+      <point x="1705.0035551763372" y="1020.0" />
+      <point x="1773.0904436860112" y="1020.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine2" target="com.yes.yes.behaviours.PlaceBehaviour" relationship="CREATE">
+      <point x="48.0" y="-15.5" />
+      <point x="304.71188850967053" y="936.0" />
+      <point x="459.96188850967053" y="936.0" />
+      <point x="459.96188850967053" y="906.0" />
+      <point x="682.7495378270776" y="906.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.World" target="com.yes.yes.utils.Coordinate" relationship="DEPENDENCY">
+      <point x="31.0" y="-15.5" />
+      <point x="1545.6285551763406" y="386.0" />
+      <point x="1579.7154436860112" y="386.0" />
+      <point x="1579.7154436860112" y="281.0" />
+      <point x="1389.3785551763406" y="281.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Direction" target="com.yes.yes.utils.Coordinate" relationship="TO_ONE">
+      <point x="28.0" y="-15.5" />
+      <point x="1919.4202218430073" y="251.0" />
+      <point x="1896.4202218430073" y="251.0" />
+      <point x="1896.4202218430073" y="241.0" />
+      <point x="1431.3785551763406" y="241.0" />
+      <point x="42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.MainController" target="com.yes.yes.managers.UiManager" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="-24.0" y="-15.5" />
+      <point x="118.19507252560015" y="781.0" />
+      <point x="94.99953782707757" y="781.0" />
+      <point x="94.99953782707757" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine2" target="com.yes.yes.behaviours.ItemBehaviour" relationship="CREATE">
+      <point x="48.0" y="-15.5" />
+      <point x="304.71188850967053" y="936.0" />
+      <point x="459.96188850967053" y="936.0" />
+      <point x="459.96188850967053" y="876.0" />
+      <point x="347.7495378270776" y="876.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.ui.BuildBox" target="com.yes.yes.ui.BuildItem" relationship="CREATE">
+      <point x="-27.5" y="-15.5" />
+      <point x="1745.5904436860112" y="936.0" />
+      <point x="1739.0904436860112" y="936.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.entities.machines.TestMachine" relationship="DEPENDENCY">
+      <point x="-50.0" y="-15.5" />
+      <point x="1323.0828711604108" y="1040.0" />
+      <point x="798.7118885096705" y="1040.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.OfferBehaviour" target="com.yes.yes.utils.Component" relationship="GENERALIZATION">
+      <point x="-50.333333333333314" y="-15.5" />
+      <point x="1071.7987770193445" y="771.0" />
+      <point x="669.8328711604111" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.PlaceBehaviour" target="com.yes.yes.utils.Component" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.5" />
+      <point x="682.7495378270776" y="771.0" />
+      <point x="669.8328711604111" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.BlockContainer" target="com.yes.yes.world.World" relationship="DEPENDENCY">
+      <point x="-38.0" y="-15.5" />
+      <point x="622.3404436860112" y="531.0" />
+      <point x="654.8404436860112" y="531.0" />
+      <point x="654.8404436860112" y="511.0" />
+      <point x="1504.6285551763406" y="511.0" />
+      <point x="1504.6285551763406" y="491.0" />
+      <point x="1483.6285551763406" y="491.0" />
+      <point x="-31.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.MainController" target="com.yes.yes.managers.PlayerManager" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1778.7535551763372" y="1117.0" />
+      <point x="1962.2495378270776" y="1117.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine2" target="com.yes.yes.behaviours.TestOffererBehaviour" relationship="CREATE">
+      <point x="48.0" y="-15.5" />
+      <point x="304.71188850967053" y="936.0" />
+      <point x="459.96188850967053" y="936.0" />
+      <point x="459.96188850967053" y="886.0" />
+      <point x="142.19507252560015" y="886.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Item" target="com.yes.yes.utils.Part" relationship="CREATE">
+      <point x="-20.5" y="-15.5" />
+      <point x="321.9202218430072" y="646.0" />
+      <point x="337.4202218430072" y="646.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.world.World" relationship="CREATE">
+      <point x="50.0" y="-15.5" />
+      <point x="1423.082871160411" y="1040.0" />
+      <point x="1447.6702218430073" y="1040.0" />
+      <point x="1447.6702218430073" y="1030.0" />
+      <point x="1442.4202218430073" y="1030.0" />
+      <point x="1442.4202218430073" y="521.0" />
+      <point x="1514.6285551763406" y="521.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.EntityRegistry" target="com.yes.yes.utils.RegistryEntry" relationship="TO_MANY">
+      <point x="-47.66666666666666" y="-15.5" />
+      <point x="1782.9237770193445" y="656.0" />
+      <point x="1801.0868885096704" y="656.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.EntityRegistry" target="com.yes.yes.utils.exceptions.AlreadyExistsException" relationship="CREATE">
+      <point x="47.66666666666666" y="-15.5" />
+      <point x="1878.257110352678" y="656.0" />
+      <point x="1913.6285551763372" y="656.0" />
+      <point x="1913.6285551763372" y="386.0" />
+      <point x="1590.2154436860112" y="386.0" />
+      <point x="1590.2154436860112" y="376.0" />
+      <point x="1518.4654436860112" y="376.0" />
+      <point x="50.75" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.BlockContainer" target="com.yes.yes.world.Chunk" relationship="DEPENDENCY">
+      <point x="-38.0" y="-15.5" />
+      <point x="622.3404436860112" y="531.0" />
+      <point x="654.8404436860112" y="531.0" />
+      <point x="654.8404436860112" y="406.0" />
+      <point x="1419.9242391922667" y="406.0" />
+      <point x="1419.9242391922667" y="376.0" />
+      <point x="1330.382110352678" y="376.0" />
+      <point x="31.666666666666686" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.UiManager" target="com.yes.yes.ui.BuildBox" relationship="TO_ONE">
+      <point x="31.25" y="-15.5" />
+      <point x="1810.0035551763372" y="1030.0" />
+      <point x="1923.0904436860112" y="1030.0" />
+      <point x="1923.0904436860112" y="1010.0" />
+      <point x="1809.757110352678" y="1010.0" />
+      <point x="36.66666666666666" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.BlockContainer" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="-38.0" y="-15.5" />
+      <point x="622.3404436860112" y="531.0" />
+      <point x="654.8404436860112" y="531.0" />
+      <point x="654.8404436860112" y="501.0" />
+      <point x="643.3328711604111" y="501.0" />
+      <point x="643.3328711604111" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.World" target="com.yes.yes.utils.exceptions.AlreadyExistsException" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1514.6285551763406" y="416.0" />
+      <point x="1525.1285551763406" y="416.0" />
+      <point x="1525.1285551763406" y="396.0" />
+      <point x="1590.2154436860112" y="396.0" />
+      <point x="1590.2154436860112" y="376.0" />
+      <point x="1518.4654436860112" y="376.0" />
+      <point x="50.75" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine" target="com.yes.yes.behaviours.TestBehaviour" relationship="CREATE">
+      <point x="-45.33333333333334" y="-15.5" />
+      <point x="753.3785551763372" y="936.0" />
+      <point x="627.4618885096705" y="936.0" />
+      <point x="627.4618885096705" y="856.0" />
+      <point x="514.2495378270776" y="856.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.RegistryEntry" relationship="DEPENDENCY">
+      <point x="-50.33333333333337" y="-15.5" />
+      <point x="1911.9162044937443" y="1040.0" />
+      <point x="1705.0035551763372" y="1040.0" />
+      <point x="1705.0035551763372" y="1020.0" />
+      <point x="1912.5904436860112" y="1020.0" />
+      <point x="1912.5904436860112" y="666.0" />
+      <point x="1829.2535551763372" y="666.0" />
+      <point x="1829.2535551763372" y="606.0" />
+      <point x="1847.4202218430037" y="606.0" />
+      <point x="46.33333333333337" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.parts.Square" target="com.yes.yes.utils.Part" relationship="GENERALIZATION">
+      <point x="0.0" y="-15.5" />
+      <point x="165.49953782707757" y="646.0" />
+      <point x="311.4202218430072" y="646.0" />
+      <point x="-26.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.utils.Component" relationship="GENERALIZATION">
+      <point x="72.0" y="-15.5" />
+      <point x="214.19507252560015" y="771.0" />
+      <point x="669.8328711604111" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Entity" target="com.yes.yes.utils.EventHandler" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="653.6702218430073" y="72.0" />
+      <point x="342.64938850967405" y="72.0" />
+      <point x="342.64938850967405" y="52.0" />
+      <point x="313.14938850967394" y="52.0" />
+      <point x="-35.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="-24.0" y="-15.5" />
+      <point x="118.19507252560015" y="781.0" />
+      <point x="94.99953782707757" y="781.0" />
+      <point x="94.99953782707757" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.BlockContainer" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1962.2495378270776" y="1040.0" />
+      <point x="2012.2535551763406" y="1040.0" />
+      <point x="2012.2535551763406" y="1010.0" />
+      <point x="1965.3785551763372" y="1010.0" />
+      <point x="1965.3785551763372" y="616.0" />
+      <point x="711.007110352678" y="616.0" />
+      <point x="50.66666666666666" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.ui.BuildItem" target="com.yes.yes.utils.RegistryEntry" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="1739.0904436860112" y="781.0" />
+      <point x="1726.6285551763406" y="781.0" />
+      <point x="1726.6285551763406" y="666.0" />
+      <point x="1829.2535551763372" y="666.0" />
+      <point x="1829.2535551763372" y="606.0" />
+      <point x="1847.4202218430037" y="606.0" />
+      <point x="46.33333333333337" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Coordinate" target="com.yes.yes.world.Chunk" relationship="DEPENDENCY">
+      <point x="0.0" y="15.5" />
+      <point x="1389.3785551763406" y="281.0" />
+      <point x="1330.382110352678" y="281.0" />
+      <point x="31.666666666666686" y="-15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.Chunk" target="com.yes.yes.utils.Coordinate" relationship="DEPENDENCY">
+      <point x="31.666666666666686" y="-15.5" />
+      <point x="1330.382110352678" y="281.0" />
+      <point x="1389.3785551763406" y="281.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine2" target="com.yes.yes.utils.Entity" relationship="GENERALIZATION">
+      <point x="-48.0" y="-15.5" />
+      <point x="208.71188850967053" y="936.0" />
+      <point x="35.69507252560015" y="936.0" />
+      <point x="35.69507252560015" y="301.0" />
+      <point x="47.944610352677955" y="301.0" />
+      <point x="47.944610352677955" y="251.0" />
+      <point x="620.7952218430073" y="251.0" />
+      <point x="-33.375" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestOffererBehaviour" target="com.yes.yes.utils.Coordinate" relationship="CREATE">
+      <point x="24.0" y="-15.5" />
+      <point x="165.49953782707757" y="761.0" />
+      <point x="105.99953782707757" y="761.0" />
+      <point x="105.99953782707757" y="261.0" />
+      <point x="797.6702218430073" y="261.0" />
+      <point x="797.6702218430073" y="231.0" />
+      <point x="1347.3785551763406" y="231.0" />
+      <point x="-42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.PlaceBehaviour" target="com.yes.yes.utils.Coordinate" relationship="CREATE">
+      <point x="50.66666666666663" y="-15.5" />
+      <point x="733.4162044937443" y="761.0" />
+      <point x="774.0904436860112" y="761.0" />
+      <point x="774.0904436860112" y="261.0" />
+      <point x="797.6702218430073" y="261.0" />
+      <point x="797.6702218430073" y="231.0" />
+      <point x="1347.3785551763406" y="231.0" />
+      <point x="-42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.World" target="com.yes.yes.utils.Coordinate" relationship="TO_MANY">
+      <point x="-31.0" y="-15.5" />
+      <point x="1483.6285551763406" y="416.0" />
+      <point x="1264.7154436860112" y="416.0" />
+      <point x="1264.7154436860112" y="386.0" />
+      <point x="1240.7154436860112" y="386.0" />
+      <point x="1240.7154436860112" y="251.0" />
+      <point x="1896.4202218430073" y="251.0" />
+      <point x="1896.4202218430073" y="241.0" />
+      <point x="1431.3785551763406" y="241.0" />
+      <point x="42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.utils.GlobalEventHandler" relationship="DEPENDENCY">
+      <point x="-50.0" y="-15.5" />
+      <point x="1323.0828711604108" y="1040.0" />
+      <point x="798.7118885096705" y="1040.0" />
+      <point x="798.7118885096705" y="1030.0" />
+      <point x="0.0" y="1030.0" />
+      <point x="0.0" y="151.0" />
+      <point x="286.44105517634057" y="151.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.ItemBehaviour" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="-37.0" y="-15.5" />
+      <point x="310.7495378270776" y="781.0" />
+      <point x="348.2495378270776" y="781.0" />
+      <point x="348.2495378270776" y="741.0" />
+      <point x="393.9202218430072" y="741.0" />
+      <point x="393.9202218430072" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestRecieveBeahaviour" target="com.yes.yes.utils.Item" relationship="DEPENDENCY">
+      <point x="50.75" y="-15.5" />
+      <point x="975.882110352678" y="751.0" />
+      <point x="362.9202218430072" y="751.0" />
+      <point x="20.5" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.GlobalEventHandler" target="com.yes.yes.utils.EventHandler" relationship="CREATE">
+      <point x="-45.75" y="-15.5" />
+      <point x="240.69105517634057" y="72.0" />
+      <point x="342.64938850967405" y="72.0" />
+      <point x="342.64938850967405" y="52.0" />
+      <point x="313.14938850967394" y="52.0" />
+      <point x="-35.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Direction" target="com.yes.yes.utils.Coordinate" relationship="CREATE">
+      <point x="-28.0" y="-15.5" />
+      <point x="1863.4202218430073" y="261.0" />
+      <point x="797.6702218430073" y="261.0" />
+      <point x="797.6702218430073" y="231.0" />
+      <point x="1347.3785551763406" y="231.0" />
+      <point x="-42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.PlaceBehaviour" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="-50.66666666666663" y="-15.5" />
+      <point x="632.0828711604111" y="781.0" />
+      <point x="565.1702218430073" y="781.0" />
+      <point x="565.1702218430073" y="761.0" />
+      <point x="546.8404436860112" y="761.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.ItemBehaviour" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="-37.0" y="-15.5" />
+      <point x="310.7495378270776" y="781.0" />
+      <point x="348.2495378270776" y="781.0" />
+      <point x="348.2495378270776" y="741.0" />
+      <point x="281.6702218430072" y="741.0" />
+      <point x="281.6702218430072" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.ItemBehaviour" target="com.yes.yes.utils.Component" relationship="GENERALIZATION">
+      <point x="37.0" y="-15.5" />
+      <point x="384.7495378270776" y="771.0" />
+      <point x="669.8328711604111" y="771.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestBehaviour" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="-36.25" y="-15.5" />
+      <point x="477.9995378270776" y="781.0" />
+      <point x="422.2952218430072" y="781.0" />
+      <point x="422.2952218430072" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine" target="com.yes.yes.behaviours.TestRecieveBeahaviour" relationship="CREATE">
+      <point x="-45.33333333333334" y="-15.5" />
+      <point x="753.3785551763372" y="936.0" />
+      <point x="627.4618885096705" y="936.0" />
+      <point x="627.4618885096705" y="926.0" />
+      <point x="925.132110352678" y="926.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.YesApplication" target="com.yes.yes.utils.GlobalEventHandler" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.ui.BuildBox" relationship="TO_ONE">
+      <point x="50.33333333333337" y="-15.5" />
+      <point x="2012.5828711604108" y="1040.0" />
+      <point x="2131.7159058589336" y="1040.0" />
+      <point x="2131.7159058589336" y="1020.0" />
+      <point x="1923.0904436860112" y="1020.0" />
+      <point x="1923.0904436860112" y="1010.0" />
+      <point x="1809.757110352678" y="1010.0" />
+      <point x="36.66666666666666" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.ui.BuildItem" target="com.yes.yes.world.Chunk" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="1739.0904436860112" y="781.0" />
+      <point x="1726.6285551763406" y="781.0" />
+      <point x="1726.6285551763406" y="751.0" />
+      <point x="1702.2535551763372" y="751.0" />
+      <point x="1702.2535551763372" y="406.0" />
+      <point x="1419.9242391922667" y="406.0" />
+      <point x="1419.9242391922667" y="376.0" />
+      <point x="1330.382110352678" y="376.0" />
+      <point x="31.666666666666686" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Component" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="33.0" y="-15.5" />
+      <point x="702.8328711604111" y="666.0" />
+      <point x="746.8404436860112" y="666.0" />
+      <point x="746.8404436860112" y="646.0" />
+      <point x="546.8404436860112" y="646.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.MainController" target="com.yes.yes.managers.GameManager" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1778.7535551763372" y="1117.0" />
+      <point x="1373.082871160411" y="1117.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestRecieveBeahaviour" target="com.yes.yes.utils.BlockContainer" relationship="DEPENDENCY">
+      <point x="50.75" y="-15.5" />
+      <point x="975.882110352678" y="656.0" />
+      <point x="546.8404436860112" y="656.0" />
+      <point x="546.8404436860112" y="636.0" />
+      <point x="609.6737770193446" y="636.0" />
+      <point x="-50.666666666666664" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.utils.RegistryEntry" relationship="CREATE">
+      <point x="50.0" y="-15.5" />
+      <point x="1423.082871160411" y="1040.0" />
+      <point x="1447.6702218430073" y="1040.0" />
+      <point x="1447.6702218430073" y="1030.0" />
+      <point x="1452.9202218430073" y="1030.0" />
+      <point x="1452.9202218430073" y="656.0" />
+      <point x="1754.7535551763372" y="656.0" />
+      <point x="-46.333333333333314" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestBehaviour" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="-36.25" y="-15.5" />
+      <point x="477.9995378270776" y="781.0" />
+      <point x="422.2952218430072" y="781.0" />
+      <point x="422.2952218430072" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.EntityRegistry" target="com.yes.yes.utils.RegistryEntry" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.5" />
+      <point x="1830.5904436860112" y="666.0" />
+      <point x="1829.2535551763372" y="666.0" />
+      <point x="1829.2535551763372" y="606.0" />
+      <point x="1847.4202218430037" y="606.0" />
+      <point x="46.33333333333337" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.utils.exceptions.AlreadyExistsException" relationship="DEPENDENCY">
+      <point x="-50.0" y="-15.5" />
+      <point x="1323.0828711604108" y="1040.0" />
+      <point x="798.7118885096705" y="1040.0" />
+      <point x="798.7118885096705" y="1030.0" />
+      <point x="1230.2154436860112" y="1030.0" />
+      <point x="1230.2154436860112" y="396.0" />
+      <point x="1416.9654436860112" y="396.0" />
+      <point x="-50.75" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.Chunk" target="com.yes.yes.utils.Entity" relationship="TO_ONE">
+      <point x="-31.666666666666686" y="-15.5" />
+      <point x="1267.0487770193445" y="291.0" />
+      <point x="597.4202218430073" y="291.0" />
+      <point x="597.4202218430073" y="241.0" />
+      <point x="643.0452218430073" y="241.0" />
+      <point x="-11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.OfferBehaviour" target="com.yes.yes.utils.Coordinate" relationship="TO_ONE">
+      <point x="50.33333333333343" y="-15.5" />
+      <point x="1172.4654436860114" y="781.0" />
+      <point x="1141.4162044937443" y="781.0" />
+      <point x="1141.4162044937443" y="666.0" />
+      <point x="1167.2118885096706" y="666.0" />
+      <point x="1167.2118885096706" y="251.0" />
+      <point x="1896.4202218430073" y="251.0" />
+      <point x="1896.4202218430073" y="241.0" />
+      <point x="1431.3785551763406" y="241.0" />
+      <point x="42.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.TestRecieveBeahaviour" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="50.75" y="-15.5" />
+      <point x="975.882110352678" y="761.0" />
+      <point x="1012.7992391922668" y="761.0" />
+      <point x="1012.7992391922668" y="636.0" />
+      <point x="1146.9162044937443" y="636.0" />
+      <point x="1146.9162044937443" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.UiManager" target="com.yes.yes.ui.BuildBox" relationship="CREATE">
+      <point x="-31.25" y="-15.5" />
+      <point x="1747.5035551763372" y="1030.0" />
+      <point x="1736.4237770193445" y="1030.0" />
+      <point x="-36.66666666666666" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.world.World" target="com.yes.yes.world.Chunk" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1514.6285551763406" y="416.0" />
+      <point x="1525.1285551763406" y="416.0" />
+      <point x="1525.1285551763406" y="386.0" />
+      <point x="1298.7154436860112" y="386.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.world.World" relationship="TO_ONE">
+      <point x="50.33333333333337" y="-15.5" />
+      <point x="2012.5828711604108" y="1040.0" />
+      <point x="2131.7159058589336" y="1040.0" />
+      <point x="2131.7159058589336" y="531.0" />
+      <point x="1526.8785551763406" y="531.0" />
+      <point x="1526.8785551763406" y="491.0" />
+      <point x="1545.6285551763406" y="491.0" />
+      <point x="31.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Entity" target="com.yes.yes.utils.Component" relationship="TO_MANY">
+      <point x="-11.125" y="15.5" />
+      <point x="643.0452218430073" y="241.0" />
+      <point x="597.4202218430073" y="241.0" />
+      <point x="597.4202218430073" y="291.0" />
+      <point x="573.8404436860112" y="291.0" />
+      <point x="573.8404436860112" y="626.0" />
+      <point x="617.0904436860112" y="626.0" />
+      <point x="617.0904436860112" y="666.0" />
+      <point x="636.8328711604111" y="666.0" />
+      <point x="-33.0" y="-15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="-50.33333333333337" y="-15.5" />
+      <point x="1911.9162044937443" y="1040.0" />
+      <point x="1705.0035551763372" y="1040.0" />
+      <point x="1705.0035551763372" y="1020.0" />
+      <point x="1671.0904436860112" y="1020.0" />
+      <point x="1671.0904436860112" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.entities.machines.TestMachine" target="com.yes.yes.behaviours.ItemBehaviour" relationship="CREATE">
+      <point x="-45.33333333333334" y="-15.5" />
+      <point x="753.3785551763372" y="936.0" />
+      <point x="627.4618885096705" y="936.0" />
+      <point x="627.4618885096705" y="866.0" />
+      <point x="347.7495378270776" y="866.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.PlayerManager" target="com.yes.yes.utils.Size" relationship="CREATE">
+      <point x="0.0" y="-15.5" />
+      <point x="1962.2495378270776" y="1040.0" />
+      <point x="2012.2535551763406" y="1040.0" />
+      <point x="2012.2535551763406" y="1010.0" />
+      <point x="2015.3785551763372" y="1010.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.utils.Component" target="com.yes.yes.utils.Entity" relationship="TO_ONE">
+      <point x="-33.0" y="-15.5" />
+      <point x="636.8328711604111" y="666.0" />
+      <point x="617.0904436860112" y="666.0" />
+      <point x="617.0904436860112" y="626.0" />
+      <point x="573.8404436860112" y="626.0" />
+      <point x="573.8404436860112" y="291.0" />
+      <point x="597.4202218430073" y="291.0" />
+      <point x="597.4202218430073" y="241.0" />
+      <point x="643.0452218430073" y="241.0" />
+      <point x="-11.125" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.managers.GameManager" target="com.yes.yes.entities.machines.TestMachine2" relationship="DEPENDENCY">
+      <point x="-50.0" y="-15.5" />
+      <point x="1323.0828711604108" y="1040.0" />
+      <point x="798.7118885096705" y="1040.0" />
+      <point x="798.7118885096705" y="1030.0" />
+      <point x="256.71188850967053" y="1030.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.yes.yes.behaviours.PlaceBehaviour" target="com.yes.yes.utils.Entity" relationship="DEPENDENCY">
+      <point x="-50.66666666666663" y="-15.5" />
+      <point x="632.0828711604111" y="781.0" />
+      <point x="565.1702218430073" y="781.0" />
+      <point x="565.1702218430073" y="761.0" />
+      <point x="536.3404436860112" y="761.0" />
+      <point x="536.3404436860112" y="271.0" />
+      <point x="678.4202218430073" y="271.0" />
+      <point x="678.4202218430073" y="251.0" />
+      <point x="665.2952218430073" y="251.0" />
+      <point x="11.125" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6496282527881041" showDependencies="true" x="1066.0" y="586.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -20,7 +20,6 @@ public class RecieveBehaviour extends Component {
         System.out.println("Entity placed in range");
         try {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
-                System.out.println("Success");
                 this.offerer = entity;
             }
         } catch (IllegalAccessException e) {

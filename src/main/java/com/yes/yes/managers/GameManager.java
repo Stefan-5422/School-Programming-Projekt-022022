@@ -1,9 +1,6 @@
 package com.yes.yes.managers;
 
-import com.yes.yes.entities.machines.ConveyorBelt;
-import com.yes.yes.entities.machines.GeneratorMachine;
-import com.yes.yes.entities.machines.TestMachine;
-import com.yes.yes.entities.machines.TestMachine2;
+import com.yes.yes.entities.machines.*;
 import com.yes.yes.utils.EntityRegistry;
 import com.yes.yes.utils.GlobalEventHandler;
 import com.yes.yes.utils.RegistryEntry;
@@ -36,8 +33,10 @@ public class GameManager {
         try {
             EntityRegistry.register(new RegistryEntry("test", "test receive machine", TestMachine.class));
             EntityRegistry.register(new RegistryEntry("test2", "test offer machine", TestMachine2.class));
-            EntityRegistry.register(new RegistryEntry("generator", "generator", GeneratorMachine.class));
+            EntityRegistry.register(new RegistryEntry("generator", "Generator", GeneratorMachine.class));
             EntityRegistry.register(new RegistryEntry("conveyorBelt", "Conveyor Belt", ConveyorBelt.class));
+            EntityRegistry.register(new RegistryEntry("hub","Central Hub", HubDisplay.class));
+            EntityRegistry.register(new RegistryEntry("hubAcceptor","Central Hub Acceptor", HubAcceptor.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }
@@ -53,7 +52,7 @@ public class GameManager {
                 ex.printStackTrace();
             }
             //System.out.println("Finished tick!");
-        }, 0, 1, TimeUnit.SECONDS);
+        }, 0, 100, TimeUnit.MILLISECONDS);
 
         GlobalEventHandler.addListener("timerTick", this, (__) -> {
             //System.out.println("Tick!");

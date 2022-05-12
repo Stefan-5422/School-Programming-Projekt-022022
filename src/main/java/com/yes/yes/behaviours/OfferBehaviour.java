@@ -7,6 +7,7 @@ public class OfferBehaviour extends Component {
     private Coordinate direction;
     private String dataKey;
 
+
     private Entity receiver;
 
 
@@ -21,7 +22,6 @@ public class OfferBehaviour extends Component {
         //System.out.println("Entity placed in range");
         try {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
-                //System.out.println("Success");
                 this.receiver = entity;
             }
         } catch (IllegalAccessException e) {

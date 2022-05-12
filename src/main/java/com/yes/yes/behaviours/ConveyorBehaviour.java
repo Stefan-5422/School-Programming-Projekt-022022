@@ -27,10 +27,11 @@ public class ConveyorBehaviour extends Component {
     @Override
     public void update() {
         if (count > delay) {
+            count = 0;
+
             if (parent.getData(offerDataKey) != null) return;
 
             parent.setData(offerDataKey, parent.getData(receiveDataKey));
-            count = 0;
             isConveyed = true;
         } else if (parent.getData(receiveDataKey) != null && !isConveyed) {
             count++;

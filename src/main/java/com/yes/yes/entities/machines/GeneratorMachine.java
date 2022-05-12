@@ -17,17 +17,17 @@ import javafx.scene.shape.TriangleMesh;
 public class GeneratorMachine extends Entity {
     public GeneratorMachine() {
         super();
-        Rectangle c = new Rectangle(50, 50);
-        c.setFill(Color.RED);
+        Rectangle r = new Rectangle(50, 50);
+        r.setFill(Color.RED);
 
-        Polygon t = new Polygon();
-        t.getPoints().addAll(
+        Polygon p = new Polygon();
+        p.getPoints().addAll(
                 25.0,0.0,
                 0.0,50.0,
                 50.0,50.0);
-        t.setFill(new Color(0,0,0,0.5));
+        p.setFill(new Color(0,0,0,0.5));
 
-        this.getChildren().addAll(c,t);
+        this.getChildren().addAll(r,p);
     }
 
     public GeneratorMachine(BlockContainer blockContainer) {
