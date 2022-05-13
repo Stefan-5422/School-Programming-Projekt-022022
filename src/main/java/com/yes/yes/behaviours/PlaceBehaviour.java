@@ -1,7 +1,9 @@
 package com.yes.yes.behaviours;
 
-import com.yes.yes.entities.parts.Square;
-import com.yes.yes.utils.*;
+import com.yes.yes.utils.BlockContainer;
+import com.yes.yes.utils.Component;
+import com.yes.yes.utils.Coordinate;
+import com.yes.yes.utils.Entity;
 
 public class PlaceBehaviour extends Component {
 

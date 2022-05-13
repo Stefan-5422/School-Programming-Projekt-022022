@@ -35,8 +35,8 @@ public class GameManager {
             EntityRegistry.register(new RegistryEntry("test2", "test offer machine", TestMachine2.class));
             EntityRegistry.register(new RegistryEntry("generator", "Generator", GeneratorMachine.class));
             EntityRegistry.register(new RegistryEntry("conveyorBelt", "Conveyor Belt", ConveyorBelt.class));
-            EntityRegistry.register(new RegistryEntry("hub","Central Hub", HubDisplay.class));
-            EntityRegistry.register(new RegistryEntry("hubAcceptor","Central Hub Acceptor", HubAcceptor.class));
+            EntityRegistry.register(new RegistryEntry("hub", "Central Hub", HubDisplay.class));
+            EntityRegistry.register(new RegistryEntry("hubAcceptor", "Central Hub Acceptor", HubAcceptor.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }
@@ -46,9 +46,7 @@ public class GameManager {
         executor.scheduleAtFixedRate(() -> {
             try {
                 GlobalEventHandler.trigger("timerTick", null);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
             //System.out.println("Finished tick!");

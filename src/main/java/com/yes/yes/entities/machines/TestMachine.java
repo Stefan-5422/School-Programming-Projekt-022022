@@ -2,7 +2,7 @@ package com.yes.yes.entities.machines;
 
 import com.yes.yes.behaviours.ItemBehaviour;
 import com.yes.yes.behaviours.PlaceBehaviour;
-import com.yes.yes.behaviours.RecieveBehaviour;
+import com.yes.yes.behaviours.ReceiveBehaviour;
 import com.yes.yes.behaviours.TestBehaviour;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
@@ -20,19 +20,19 @@ public class TestMachine extends Entity {
 
         Polygon t = new Polygon();
         t.getPoints().addAll(
-                25.0,0.0,
-                0.0,50.0,
-                50.0,50.0);
-        t.setFill(new Color(1,1,1,0.5));
+                25.0, 0.0,
+                0.0, 50.0,
+                50.0, 50.0);
+        t.setFill(new Color(1, 1, 1, 0.5));
 
-        this.getChildren().addAll(c,t);
+        this.getChildren().addAll(c, t);
     }
 
     public TestMachine(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
         this.addBehaviour(new TestBehaviour(this, blockContainer));
-        this.addBehaviour(new ItemBehaviour(this, blockContainer,"Item"));
-        this.addBehaviour(new RecieveBehaviour(this, blockContainer, Direction.DOWN, "Item"));
+        this.addBehaviour(new ItemBehaviour(this, blockContainer, "Item"));
+        this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.DOWN, "Item"));
     }
 }

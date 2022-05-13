@@ -12,7 +12,6 @@ import com.yes.yes.utils.Item;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.TriangleMesh;
 
 public class GeneratorMachine extends Entity {
     public GeneratorMachine() {
@@ -22,18 +21,18 @@ public class GeneratorMachine extends Entity {
 
         Polygon p = new Polygon();
         p.getPoints().addAll(
-                25.0,0.0,
-                0.0,50.0,
-                50.0,50.0);
-        p.setFill(new Color(0,0,0,0.5));
+                25.0, 0.0,
+                0.0, 50.0,
+                50.0, 50.0);
+        p.setFill(new Color(0, 0, 0, 0.5));
 
-        this.getChildren().addAll(r,p);
+        this.getChildren().addAll(r, p);
     }
 
     public GeneratorMachine(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new ItemBehaviour(this, blockContainer,"Item"));
+        this.addBehaviour(new ItemBehaviour(this, blockContainer, "Item"));
         this.addBehaviour(new OfferBehaviour(this, blockContainer, Direction.UP, "Item"));
         this.addBehaviour(new GeneratorBehaviour(this, blockContainer, generateItem(), "Item"));
     }

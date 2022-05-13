@@ -14,7 +14,7 @@ public class Square extends com.yes.yes.utils.Part {
         int b = rand.nextInt(255);
 
         var rect = new Rectangle(23, 23);
-        rect.setFill(Color.rgb(r,g,b));
+        rect.setFill(Color.rgb(r, g, b));
         rect.setStroke(Color.BLUE);
         rect.setStrokeWidth(1);
         this.getChildren().add(rect);

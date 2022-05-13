@@ -1,8 +1,7 @@
 package com.yes.yes.entities.machines;
 
-import com.yes.yes.behaviours.ItemBehaviour;
 import com.yes.yes.behaviours.PlaceBehaviour;
-import com.yes.yes.behaviours.RecieveBehaviour;
+import com.yes.yes.behaviours.ReceiveBehaviour;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
@@ -20,6 +19,6 @@ public class HubAcceptor extends Entity {
     public HubAcceptor(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new RecieveBehaviour(this, blockContainer, Direction.LEFT, "Input"));
+        this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.LEFT, "Input"));
     }
 }

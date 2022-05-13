@@ -3,7 +3,6 @@ package com.yes.yes.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public abstract class Entity extends javafx.scene.Group {
     private final HashMap<String, Object> data = new HashMap<>();
@@ -24,9 +23,7 @@ public abstract class Entity extends javafx.scene.Group {
         for (Component component : behaviours) {
             if (!component.getClass().equals(behaviour.getClass())) {
                 components.add(component);
-            }
-            else
-            {
+            } else {
                 component.destroy();
             }
         }
@@ -45,9 +42,8 @@ public abstract class Entity extends javafx.scene.Group {
         behaviours.forEach(Component::initialize);
     }
 
-    public final void destroy()
-    {
-        GlobalEventHandler.removeListener("timerTick",this, (__) -> update());
+    public final void destroy() {
+        GlobalEventHandler.removeListener("timerTick", this, (__) -> update());
         for (Component component : behaviours) {
             component.destroy();
         }

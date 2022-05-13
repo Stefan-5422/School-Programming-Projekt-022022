@@ -4,8 +4,8 @@ import com.yes.yes.utils.*;
 
 public class OfferBehaviour extends Component {
 
-    private Coordinate direction;
-    private String dataKey;
+    private final Coordinate direction;
+    private final String dataKey;
 
 
     private Entity receiver;
@@ -48,7 +48,7 @@ public class OfferBehaviour extends Component {
         }
 
         this.parent.addListener("itemAccepted", this, this::itemAccepted);
-        this.parent.addListener("placed", this,this::placed);
+        this.parent.addListener("placed", this, this::placed);
     }
 
     @Override

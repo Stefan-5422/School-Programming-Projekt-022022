@@ -7,8 +7,8 @@ import com.yes.yes.utils.Item;
 
 public class GeneratorBehaviour extends Component {
 
-    private Item item;
-    private String dataKey;
+    private final Item item;
+    private final String dataKey;
 
     public GeneratorBehaviour(Entity entity, BlockContainer blockContainer, Item item, String dataKey) {
         super(entity, blockContainer);

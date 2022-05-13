@@ -7,8 +7,6 @@ import com.yes.yes.world.World;
 import javafx.scene.Scene;
 import javafx.scene.input.*;
 
-import java.security.Key;
-
 public class PlayerManager {
 
     private static final KeyCombination LEFT_KEY = new KeyCodeCombination(KeyCode.A);
@@ -16,12 +14,11 @@ public class PlayerManager {
     private static final KeyCombination UP_KEY = new KeyCodeCombination(KeyCode.W);
     private static final KeyCombination DOWN_KEY = new KeyCodeCombination(KeyCode.S);
     private static final KeyCombination DELETE_KEY = new KeyCodeCombination(KeyCode.X);
-    private static final KeyCombination HOME_KEY = new KeyCodeCombination(KeyCode.INSERT);
+    private static final KeyCombination HOME_KEY = new KeyCodeCombination(KeyCode.HOME);
+    private static final Coordinate START_POSITION = new Coordinate(Integer.MAX_VALUE / -5000, Integer.MAX_VALUE / -5000);
 
     private final World world;
     private final BuildBox buildBox;
-    private static final Coordinate START_POSITION = new Coordinate(Integer.MAX_VALUE / -5000,Integer.MAX_VALUE / -5000);
-
     private Coordinate chunkPos = new Coordinate(0, 0);
     private int currentRotation = 0;
     private Coordinate currentMousePosition;
@@ -34,6 +31,7 @@ public class PlayerManager {
     public void initialize() {
         Scene scene = world.getScene();
         scene.setOnKeyPressed(this::processKeyPress);
+        scene.setOnKeyReleased(this::processKeyRelease);
 
         scene.widthProperty().addListener((e) -> redrawChunks());
         scene.heightProperty().addListener((e) -> redrawChunks());
@@ -41,7 +39,7 @@ public class PlayerManager {
         world.setOnMouseClicked(this::processClick);
         world.setTranslateX(START_POSITION.x);
         world.setTranslateY(START_POSITION.y);
-        world.setOnMouseMoved((mouse)-> currentMousePosition = new Coordinate((int) mouse.getX(), (int) mouse.getY()));
+        world.setOnMouseMoved((mouse) -> currentMousePosition = new Coordinate((int) mouse.getX(), (int) mouse.getY()));
 
         redrawChunks();
     }
@@ -84,6 +82,21 @@ public class PlayerManager {
         }
     }
 
+    private void processKeyRelease(KeyEvent key) {
+        if (DELETE_KEY.match(key)) {
+            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(currentMousePosition);
+            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(currentMousePosition);
+
+            Chunk chunk = world.getChunk(chunkCoordinate);
+            chunk.removeEntity(blockCoordinate);
+        }
+        if (HOME_KEY.match(key)) {
+            world.setTranslateX(START_POSITION.x);
+            world.setTranslateY(START_POSITION.y);
+            redrawChunks();
+        }
+    }
+
     private void processKeyPress(KeyEvent key) {
         if (LEFT_KEY.match(key)) {
             world.setTranslateX(world.getTranslateX() + 45);
@@ -97,20 +110,6 @@ public class PlayerManager {
         if (DOWN_KEY.match(key)) {
             world.setTranslateY(world.getTranslateY() - 45);
         }
-        if(DELETE_KEY.match(key)) {
-            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(currentMousePosition);
-            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(currentMousePosition);
-
-            Chunk chunk = world.getChunk(chunkCoordinate);
-            chunk.removeEntity(blockCoordinate);
-        }
-        if(HOME_KEY.match(key))
-        {
-            world.setTranslateX(START_POSITION.x);
-            world.setTranslateY(START_POSITION.y);
-            redrawChunks();
-        }
-
 
         Size preferredAmountOfChunks = getPreferredAmountOfChunks();
         Coordinate chunkPosition = getCurrentChunkPosition();

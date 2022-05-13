@@ -1,6 +1,5 @@
 package com.yes.yes.utils;
 
-import com.yes.yes.world.Chunk;
 import javafx.scene.Node;
 
 public abstract class Part extends javafx.scene.Group {
