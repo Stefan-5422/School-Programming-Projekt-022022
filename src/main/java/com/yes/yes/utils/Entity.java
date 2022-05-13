@@ -11,7 +11,7 @@ public abstract class Entity extends javafx.scene.Group {
     private int rotation;
 
     public Entity() {
-        GlobalEventHandler.addListener("timerTick", this, (__) -> update());
+        GlobalEventHandler.addListener("global:timerTick", this, (__) -> update());
     }
 
     public final void addBehaviour(Component behaviour) {
@@ -43,7 +43,7 @@ public abstract class Entity extends javafx.scene.Group {
     }
 
     public final void destroy() {
-        GlobalEventHandler.removeListener("timerTick", this, (__) -> update());
+        GlobalEventHandler.removeListener("global:timerTick", this);
         for (Component component : behaviours) {
             component.destroy();
         }

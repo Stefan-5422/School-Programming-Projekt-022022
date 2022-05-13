@@ -31,8 +31,7 @@ public class GameManager {
         world.toBack();
 
         try {
-            EntityRegistry.register(new RegistryEntry("test", "test receive machine", DestroyMachine.class));
-            EntityRegistry.register(new RegistryEntry("test2", "test offer machine", TestMachine2.class));
+            EntityRegistry.register(new RegistryEntry("destroyer", "Incinerator", DestroyMachine.class));
             EntityRegistry.register(new RegistryEntry("generator", "Generator", GeneratorMachine.class));
             EntityRegistry.register(new RegistryEntry("conveyorBelt", "Conveyor Belt", ConveyorBelt.class));
             EntityRegistry.register(new RegistryEntry("hub", "Central Hub", HubDisplay.class));
@@ -45,16 +44,16 @@ public class GameManager {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(() -> {
             try {
-                GlobalEventHandler.trigger("timerTick", null);
+                GlobalEventHandler.trigger("global:timerTick", null);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
             //System.out.println("Finished tick!");
         }, 0, 100, TimeUnit.MILLISECONDS);
 
-        GlobalEventHandler.addListener("timerTick", this, (__) -> {
+        GlobalEventHandler.addListener("global:timerTick", this, (__) -> {
             //System.out.println("Tick!");
         });
-        GlobalEventHandler.addListener("closing", this, (__) -> executor.shutdown());
+        GlobalEventHandler.addListener("app:closing", this, (__) -> executor.shutdown());
     }
 }

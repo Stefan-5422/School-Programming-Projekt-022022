@@ -15,7 +15,7 @@ public class YesApplication extends javafx.application.Application {
     @Override
     public void stop() {
         System.out.println("Closing!");
-        GlobalEventHandler.trigger("closing", null);
+        GlobalEventHandler.trigger("app:closing", null);
     }
 
     @Override

@@ -83,13 +83,6 @@ public class PlayerManager {
     }
 
     private void processKeyRelease(KeyEvent key) {
-        if (DELETE_KEY.match(key)) {
-            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(currentMousePosition);
-            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(currentMousePosition);
-
-            Chunk chunk = world.getChunk(chunkCoordinate);
-            chunk.removeEntity(blockCoordinate);
-        }
         if (HOME_KEY.match(key)) {
             world.setTranslateX(START_POSITION.x);
             world.setTranslateY(START_POSITION.y);
@@ -109,6 +102,13 @@ public class PlayerManager {
         }
         if (DOWN_KEY.match(key)) {
             world.setTranslateY(world.getTranslateY() - 45);
+        }
+        if (DELETE_KEY.match(key)) {
+            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(currentMousePosition);
+            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(currentMousePosition);
+
+            Chunk chunk = world.getChunk(chunkCoordinate);
+            chunk.removeEntity(blockCoordinate);
         }
 
         Size preferredAmountOfChunks = getPreferredAmountOfChunks();

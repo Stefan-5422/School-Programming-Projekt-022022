@@ -2,8 +2,8 @@ package com.yes.yes.utils;
 
 import java.util.function.Consumer;
 
-public class GlobalEventHandler {
-    private static final EventHandler handler = new EventHandler();
+public final class GlobalEventHandler {
+    private static EventHandler handler = new EventHandler();
 
     private GlobalEventHandler() {
     }
@@ -12,7 +12,7 @@ public class GlobalEventHandler {
         handler.addListener(eventName, object, function);
     }
 
-    public static <T> void removeListener(String eventName, Object object, Consumer<T> function) {
+    public static void removeListener(String eventName, Object object) {
         handler.removeListener(eventName, object);
     }
 
