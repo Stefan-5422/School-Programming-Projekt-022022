@@ -17,6 +17,9 @@ public class BuildBox extends javafx.scene.Group {
         hbox.prefWidth(Double.POSITIVE_INFINITY);
 
         pane.setContent(hbox);
+        pane.setStyle("-fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;" +
+                "-fx-background-insets: 0, 1, 2;" +
+                "-fx-background-radius: 5, 4, 3;");
 
         this.getChildren().add(pane);
 

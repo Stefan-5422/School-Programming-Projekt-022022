@@ -17,7 +17,7 @@ public class HubDisplay extends Entity {
         Rectangle r = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
         r.setFill(Color.PINK);
 
-        Text text = new Text("yes\nthis is a test sentence");
+        Text text = new Text("yes\nthis is a test");
         text.setWrappingWidth(Chunk.ENTITY_SIZE);
 
         StackPane stackPane = new StackPane();
