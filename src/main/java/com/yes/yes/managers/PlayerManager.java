@@ -65,7 +65,7 @@ public class PlayerManager {
             Chunk chunk = world.getChunk(chunkCoordinate);
             Entity oldEntity = chunk.getEntity(blockCoordinate);
 
-            if (oldEntity != null && oldEntity.getClass().getSimpleName() == entity.getClass().getSimpleName()) {
+            if (oldEntity != null && oldEntity.getClass().getSimpleName().equals(entity.getClass().getSimpleName())) {
                 if (mouse.getButton() == MouseButton.PRIMARY)
                     currentRotation = oldEntity.getRotation() + 1;
                 else

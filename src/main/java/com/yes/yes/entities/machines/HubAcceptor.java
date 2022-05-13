@@ -5,12 +5,13 @@ import com.yes.yes.behaviours.ReceiveBehaviour;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
+import com.yes.yes.world.Chunk;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class HubAcceptor extends Entity {
     public HubAcceptor() {
-        Rectangle r = new Rectangle(50, 50);
+        Rectangle r = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
         r.setFill(Color.PINK);
 
         this.getChildren().add(r);

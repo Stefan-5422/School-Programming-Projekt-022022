@@ -7,12 +7,13 @@ import com.yes.yes.behaviours.TestBehaviour;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
+import com.yes.yes.world.Chunk;
 import javafx.scene.shape.Rectangle;
 
 public class TestMachine2 extends Entity {
     public TestMachine2() {
         super();
-        this.getChildren().add(new Rectangle(50, 50));
+        this.getChildren().add(new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE));
     }
 
     public TestMachine2(BlockContainer blockContainer) {

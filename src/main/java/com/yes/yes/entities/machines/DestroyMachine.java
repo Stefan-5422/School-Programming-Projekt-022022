@@ -1,9 +1,6 @@
 package com.yes.yes.entities.machines;
 
-import com.yes.yes.behaviours.ItemBehaviour;
-import com.yes.yes.behaviours.PlaceBehaviour;
-import com.yes.yes.behaviours.ReceiveBehaviour;
-import com.yes.yes.behaviours.TestBehaviour;
+import com.yes.yes.behaviours.*;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
@@ -11,9 +8,10 @@ import com.yes.yes.world.Chunk;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 
-public class TestMachine extends Entity {
-    public TestMachine() {
+public class DestroyMachine extends Entity {
+    public DestroyMachine() {
         super();
         Circle c = new Circle(Chunk.ENTITY_SIZE / 2);
         c.setCenterX(Chunk.ENTITY_SIZE / 2);
@@ -29,11 +27,10 @@ public class TestMachine extends Entity {
         this.getChildren().addAll(c, t);
     }
 
-    public TestMachine(BlockContainer blockContainer) {
+    public DestroyMachine(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new TestBehaviour(this, blockContainer));
-        this.addBehaviour(new ItemBehaviour(this, blockContainer, "Item"));
         this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.DOWN, "Item"));
+        this.addBehaviour(new DestroyBehaviour(this, blockContainer, "Item"));
     }
 }

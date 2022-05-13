@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
 public class Square extends com.yes.yes.utils.Part {
-    Random rand = new Random();
+    final Random rand = new Random();
 
     public Square() {
         int r = rand.nextInt(255);

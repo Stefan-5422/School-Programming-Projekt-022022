@@ -31,7 +31,7 @@ public class GameManager {
         world.toBack();
 
         try {
-            EntityRegistry.register(new RegistryEntry("test", "test receive machine", TestMachine.class));
+            EntityRegistry.register(new RegistryEntry("test", "test receive machine", DestroyMachine.class));
             EntityRegistry.register(new RegistryEntry("test2", "test offer machine", TestMachine2.class));
             EntityRegistry.register(new RegistryEntry("generator", "Generator", GeneratorMachine.class));
             EntityRegistry.register(new RegistryEntry("conveyorBelt", "Conveyor Belt", ConveyorBelt.class));

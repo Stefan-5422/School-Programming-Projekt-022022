@@ -9,6 +9,7 @@ import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
 import com.yes.yes.utils.Item;
+import com.yes.yes.world.Chunk;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
@@ -16,14 +17,14 @@ import javafx.scene.shape.Rectangle;
 public class GeneratorMachine extends Entity {
     public GeneratorMachine() {
         super();
-        Rectangle r = new Rectangle(50, 50);
+        Rectangle r = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
         r.setFill(Color.RED);
 
         Polygon p = new Polygon();
         p.getPoints().addAll(
-                25.0, 0.0,
-                0.0, 50.0,
-                50.0, 50.0);
+                Chunk.ENTITY_SIZE/2d, 0.0,
+                0.0, (double) Chunk.ENTITY_SIZE,
+                (double) Chunk.ENTITY_SIZE, (double) Chunk.ENTITY_SIZE);
         p.setFill(new Color(0, 0, 0, 0.5));
 
         this.getChildren().addAll(r, p);

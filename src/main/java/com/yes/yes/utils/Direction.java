@@ -11,7 +11,7 @@ public class Direction {
     private Direction() {
     }
 
-    public static final Coordinate rotateRight(Coordinate direction) {
+    public static Coordinate rotateRight(Coordinate direction) {
         if (direction == Direction.LEFT) return Direction.UP;
         if (direction == Direction.UP) return Direction.RIGHT;
         if (direction == Direction.RIGHT) return Direction.DOWN;
@@ -20,7 +20,7 @@ public class Direction {
         throw new InvalidParameterException("Coordinate is not a direction");
     }
 
-    public static final Coordinate rotateLeft(Coordinate direction) {
+    public static Coordinate rotateLeft(Coordinate direction) {
         if (direction == Direction.LEFT) return Direction.DOWN;
         if (direction == Direction.DOWN) return Direction.RIGHT;
         if (direction == Direction.RIGHT) return Direction.UP;

@@ -38,7 +38,7 @@ public record BlockContainer(World world, Coordinate blockCoordinate, Coordinate
     }
 
     // Only works with a valid direction
-    public final Entity getBlockRelative(Coordinate direction, int rotation) throws IllegalAccessException {
+    public Entity getBlockRelative(Coordinate direction, int rotation) throws IllegalAccessException {
         for (int i = 0; i < rotation % 4; i++) {
             direction = Direction.rotateRight(direction);
         }

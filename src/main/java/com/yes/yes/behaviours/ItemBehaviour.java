@@ -11,8 +11,8 @@ import javafx.scene.transform.Scale;
 
 public class ItemBehaviour extends Component {
 
-    private final String dataKey;
     private VBox itemGroup;
+    private String dataKey;
 
     public ItemBehaviour(Entity entity, BlockContainer blockContainer, String dataKey) {
         super(entity, blockContainer);
@@ -35,6 +35,7 @@ public class ItemBehaviour extends Component {
 
         itemGroup = new VBox();
         itemGroup.setAlignment(Pos.CENTER);
+        //itemGroup.setRotate(-this.parent.getRotate());
 
         this.parent.getChildren().add(itemGroup);
 
