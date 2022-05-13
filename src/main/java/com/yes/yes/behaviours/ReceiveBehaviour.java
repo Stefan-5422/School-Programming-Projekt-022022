@@ -2,14 +2,14 @@ package com.yes.yes.behaviours;
 
 import com.yes.yes.utils.*;
 
-public class RecieveBehaviour extends Component {
+public class ReceiveBehaviour extends Component {
 
-    private Coordinate direction;
-    private String dataKey;
+    private final Coordinate direction;
+    private final String dataKey;
 
     private Entity offerer;
 
-    public RecieveBehaviour(Entity entity, BlockContainer blockContainer, Coordinate direction, String dataKey) {
+    public ReceiveBehaviour(Entity entity, BlockContainer blockContainer, Coordinate direction, String dataKey) {
         super(entity, blockContainer);
         this.direction = direction;
         this.dataKey = dataKey;
@@ -17,7 +17,6 @@ public class RecieveBehaviour extends Component {
 
 
     private void placed(Entity entity) {
-        System.out.println("Entity placed in range");
         try {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
                 this.offerer = entity;
@@ -41,11 +40,15 @@ public class RecieveBehaviour extends Component {
 
     void receive(Item item) {
         if (offerer == null) return;
-        if(this.parent.getData(dataKey) != null) return;
+
+        if (this.parent.getData(dataKey) == item)
+            this.offerer.trigger("itemAccepted", this.parent);
+
+        if (this.parent.getData(dataKey) != null) return;
 
         this.parent.setData(dataKey, item);
         this.parent.trigger(dataKey + "Changed", item);
-        this.offerer.trigger("itemAccepted", this.parent);
+
     }
 
     @Override
@@ -57,7 +60,7 @@ public class RecieveBehaviour extends Component {
     public void destroy() {
         this.parent.removeListener("offerItem", this);
         this.parent.removeListener("placed", this);
-        
+
         offerer = null;
     }
 
