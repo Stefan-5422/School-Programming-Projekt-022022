@@ -12,7 +12,7 @@ import javafx.scene.transform.Scale;
 public class ItemBehaviour extends Component {
 
     private VBox itemGroup;
-    private String dataKey;
+    private final String dataKey;
 
     public ItemBehaviour(Entity entity, BlockContainer blockContainer, String dataKey) {
         super(entity, blockContainer);
