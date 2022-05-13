@@ -24,7 +24,7 @@ public class EventHandler {
         events.get(eventName).remove(object);
     }
 
-    public <T> void trigger(String eventName, T parameter) {
+    public synchronized <T> void trigger(String eventName, T parameter) {
         if (events.containsKey(eventName)) {
             events.get(eventName).values().forEach(e -> e.accept(parameter));
         }
