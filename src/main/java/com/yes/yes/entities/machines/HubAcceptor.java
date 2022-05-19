@@ -17,6 +17,7 @@ public class HubAcceptor extends Entity {
         this.getChildren().add(r);
     }
 
+    @SuppressWarnings("unused") // Called dynamically
     public HubAcceptor(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));

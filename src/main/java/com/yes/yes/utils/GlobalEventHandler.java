@@ -3,7 +3,7 @@ package com.yes.yes.utils;
 import java.util.function.Consumer;
 
 public final class GlobalEventHandler {
-    private static EventHandler handler = new EventHandler();
+    private static final EventHandler handler = new EventHandler();
 
     private GlobalEventHandler() {
     }

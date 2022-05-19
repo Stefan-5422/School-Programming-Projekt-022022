@@ -21,6 +21,7 @@ public class ConveyorBelt extends Entity {
         this.getChildren().addAll(t);
     }
 
+    @SuppressWarnings("unused") // Called dynamically
     public ConveyorBelt(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));

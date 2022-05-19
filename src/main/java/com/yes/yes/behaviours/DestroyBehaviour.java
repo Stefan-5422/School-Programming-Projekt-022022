@@ -5,7 +5,7 @@ import com.yes.yes.utils.Component;
 import com.yes.yes.utils.Entity;
 
 public class DestroyBehaviour extends Component {
-    private String dataKey;
+    private final String dataKey;
 
     public DestroyBehaviour(Entity entity, BlockContainer blockContainer, String dataKey) {
         super(entity, blockContainer);

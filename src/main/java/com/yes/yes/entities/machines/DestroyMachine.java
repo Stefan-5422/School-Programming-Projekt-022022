@@ -1,6 +1,8 @@
 package com.yes.yes.entities.machines;
 
-import com.yes.yes.behaviours.*;
+import com.yes.yes.behaviours.DestroyBehaviour;
+import com.yes.yes.behaviours.PlaceBehaviour;
+import com.yes.yes.behaviours.ReceiveBehaviour;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
@@ -8,7 +10,6 @@ import com.yes.yes.world.Chunk;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 
 public class DestroyMachine extends Entity {
     public DestroyMachine() {
@@ -27,6 +28,7 @@ public class DestroyMachine extends Entity {
         this.getChildren().addAll(c, t);
     }
 
+    @SuppressWarnings("unused") // Called dynamically
     public DestroyMachine(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));

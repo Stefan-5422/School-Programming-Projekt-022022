@@ -30,6 +30,7 @@ public class GeneratorMachine extends Entity {
         this.getChildren().addAll(r, p);
     }
 
+    @SuppressWarnings("unused") // Called dynamically
     public GeneratorMachine(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));

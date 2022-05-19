@@ -59,7 +59,7 @@ public class OfferBehaviour extends Component {
         Item item = this.parent.getData(dataKey);
         if (item == null) return;
 
-        this.receiver.trigger("offerItem", new Pair(parent, item));
+        this.receiver.trigger("offerItem", new Pair<>(parent, item));
     }
 
     @Override

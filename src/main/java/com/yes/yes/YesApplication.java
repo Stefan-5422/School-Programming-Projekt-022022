@@ -25,9 +25,6 @@ public class YesApplication extends javafx.application.Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
 
-        //Scale scale = new Scale(0.25,0.25, 0, 0);
-        //scene.getRoot().getTransforms().add(scale);
-
         stage.setMaximized(true);
         stage.show();
     }

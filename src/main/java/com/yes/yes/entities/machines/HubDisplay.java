@@ -27,9 +27,10 @@ public class HubDisplay extends Entity {
         this.getChildren().addAll(stackPane);
     }
 
+    @SuppressWarnings("unused") // Called dynamically
     public HubDisplay(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new ItemBehaviour(this, blockContainer, "objective"));
+        this.addBehaviour(new ItemBehaviour(this, blockContainer, "Objective"));
     }
 }

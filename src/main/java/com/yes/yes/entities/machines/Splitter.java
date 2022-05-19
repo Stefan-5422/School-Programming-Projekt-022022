@@ -28,6 +28,7 @@ public class Splitter extends Entity {
         this.getChildren().addAll(p1);
     }
 
+    @SuppressWarnings("unused") // Called dynamically
     public Splitter(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));

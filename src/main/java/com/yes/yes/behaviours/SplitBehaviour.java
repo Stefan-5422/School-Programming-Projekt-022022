@@ -11,7 +11,6 @@ public class SplitBehaviour extends Component {
     private final String[] offerDataKeys;
     private int delayCount = 0;
     private int offerDataKeyIndex = 0;
-    private String offerDataKey;
 
     public SplitBehaviour(Entity entity, BlockContainer blockContainer, int delay, String receiveDataKey, String... offerDataKeys) {
         super(entity, blockContainer);
@@ -34,7 +33,7 @@ public class SplitBehaviour extends Component {
             if (offerDataKeyIndex >= offerDataKeys.length)
                 offerDataKeyIndex = 0;
 
-            offerDataKey = offerDataKeys[offerDataKeyIndex];
+            String offerDataKey = offerDataKeys[offerDataKeyIndex];
 
             if (parent.getData(offerDataKey) != null) return;
 
