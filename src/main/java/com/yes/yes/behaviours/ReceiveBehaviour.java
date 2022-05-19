@@ -22,7 +22,7 @@ public class ReceiveBehaviour extends Component {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
                 this.offerer = entity;
             }
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -31,7 +31,7 @@ public class ReceiveBehaviour extends Component {
     public void initialize() {
         try {
             this.offerer = blockContainer.getBlockRelative(direction, parent.getRotation());
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
 

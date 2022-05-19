@@ -21,7 +21,7 @@ public class PlaceBehaviour extends Component {
                     if (entity != null) {
                         entity.trigger("placed", parent);
                     }
-                } catch (IllegalAccessException ex) {
+                } catch (IllegalArgumentException ex) {
                     ex.printStackTrace();
                 }
             }

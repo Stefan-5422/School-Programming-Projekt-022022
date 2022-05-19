@@ -25,7 +25,7 @@ public class OfferBehaviour extends Component {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
                 this.receiver = entity;
             }
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -35,7 +35,7 @@ public class OfferBehaviour extends Component {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
                 this.parent.setData(dataKey, null);
             }
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -44,7 +44,7 @@ public class OfferBehaviour extends Component {
     public void initialize() {
         try {
             this.receiver = blockContainer.getBlockRelative(direction, parent.getRotation());
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
 
