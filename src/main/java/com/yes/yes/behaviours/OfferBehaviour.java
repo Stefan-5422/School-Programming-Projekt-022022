@@ -1,6 +1,7 @@
 package com.yes.yes.behaviours;
 
 import com.yes.yes.utils.*;
+import javafx.util.Pair;
 
 public class OfferBehaviour extends Component {
 
@@ -58,7 +59,7 @@ public class OfferBehaviour extends Component {
         Item item = this.parent.getData(dataKey);
         if (item == null) return;
 
-        this.receiver.trigger("offerItem", item);
+        this.receiver.trigger("offerItem", new Pair(parent, item));
     }
 
     @Override

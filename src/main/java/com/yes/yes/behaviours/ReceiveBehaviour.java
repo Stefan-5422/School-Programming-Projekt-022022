@@ -1,6 +1,7 @@
 package com.yes.yes.behaviours;
 
 import com.yes.yes.utils.*;
+import javafx.util.Pair;
 
 public class ReceiveBehaviour extends Component {
 
@@ -38,18 +39,17 @@ public class ReceiveBehaviour extends Component {
         this.parent.addListener("placed", this, this::placed);
     }
 
-    void receive(Item item) {
-        if (offerer == null) return;
+    void receive(Pair<Entity,Item> pair) {
+        if (offerer == null || offerer != pair.getKey()) return;
 
-        if (this.parent.getData(dataKey) == item)
+        if (this.parent.getData(dataKey) == pair.getValue())
             this.offerer.trigger("itemAccepted", this.parent);
 
         if (this.parent.getData(dataKey) != null) return;
 
-        this.parent.setData(dataKey, item);
-        this.parent.trigger(dataKey + "Changed", item);
+        this.parent.setData(dataKey, pair.getValue());
+        this.parent.trigger(dataKey + "Changed", pair.getValue());
         this.offerer.trigger("itemAccepted", this.parent);
-
     }
 
     @Override

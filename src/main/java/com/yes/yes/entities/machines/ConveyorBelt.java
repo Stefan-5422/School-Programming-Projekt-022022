@@ -29,6 +29,6 @@ public class ConveyorBelt extends Entity {
         this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.LEFT, "ReceivedItem"));
         this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.RIGHT, "ReceivedItem"));
         this.addBehaviour(new OfferBehaviour(this, blockContainer, Direction.UP, "OfferItem"));
-        this.addBehaviour(new ConveyorBehaviour(this, blockContainer, "ReceivedItem", "OfferItem", 1));
+        this.addBehaviour(new ConveyorBehaviour(this, blockContainer, 1, "ReceivedItem", "OfferItem"));
     }
 }

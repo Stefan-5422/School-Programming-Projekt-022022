@@ -8,11 +8,10 @@ public class ConveyorBehaviour extends Component {
     private final String receiveDataKey;
     private final String offerDataKey;
     private final int delay;
-    int count = 0;
-
+    int delayCount = 0;
     boolean isConveyed = false;
 
-    public ConveyorBehaviour(Entity entity, BlockContainer blockContainer, String receiveDataKey, String offerDataKey, int delay) {
+    public ConveyorBehaviour(Entity entity, BlockContainer blockContainer, int delay, String receiveDataKey, String offerDataKey) {
         super(entity, blockContainer);
         this.receiveDataKey = receiveDataKey;
         this.offerDataKey = offerDataKey;
@@ -26,15 +25,15 @@ public class ConveyorBehaviour extends Component {
 
     @Override
     public void update() {
-        if (count > delay) {
-            count = 0;
+        if (delayCount > delay) {
+            delayCount = 0;
 
             if (parent.getData(offerDataKey) != null) return;
 
             parent.setData(offerDataKey, parent.getData(receiveDataKey));
             isConveyed = true;
         } else if (parent.getData(receiveDataKey) != null && !isConveyed) {
-            count++;
+            delayCount++;
         }
 
         if (isConveyed && parent.getData(offerDataKey) == null) {
