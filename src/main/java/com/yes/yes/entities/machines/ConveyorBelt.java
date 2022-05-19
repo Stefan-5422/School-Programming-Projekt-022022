@@ -11,14 +11,14 @@ import javafx.scene.shape.Polygon;
 public class ConveyorBelt extends Entity {
     public ConveyorBelt() {
         super();
-        Polygon t = new Polygon();
-        t.getPoints().addAll(
+        Polygon p = new Polygon();
+        p.getPoints().addAll(
                 Chunk.ENTITY_SIZE / 2d, 0.0,
                 0.0, (double) Chunk.ENTITY_SIZE,
                 (double) Chunk.ENTITY_SIZE, (double) Chunk.ENTITY_SIZE);
-        t.setFill(new Color(0, 0, 0, 1));
+        p.setFill(new Color(0, 0, 0, 1));
 
-        this.getChildren().addAll(t);
+        this.getChildren().addAll(p);
     }
 
     @SuppressWarnings("unused") // Called dynamically

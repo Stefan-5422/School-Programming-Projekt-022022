@@ -61,7 +61,10 @@ public class Item extends javafx.scene.Group implements Cloneable {
                 Class<?>[] types = new Class<?>[0];
 
                 try {
-                    clone.setPart(i, j, this.getPart(i, j).getClass().getConstructor(types).newInstance());
+                    Part part = this.getPart(i, j);
+                    Part clonePart = part.getClass().getConstructor(types).newInstance();
+                    clonePart.setColor(part.getColor());
+                    clone.setPart(i, j, clonePart);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

@@ -38,7 +38,7 @@ public class World extends GridPane {
 
     public void addChunk(Coordinate pos) throws AlreadyExistsException {
         if (chunks.get(pos) == null) {
-            chunks.put(pos, new Chunk());
+            chunks.put(pos, new Chunk(pos));
         } else {
             throw new AlreadyExistsException("Chunk already exists");
         }
@@ -47,7 +47,7 @@ public class World extends GridPane {
     public Chunk getChunk(Coordinate pos) {
         Chunk c = chunks.get(pos);
         if (c == null) {
-            c = new Chunk();
+            c = new Chunk(pos);
             chunks.put(pos, c);
         }
         return c;

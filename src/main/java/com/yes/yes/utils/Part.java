@@ -1,15 +1,9 @@
 package com.yes.yes.utils;
 
-import javafx.scene.Node;
+import javafx.scene.paint.Color;
 
 public abstract class Part extends javafx.scene.Group {
-    public void addChild(Node element) {
-        this.getChildren().add(element);
-    }
-
-    public void removeChild(Node element) {
-        this.getChildren().remove(element);
-    }
+    Color color;
 
     public void rotate(int quarters) {
 
@@ -17,4 +11,14 @@ public abstract class Part extends javafx.scene.Group {
         this.getTransforms().add(new javafx.scene.transform.Rotate(quarters % 4 * 90, 0, 0));
     }
 
+    protected abstract void onColorChanged(Color color);
+
+    public void setColor(Color color) {
+        this.color = color;
+        onColorChanged(color);
+    }
+
+    public Color getColor() {
+        return color;
+    }
 }

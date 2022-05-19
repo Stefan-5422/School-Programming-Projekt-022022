@@ -37,6 +37,7 @@ public class GameManager {
             EntityRegistry.register(new RegistryEntry("hub", "Central Hub", HubDisplay.class));
             EntityRegistry.register(new RegistryEntry("hubAcceptor", "Central Hub Acceptor", HubAcceptor.class));
             EntityRegistry.register(new RegistryEntry("splitter", "Splitter", Splitter.class));
+            EntityRegistry.register(new RegistryEntry("cutter","Cutter", Cutter.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }

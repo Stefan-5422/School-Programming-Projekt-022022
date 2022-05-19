@@ -2,8 +2,9 @@ package com.yes.yes.utils;
 
 import com.yes.yes.world.Chunk;
 import com.yes.yes.world.World;
+import javafx.scene.paint.Color;
 
-public record BlockContainer(World world, Coordinate blockCoordinate, Coordinate chunkCoordinate) {
+public record BlockContainer(World world, Color chunkColor, Coordinate blockCoordinate, Coordinate chunkCoordinate) {
     final static int MAX_RADIUS = 2;
 
     public Entity getBlockAbsolute(Coordinate offset) throws IllegalArgumentException {

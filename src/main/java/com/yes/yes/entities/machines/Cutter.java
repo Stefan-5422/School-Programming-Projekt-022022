@@ -12,26 +12,32 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
-public class DestroyMachine extends Entity {
-    public DestroyMachine() {
+public class Cutter extends Entity {
+    public Cutter() {
         super();
-        Rectangle r = new Rectangle(Chunk.ENTITY_SIZE,Chunk.ENTITY_SIZE);
+
+        Circle c = new Circle(Chunk.ENTITY_SIZE/2);
+        c.setFill(Color.BLACK);
+        c.setCenterX(Chunk.ENTITY_SIZE / 2);
+        c.setCenterY(Chunk.ENTITY_SIZE / 2);
 
         Polygon p = new Polygon();
         p.getPoints().addAll(
                 Chunk.ENTITY_SIZE / 2d, 0.0,
-                0.0, (double) Chunk.ENTITY_SIZE,
-                (double) Chunk.ENTITY_SIZE, (double) Chunk.ENTITY_SIZE);
+                Chunk.ENTITY_SIZE/4d, (double) Chunk.ENTITY_SIZE,
+                (double) Chunk.ENTITY_SIZE/4d*3, (double) Chunk.ENTITY_SIZE);
         p.setFill(new Color(1, 1, 1, 0.5));
 
-        this.getChildren().addAll(r, p);
+
+
+        this.getChildren().addAll(c,p);
     }
 
     @SuppressWarnings("unused") // Called dynamically
-    public DestroyMachine(BlockContainer blockContainer) {
+    public Cutter(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
         this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.DOWN, "Item"));
-        this.addBehaviour(new DestroyBehaviour(this, blockContainer, "Item"));
+        //TODO: Add split/modify behaviour
     }
 }

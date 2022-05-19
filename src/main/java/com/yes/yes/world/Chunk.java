@@ -2,7 +2,9 @@ package com.yes.yes.world;
 
 import com.yes.yes.utils.Coordinate;
 import com.yes.yes.utils.Entity;
+import com.yes.yes.utils.NoiseGenerator;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -12,11 +14,23 @@ public class Chunk extends GridPane {
     public static final int CHUNK_SIZE = 8;
     public static final int ENTITY_SIZE = 50;
     private final Entity[] data = new Entity[CHUNK_SIZE * CHUNK_SIZE];
+    private final Color chunkColor;
 
-    public Chunk() {
+    public Chunk(Coordinate pos) {
         super();
         this.setMaxSize(CHUNK_SIZE * ENTITY_SIZE, CHUNK_SIZE * ENTITY_SIZE);
         this.setMinSize(CHUNK_SIZE * ENTITY_SIZE, CHUNK_SIZE * ENTITY_SIZE);
+
+        chunkColor = switch (((int) NoiseGenerator.calculate(pos.x * pos.y)) % 3) {
+            case 0 -> Color.RED;
+            case 1 -> Color.GREEN;
+            case 2 -> Color.BLUE;
+            default -> throw new IllegalStateException();
+        };
+
+        Color fillColor = new Color(chunkColor.getRed(),chunkColor.getGreen(), chunkColor.getBlue(), 0.1);
+
+        this.setBackground(new Background(new BackgroundFill(fillColor, CornerRadii.EMPTY, Insets.EMPTY)));
 
         for (int i = 0; i < CHUNK_SIZE; i++) {
             for (int j = 0; j < CHUNK_SIZE; j++) {
@@ -51,6 +65,10 @@ public class Chunk extends GridPane {
         }
         this.getChildren().remove(entity);
         data[pos.x + pos.y * CHUNK_SIZE] = null;
+    }
+
+    public Color getChunkColor() {
+        return chunkColor;
     }
 
     public Entity getEntity(Coordinate pos) {

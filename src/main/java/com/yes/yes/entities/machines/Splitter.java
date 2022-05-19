@@ -14,8 +14,8 @@ import javafx.scene.shape.Polygon;
 public class Splitter extends Entity {
     public Splitter() {
         super();
-        Polygon p1 = new Polygon();
-        p1.getPoints().addAll(
+        Polygon p = new Polygon();
+        p.getPoints().addAll(
                 0.0, Chunk.ENTITY_SIZE / 2d,
                 Chunk.ENTITY_SIZE / 2d, 0.0,
                 (double) Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE / 2d,
@@ -23,9 +23,9 @@ public class Splitter extends Entity {
                 Chunk.ENTITY_SIZE / 2d, Chunk.ENTITY_SIZE / 2d,
                 Chunk.ENTITY_SIZE / 4d, (double) Chunk.ENTITY_SIZE
         );
-        p1.setFill(new Color(0, 0, 0, 1));
+        p.setFill(new Color(0, 0, 0, 1));
 
-        this.getChildren().addAll(p1);
+        this.getChildren().addAll(p);
     }
 
     @SuppressWarnings("unused") // Called dynamically

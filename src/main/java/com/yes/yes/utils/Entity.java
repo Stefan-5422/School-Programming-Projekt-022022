@@ -31,9 +31,7 @@ public abstract class Entity extends javafx.scene.Group {
     }
 
     public final void update() {
-        //System.out.println("Updating: " + getClass().getSimpleName());
         for (Component behaviour : behaviours) {
-            //System.out.println("Updating " + behaviour.getClass().getSimpleName());
             behaviour.update();
         }
     }

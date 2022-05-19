@@ -54,16 +54,16 @@ public class PlayerManager {
             Class<?>[] types = new Class<?>[1];
             types[0] = BlockContainer.class;
 
-            BlockContainer blockContainer = new BlockContainer(world, blockCoordinate, chunkCoordinate);
+            Chunk chunk = world.getChunk(chunkCoordinate);
+            Entity oldEntity = chunk.getEntity(blockCoordinate);
+
+            BlockContainer blockContainer = new BlockContainer(world, chunk.getChunkColor(), blockCoordinate, chunkCoordinate);
             RegistryEntry registryEntry = EntityRegistry.getEntry(buildBox.getSelectedEntity());
 
             if (registryEntry == null)
                 return;
 
             Entity entity = (Entity) registryEntry.getEntity().getConstructor(types).newInstance(blockContainer);
-
-            Chunk chunk = world.getChunk(chunkCoordinate);
-            Entity oldEntity = chunk.getEntity(blockCoordinate);
 
             if (oldEntity != null && oldEntity.getClass().getSimpleName().equals(entity.getClass().getSimpleName())) {
                 if (mouse.getButton() == MouseButton.PRIMARY)

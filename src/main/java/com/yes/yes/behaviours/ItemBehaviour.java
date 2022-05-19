@@ -24,7 +24,6 @@ public class ItemBehaviour extends Component {
     }
 
     private void itemChanged(Item item) {
-        //System.out.println("Running item update");
         Platform.runLater(() -> {
             this.itemGroup.getChildren().clear();
             if (item != null)
@@ -35,7 +34,6 @@ public class ItemBehaviour extends Component {
                 this.itemGroup.getChildren().add(alignmentRectangle);
             }
         });
-        //System.out.println("Finished item update");
     }
 
     @Override
