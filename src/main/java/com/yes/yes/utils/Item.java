@@ -14,11 +14,14 @@ public class Item extends javafx.scene.Group implements Cloneable {
             this.getChildren().remove(parts[layer][section]);
         }
 
-        part.rotate(section);
+        parts[layer][section] = part;
 
+        if (part == null) return;
+
+        part.rotate(section);
         part.getTransforms().add(new Scale(-layer * 0.25f + 1f, -layer * 0.25f + 1f));
 
-        parts[layer][section] = part;
+
         this.getChildren().add(part);
     }
 
