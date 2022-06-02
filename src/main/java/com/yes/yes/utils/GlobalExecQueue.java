@@ -22,7 +22,11 @@ public class GlobalExecQueue {
         Semaphore s = new Semaphore(0);
         Platform.runLater(() -> {
             while (queue.size() > 0) {
-                Objects.requireNonNull(queue.poll()).run();
+                try {
+                    Objects.requireNonNull(queue.poll()).run();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
             s.release();
         });
