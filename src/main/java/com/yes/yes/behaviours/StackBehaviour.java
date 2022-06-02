@@ -47,6 +47,8 @@ public class StackBehaviour extends Component {
                 parent.setData(receiveDataKey1, null);
                 parent.setData(receiveDataKey2, null);
 
+                progress = 0;
+
             } else if (parent.getData(receiveDataKey1) != null && parent.getData(receiveDataKey2) != null) {
                 progress++;
             }
