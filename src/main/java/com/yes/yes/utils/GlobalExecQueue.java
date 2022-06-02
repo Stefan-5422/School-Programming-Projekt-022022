@@ -22,9 +22,7 @@ public class GlobalExecQueue {
         Semaphore s = new Semaphore(0);
         Platform.runLater(() -> {
             while (queue.size() > 0) {
-                synchronized (GlobalExecQueue.class) {
-                    Objects.requireNonNull(queue.poll()).run();
-                }
+                Objects.requireNonNull(queue.poll()).run();
             }
             s.release();
         });
