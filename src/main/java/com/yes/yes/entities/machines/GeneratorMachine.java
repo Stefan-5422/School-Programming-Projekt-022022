@@ -1,7 +1,6 @@
 package com.yes.yes.entities.machines;
 
 import com.yes.yes.behaviours.GeneratorBehaviour;
-import com.yes.yes.behaviours.ItemBehaviour;
 import com.yes.yes.behaviours.OfferBehaviour;
 import com.yes.yes.behaviours.PlaceBehaviour;
 import com.yes.yes.entities.parts.Square;
@@ -15,7 +14,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class GeneratorMachine extends Entity {
-    Rectangle rectangle;
+    private final Rectangle rectangle;
 
     public GeneratorMachine() {
         super();
@@ -39,7 +38,6 @@ public class GeneratorMachine extends Entity {
         rectangle.setFill(blockContainer.chunkColor());
 
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        //this.addBehaviour(new ItemBehaviour(this, blockContainer, "Item"));
         this.addBehaviour(new OfferBehaviour(this, blockContainer, Direction.UP, "Item"));
         this.addBehaviour(new GeneratorBehaviour(this, blockContainer, generateItem(blockContainer.chunkColor()), "Item"));
     }

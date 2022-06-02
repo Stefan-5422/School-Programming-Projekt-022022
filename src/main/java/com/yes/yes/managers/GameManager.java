@@ -42,16 +42,16 @@ public class GameManager {
             e.printStackTrace();
         }
 
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(() -> {
             try {
                 GlobalEventHandler.trigger("global:timerTick", null);
-                //GlobalExecQueue.run();
+                GlobalExecQueue.run();
             } catch (Exception ex) {
-                //ex.printStackTrace();
+                ex.printStackTrace();
             }
             //System.out.println("Finished tick!");
-        }, 0, 10, TimeUnit.MILLISECONDS);
+        }, 0, 100, TimeUnit.MILLISECONDS);
 
         GlobalEventHandler.addListener("app:closing", this, (__) -> executor.shutdown());
 

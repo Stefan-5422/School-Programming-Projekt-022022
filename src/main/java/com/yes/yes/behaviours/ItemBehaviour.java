@@ -2,9 +2,7 @@ package com.yes.yes.behaviours;
 
 import com.yes.yes.utils.*;
 import com.yes.yes.world.Chunk;
-import javafx.application.Platform;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,8 +11,8 @@ import javafx.scene.transform.Translate;
 
 public class ItemBehaviour extends Component {
 
-    private StackPane itemGroup;
     private final String dataKey;
+    private StackPane itemGroup;
 
     public ItemBehaviour(Entity entity, BlockContainer blockContainer, String dataKey) {
         super(entity, blockContainer);
@@ -22,21 +20,20 @@ public class ItemBehaviour extends Component {
     }
 
     private void itemChanged(Item item) {
-        //GlobalExecQueue.schedule(() -> {
-        Platform.runLater(() -> {
+        GlobalExecQueue.schedule(() -> {
             try {
 
-                this.parent.getChildren().clear();
+                this.itemGroup.getChildren().clear();
 
                 if (item != null)
-                    this.itemGroup.getChildren().add(item);
+                    this.itemGroup.getChildren().add(item.clone());
                 else {
                     Rectangle alignmentRectangle = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
                     alignmentRectangle.setFill(Color.rgb(0, 0, 0, 0));
                     this.itemGroup.getChildren().add(alignmentRectangle);
                 }
+            } catch (IndexOutOfBoundsException ignore) {
             }
-            catch (IndexOutOfBoundsException ex){System.out.print(ex.getMessage() + " | " + this.parent.getClass().getSimpleName()); }
         });
     }
 
@@ -53,11 +50,11 @@ public class ItemBehaviour extends Component {
         Scale s = new Scale(0.7, 0.7);
         itemGroup.getTransforms().add(s);
 
-        Translate translate = new Translate(Chunk.ENTITY_SIZE/4,Chunk.ENTITY_SIZE/4);
+        Translate translate = new Translate(Chunk.ENTITY_SIZE / 4d, Chunk.ENTITY_SIZE / 4d);
         itemGroup.getTransforms().add(translate);
 
         Rectangle alignmentRectangle = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
-        alignmentRectangle.setFill(Color.rgb(0,0,0,0));
+        alignmentRectangle.setFill(Color.rgb(0, 0, 0, 0));
         this.itemGroup.getChildren().add(alignmentRectangle);
     }
 

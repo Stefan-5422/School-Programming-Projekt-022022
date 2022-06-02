@@ -17,10 +17,10 @@ public class Cutter extends Entity {
     public Cutter() {
         super();
 
-        Circle c = new Circle(Chunk.ENTITY_SIZE / 2);
+        Circle c = new Circle(Chunk.ENTITY_SIZE / 2d);
         c.setFill(Color.BLACK);
-        c.setCenterX(Chunk.ENTITY_SIZE / 2);
-        c.setCenterY(Chunk.ENTITY_SIZE / 2);
+        c.setCenterX(Chunk.ENTITY_SIZE / 2d);
+        c.setCenterY(Chunk.ENTITY_SIZE / 2d);
 
         Polygon p = new Polygon();
         p.getPoints().addAll(

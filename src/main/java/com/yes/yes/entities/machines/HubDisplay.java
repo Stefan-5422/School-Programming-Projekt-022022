@@ -1,8 +1,6 @@
 package com.yes.yes.entities.machines;
 
-import com.yes.yes.behaviours.EventDataStore;
 import com.yes.yes.behaviours.HubDisplayBehaviour;
-import com.yes.yes.behaviours.ItemBehaviour;
 import com.yes.yes.behaviours.PlaceBehaviour;
 import com.yes.yes.utils.BlockContainer;
 import com.yes.yes.utils.Entity;
@@ -16,7 +14,7 @@ import javafx.scene.text.Text;
 
 public class HubDisplay extends Entity implements NotOverridable {
 
-    Text text;
+    private final Text text;
 
     public HubDisplay() {
         Rectangle r = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
@@ -36,6 +34,6 @@ public class HubDisplay extends Entity implements NotOverridable {
     public HubDisplay(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new HubDisplayBehaviour(this, blockContainer, "hub:statusText",text));
+        this.addBehaviour(new HubDisplayBehaviour(this, blockContainer, "hub:statusText", text));
     }
 }

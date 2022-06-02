@@ -39,7 +39,7 @@ public class ReceiveBehaviour extends Component {
         this.parent.addListener("placed", this, this::placed);
     }
 
-    void receive(Pair<Entity,Item> pair) {
+    void receive(Pair<Entity, Item> pair) {
         if (offerer == null || offerer != pair.getKey()) return;
 
         if (this.parent.getData(dataKey) == pair.getValue())

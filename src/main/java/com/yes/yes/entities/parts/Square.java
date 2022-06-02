@@ -3,17 +3,15 @@ package com.yes.yes.entities.parts;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.util.Random;
-
 public class Square extends com.yes.yes.utils.Part {
 
-    Rectangle rect = new Rectangle(23, 23);
+    Rectangle rect;
 
-    public Square(Color color)
-    {
+    public Square(Color color) {
         this();
         setColor(color);
     }
+
     public Square() {
         rect = new Rectangle(23, 23);
         rect.setStroke(Color.BLACK);
@@ -22,8 +20,7 @@ public class Square extends com.yes.yes.utils.Part {
     }
 
     @Override
-    protected void onColorChanged(Color color)
-    {
+    protected void onColorChanged(Color color) {
         rect.setFill(color);
     }
 }

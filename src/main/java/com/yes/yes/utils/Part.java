@@ -15,13 +15,13 @@ public abstract class Part extends javafx.scene.Group {
 
     protected abstract void onColorChanged(Color color);
 
+    public Color getColor() {
+        return color;
+    }
+
     public void setColor(Color color) {
         this.color = color;
         onColorChanged(color);
-    }
-
-    public Color getColor() {
-        return color;
     }
 
     @Override

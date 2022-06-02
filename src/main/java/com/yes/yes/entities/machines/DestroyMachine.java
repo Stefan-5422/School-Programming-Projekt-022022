@@ -8,14 +8,13 @@ import com.yes.yes.utils.Direction;
 import com.yes.yes.utils.Entity;
 import com.yes.yes.world.Chunk;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 public class DestroyMachine extends Entity {
     public DestroyMachine() {
         super();
-        Rectangle r = new Rectangle(Chunk.ENTITY_SIZE,Chunk.ENTITY_SIZE);
+        Rectangle r = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
 
         Polygon p = new Polygon();
         p.getPoints().addAll(

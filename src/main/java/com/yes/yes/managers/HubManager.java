@@ -30,7 +30,6 @@ public class HubManager {
     }
 
 
-
     private Item generateObjective() {
         Item item = new Item();
 
@@ -38,17 +37,17 @@ public class HubManager {
         int complexity = level % 10; //TODO: Make complexity make stuff more complex
 
         //for (int l = 0; l < layerCount && l < 4; l++) {
-            for (int i = 0; i < 4; i++) {
-                //item.setPart(l, i, new Square(Color.RED));
-                item.setPart(0, i, new Square(Color.GREEN));
-            }
+        for (int i = 0; i < 4; i++) {
+            //item.setPart(l, i, new Square(Color.RED));
+            item.setPart(0, i, new Square(Color.GREEN));
+        }
 
         //}
         return item;
     }
 
     private String getStatusText() {
-        return String.format("%s\n%s/%s",level,objectiveCompletion,objectiveTotal);
+        return String.format("%s\n%s/%s", level, objectiveCompletion, objectiveTotal);
     }
 
     private void objectiveCompletion(Item item) {
@@ -60,7 +59,7 @@ public class HubManager {
             newLevel();
         }
 
-        GlobalEventHandler.trigger("hub:statusText",getStatusText());
+        GlobalEventHandler.trigger("hub:statusText", getStatusText());
 
     }
 }

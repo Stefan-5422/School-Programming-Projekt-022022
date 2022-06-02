@@ -28,9 +28,9 @@ public class Stacker extends Entity {
     public Stacker(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new StackBehaviour(this,blockContainer,"Input1","Input2","Output",2));
+        this.addBehaviour(new StackBehaviour(this, blockContainer, "Input1", "Input2", "Output", 2));
         this.addBehaviour(new OfferBehaviour(this, blockContainer, Direction.UP, "Output"));
-        this.addBehaviour(new ReceiveBehaviour(this,blockContainer,Direction.LEFT,"Input1"));
-        this.addBehaviour(new ReceiveBehaviour(this,blockContainer,Direction.RIGHT,"Input2"));
+        this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.LEFT, "Input1"));
+        this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.RIGHT, "Input2"));
     }
 }

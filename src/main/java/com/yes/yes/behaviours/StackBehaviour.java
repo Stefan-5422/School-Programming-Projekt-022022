@@ -1,13 +1,12 @@
 package com.yes.yes.behaviours;
 
 import com.yes.yes.utils.*;
-import javafx.application.Platform;
 
 public class StackBehaviour extends Component {
     private final int processingDuration;
-    private String receiveDataKey1;
-    private String receiveDataKey2;
-    private String offerDataKey;
+    private final String receiveDataKey1;
+    private final String receiveDataKey2;
+    private final String offerDataKey;
     private int progress = 0;
 
 
@@ -26,8 +25,7 @@ public class StackBehaviour extends Component {
 
     @Override
     public void update() {
-        //GlobalExecQueue.schedule( () -> {
-        Platform.runLater(() -> {
+        GlobalExecQueue.schedule(() -> {
             if (progress > processingDuration) {
                 if (parent.getData(offerDataKey) != null) return;
 

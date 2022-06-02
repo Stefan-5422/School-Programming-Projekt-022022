@@ -8,8 +8,8 @@ import javafx.scene.text.Text;
 
 public class HubDisplayBehaviour extends Component {
 
-    String eventName;
-    Text text;
+    private final String eventName;
+    private final Text text;
 
     public HubDisplayBehaviour(Entity entity, BlockContainer blockContainer, String eventName, Text text) {
         super(entity, blockContainer);
@@ -17,8 +17,7 @@ public class HubDisplayBehaviour extends Component {
         this.text = text;
     }
 
-    private void updateText(String content)
-    {
+    private void updateText(String content) {
         this.text.setText(content);
     }
 

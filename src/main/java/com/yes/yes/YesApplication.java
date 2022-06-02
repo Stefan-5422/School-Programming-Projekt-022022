@@ -20,7 +20,7 @@ public class YesApplication extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(YesApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280 , 720 );
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("Yes!");
         stage.setScene(scene);
 

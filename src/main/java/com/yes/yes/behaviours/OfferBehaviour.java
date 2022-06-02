@@ -20,7 +20,6 @@ public class OfferBehaviour extends Component {
     }
 
     private void placed(Entity entity) {
-        //System.out.println("Entity placed in range");
         try {
             if (blockContainer.getBlockRelative(direction, parent.getRotation()) == entity) {
                 this.receiver = entity;

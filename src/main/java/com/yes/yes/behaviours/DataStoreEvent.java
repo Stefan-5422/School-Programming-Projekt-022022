@@ -4,9 +4,9 @@ import com.yes.yes.utils.*;
 
 public class DataStoreEvent extends Component {
 
-    String dataKey;
-    String eventName;
-    boolean global;
+    private final String dataKey;
+    private final String eventName;
+    private final boolean global;
 
 
     public DataStoreEvent(Entity entity, BlockContainer blockContainer, String dataKey, String eventName, boolean global) {

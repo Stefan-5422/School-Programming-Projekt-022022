@@ -19,7 +19,7 @@ public class DestroyBehaviour extends Component {
 
     @Override
     public void update() {
-        if(this.parent.getData(dataKey) !=null) {
+        if (this.parent.getData(dataKey) != null) {
             this.parent.setData(dataKey, null);
         }
     }

@@ -2,11 +2,13 @@ package com.yes.yes.utils;
 
 import javafx.application.Platform;
 
-import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Semaphore;
 
 public class GlobalExecQueue {
-    private final static ArrayList<Runnable> queue = new ArrayList<>();
+    private final static Queue<Runnable> queue = new ConcurrentLinkedQueue<>();
 
     private GlobalExecQueue() {
     }
@@ -16,22 +18,21 @@ public class GlobalExecQueue {
     }
 
 
-
     public static void run() {
-        //Semaphore s = new Semaphore(0);
-        Platform.runLater( () -> {
-            for (Runnable runnable : queue) {
+        Semaphore s = new Semaphore(0);
+        Platform.runLater(() -> {
+            while (queue.size() > 0) {
                 synchronized (GlobalExecQueue.class) {
-                    runnable.run();
+                    Objects.requireNonNull(queue.poll()).run();
                 }
             }
-          //  s.release();
+            s.release();
         });
-        /*try {
-            //s.acquire();
+        try {
+            s.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
         queue.clear();
     }
 }
