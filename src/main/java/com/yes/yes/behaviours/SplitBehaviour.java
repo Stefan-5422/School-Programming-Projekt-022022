@@ -27,8 +27,6 @@ public class SplitBehaviour extends Component {
     @Override
     public void update() {
         if (delayCount > delay) {
-
-
             offerDataKeyIndex++;
             if (offerDataKeyIndex >= offerDataKeys.length)
                 offerDataKeyIndex = 0;

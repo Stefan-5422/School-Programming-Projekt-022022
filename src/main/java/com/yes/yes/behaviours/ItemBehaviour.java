@@ -1,5 +1,7 @@
 package com.yes.yes.behaviours;
 
+import com.yes.yes.entities.parts.EmptyPart;
+import com.yes.yes.entities.parts.Square;
 import com.yes.yes.utils.*;
 import com.yes.yes.world.Chunk;
 import javafx.geometry.Pos;
@@ -25,8 +27,20 @@ public class ItemBehaviour extends Component {
 
                 this.itemGroup.getChildren().clear();
 
-                if (item != null)
-                    this.itemGroup.getChildren().add(item.clone());
+                if (item != null) {
+                    Item displayItem = item.clone();
+
+                    for (int layer = 0; layer < 4; layer++) {
+                        for (int quarter = 0; quarter < 4; quarter++) {
+                            if(displayItem.getPart(layer,quarter) == null)
+                            {
+                                displayItem.setPart(layer, quarter, new EmptyPart());
+                            }
+                        }
+                    }
+
+                    this.itemGroup.getChildren().add(displayItem);
+                }
                 else {
                     Rectangle alignmentRectangle = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
                     alignmentRectangle.setFill(Color.rgb(0, 0, 0, 0));

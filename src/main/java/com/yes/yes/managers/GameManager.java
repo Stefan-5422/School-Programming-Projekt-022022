@@ -38,6 +38,7 @@ public class GameManager {
             EntityRegistry.register(new RegistryEntry("splitter", "Splitter", Splitter.class));
             EntityRegistry.register(new RegistryEntry("cutter", "Cutter", Cutter.class));
             EntityRegistry.register(new RegistryEntry("stacker", "Stacker", Stacker.class));
+            EntityRegistry.register(new RegistryEntry("rotator", "Rotator", Rotator.class));
         } catch (AlreadyExistsException e) {
             e.printStackTrace();
         }
