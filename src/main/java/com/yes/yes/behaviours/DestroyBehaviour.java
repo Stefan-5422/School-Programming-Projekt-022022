@@ -19,8 +19,9 @@ public class DestroyBehaviour extends Component {
 
     @Override
     public void update() {
-        this.parent.setData(dataKey, null);
-        this.parent.trigger(dataKey + "Changed", null);
+        if(this.parent.getData(dataKey) !=null) {
+            this.parent.setData(dataKey, null);
+        }
     }
 
     @Override

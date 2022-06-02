@@ -5,7 +5,10 @@ import com.yes.yes.behaviours.ItemBehaviour;
 import com.yes.yes.behaviours.OfferBehaviour;
 import com.yes.yes.behaviours.PlaceBehaviour;
 import com.yes.yes.entities.parts.Square;
-import com.yes.yes.utils.*;
+import com.yes.yes.utils.BlockContainer;
+import com.yes.yes.utils.Direction;
+import com.yes.yes.utils.Entity;
+import com.yes.yes.utils.Item;
 import com.yes.yes.world.Chunk;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
@@ -36,7 +39,7 @@ public class GeneratorMachine extends Entity {
         rectangle.setFill(blockContainer.chunkColor());
 
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new ItemBehaviour(this, blockContainer, "Item"));
+        //this.addBehaviour(new ItemBehaviour(this, blockContainer, "Item"));
         this.addBehaviour(new OfferBehaviour(this, blockContainer, Direction.UP, "Item"));
         this.addBehaviour(new GeneratorBehaviour(this, blockContainer, generateItem(blockContainer.chunkColor()), "Item"));
     }
@@ -44,10 +47,8 @@ public class GeneratorMachine extends Entity {
     private Item generateItem(Color color) {
         Item item = new Item();
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                Square square = new Square(color);
-                item.setPart(i, j, square);
-            }
+            Square square = new Square(color);
+            item.setPart(0, i, square);
         }
         return item;
     }

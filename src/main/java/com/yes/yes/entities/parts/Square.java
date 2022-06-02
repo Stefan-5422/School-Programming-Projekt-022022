@@ -22,7 +22,7 @@ public class Square extends com.yes.yes.utils.Part {
     }
 
     @Override
-    public void onColorChanged(Color color)
+    protected void onColorChanged(Color color)
     {
         rect.setFill(color);
     }

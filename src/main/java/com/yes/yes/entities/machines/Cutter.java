@@ -37,7 +37,6 @@ public class Cutter extends Entity {
     public Cutter(BlockContainer blockContainer) {
         this();
         this.addBehaviour(new PlaceBehaviour(this, blockContainer));
-        this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.DOWN, "Item"));
         this.addBehaviour(new CutItemBehaviour(this, blockContainer, Orientation.Horizontal, "ReceivedItem", "OfferItemLeft", "OfferItemRight", 5));
         this.addBehaviour(new ReceiveBehaviour(this, blockContainer, Direction.DOWN, "ReceivedItem"));
         this.addBehaviour(new OfferBehaviour(this, blockContainer, Direction.LEFT, "OfferItemLeft"));

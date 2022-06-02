@@ -49,6 +49,7 @@ public abstract class Entity extends javafx.scene.Group {
 
     public final void setData(String key, Object value) {
         data.put(key, value);
+        this.trigger(key+"Changed",value);
     }
 
     public final <T> T getData(String key) {

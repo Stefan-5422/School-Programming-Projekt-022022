@@ -15,7 +15,6 @@ public class PlayerManager {
     private static final KeyCombination DOWN_KEY = new KeyCodeCombination(KeyCode.S);
     private static final KeyCombination DELETE_KEY = new KeyCodeCombination(KeyCode.X);
     private static final KeyCombination HOME_KEY = new KeyCodeCombination(KeyCode.HOME);
-    private static final Coordinate START_POSITION = new Coordinate(Integer.MAX_VALUE / -5000, Integer.MAX_VALUE / -5000);
 
     private final World world;
     private final BuildBox buildBox;
@@ -37,8 +36,8 @@ public class PlayerManager {
         scene.heightProperty().addListener((e) -> redrawChunks());
 
         world.setOnMouseClicked(this::processClick);
-        world.setTranslateX(START_POSITION.x);
-        world.setTranslateY(START_POSITION.y);
+        world.setTranslateX(GameManager.START_POSITION.x);
+        world.setTranslateY(GameManager.START_POSITION.y);
         world.setOnMouseMoved((mouse) -> currentMousePosition = new Coordinate((int) mouse.getX(), (int) mouse.getY()));
 
         redrawChunks();
@@ -46,8 +45,8 @@ public class PlayerManager {
 
     private void processClick(MouseEvent mouse) {
         Coordinate mouseCoordinate = new Coordinate((int) mouse.getX(), (int) mouse.getY());
-        Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(mouseCoordinate);
-        Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(mouseCoordinate);
+        Coordinate chunkCoordinate = Coordinate.worldToChunkCoordinate(mouseCoordinate);
+        Coordinate blockCoordinate = Coordinate.worldToChunkBlock(mouseCoordinate);
 
 
         try {
@@ -84,8 +83,8 @@ public class PlayerManager {
 
     private void processKeyRelease(KeyEvent key) {
         if (HOME_KEY.match(key)) {
-            world.setTranslateX(START_POSITION.x);
-            world.setTranslateY(START_POSITION.y);
+            world.setTranslateX(GameManager.START_POSITION.x);
+            world.setTranslateY(GameManager.START_POSITION.y);
             redrawChunks();
         }
     }
@@ -104,15 +103,15 @@ public class PlayerManager {
             world.setTranslateY(world.getTranslateY() - 45);
         }
         if (DELETE_KEY.match(key)) {
-            Coordinate chunkCoordinate = Coordinate.WorldToChunkCoordinate(currentMousePosition);
-            Coordinate blockCoordinate = Coordinate.WorldToChunkBlock(currentMousePosition);
+            Coordinate chunkCoordinate = Coordinate.worldToChunkCoordinate(currentMousePosition);
+            Coordinate blockCoordinate = Coordinate.worldToChunkBlock(currentMousePosition);
 
             Chunk chunk = world.getChunk(chunkCoordinate);
             chunk.removeEntity(blockCoordinate);
         }
 
         Size preferredAmountOfChunks = getPreferredAmountOfChunks();
-        Coordinate chunkPosition = getCurrentChunkPosition();
+        Coordinate chunkPosition = Coordinate.sceneToChunkCoordinate(new Coordinate(((int) world.getTranslateX()), ((int) world.getTranslateY())));
 
         if (chunkPosition.x < chunkPos.x) {
             for (int i = 0; i < preferredAmountOfChunks.y; i++) {
@@ -147,7 +146,7 @@ public class PlayerManager {
 
     private void redrawChunks() {
         Size preferredAmountOfChunks = getPreferredAmountOfChunks();
-        Coordinate chunkPosition = getCurrentChunkPosition();
+        Coordinate chunkPosition = Coordinate.sceneToChunkCoordinate(new Coordinate(((int) world.getTranslateX()), ((int) world.getTranslateY())));
 
         world.unloadAllChunks();
 
@@ -156,15 +155,6 @@ public class PlayerManager {
                 world.loadChunk(new Coordinate(chunkPosition.x + x, chunkPosition.y + y));
             }
         }
-    }
-
-    private Coordinate getCurrentChunkPosition() {
-        double offset = Chunk.CHUNK_SIZE * Chunk.ENTITY_SIZE;
-
-        int chunkX = -(int) Math.floor((world.getTranslateX() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
-        int chunkY = -(int) Math.floor((world.getTranslateY() + offset) / Chunk.CHUNK_SIZE / Chunk.ENTITY_SIZE);
-
-        return new Coordinate(chunkX, chunkY);
     }
 
     private Size getPreferredAmountOfChunks() {

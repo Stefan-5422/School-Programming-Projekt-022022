@@ -38,7 +38,6 @@ public class ConveyorBehaviour extends Component {
 
         if (isConveyed && parent.getData(offerDataKey) == null) {
             parent.setData(receiveDataKey, null);
-            parent.trigger(receiveDataKey + "Changed", null);
             isConveyed = false;
         }
     }

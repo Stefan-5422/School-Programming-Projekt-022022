@@ -1,12 +1,10 @@
 package com.yes.yes.behaviours;
 
-import com.yes.yes.utils.BlockContainer;
-import com.yes.yes.utils.Component;
-import com.yes.yes.utils.Entity;
-import com.yes.yes.utils.Item;
+import com.yes.yes.utils.*;
 import com.yes.yes.world.Chunk;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -24,15 +22,21 @@ public class ItemBehaviour extends Component {
     }
 
     private void itemChanged(Item item) {
+        //GlobalExecQueue.schedule(() -> {
         Platform.runLater(() -> {
-            this.itemGroup.getChildren().clear();
-            if (item != null)
-                this.itemGroup.getChildren().add(item);
-            else {
-                Rectangle alignmentRectangle = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
-                alignmentRectangle.setFill(Color.rgb(0,0,0,0));
-                this.itemGroup.getChildren().add(alignmentRectangle);
+            try {
+
+                this.parent.getChildren().clear();
+
+                if (item != null)
+                    this.itemGroup.getChildren().add(item);
+                else {
+                    Rectangle alignmentRectangle = new Rectangle(Chunk.ENTITY_SIZE, Chunk.ENTITY_SIZE);
+                    alignmentRectangle.setFill(Color.rgb(0, 0, 0, 0));
+                    this.itemGroup.getChildren().add(alignmentRectangle);
+                }
             }
+            catch (IndexOutOfBoundsException ex){System.out.print(ex.getMessage() + " | " + this.parent.getClass().getSimpleName()); }
         });
     }
 

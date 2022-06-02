@@ -3,6 +3,7 @@ package com.yes.yes.world;
 import com.yes.yes.utils.Coordinate;
 import com.yes.yes.utils.Entity;
 import com.yes.yes.utils.NoiseGenerator;
+import com.yes.yes.utils.NotOverridable;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -28,7 +29,7 @@ public class Chunk extends GridPane {
             default -> throw new IllegalStateException();
         };
 
-        Color fillColor = new Color(chunkColor.getRed(),chunkColor.getGreen(), chunkColor.getBlue(), 0.1);
+        Color fillColor = new Color(chunkColor.getRed(), chunkColor.getGreen(), chunkColor.getBlue(), 0.1);
 
         this.setBackground(new Background(new BackgroundFill(fillColor, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -50,6 +51,9 @@ public class Chunk extends GridPane {
     }
 
     public void setEntity(Entity component, Coordinate pos) {
+        if (getEntity(pos) instanceof NotOverridable)
+            return;
+
         removeEntity(pos);
         data[pos.x + pos.y * CHUNK_SIZE] = component;
         this.add(component, pos.x, pos.y);
@@ -58,6 +62,9 @@ public class Chunk extends GridPane {
     }
 
     public void removeEntity(Coordinate pos) {
+        if (getEntity(pos) instanceof NotOverridable)
+            return;
+
         Entity entity = getEntity(pos);
 
         if (entity != null) {

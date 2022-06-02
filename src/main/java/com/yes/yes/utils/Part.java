@@ -2,8 +2,10 @@ package com.yes.yes.utils;
 
 import javafx.scene.paint.Color;
 
+import java.util.Objects;
+
 public abstract class Part extends javafx.scene.Group {
-    Color color;
+    private Color color;
 
     public void rotate(int quarters) {
 
@@ -20,5 +22,12 @@ public abstract class Part extends javafx.scene.Group {
 
     public Color getColor() {
         return color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Part part)) return false;
+        return Objects.equals(color, part.color) && o.getClass().getSimpleName().equals(this.getClass().getSimpleName());
     }
 }

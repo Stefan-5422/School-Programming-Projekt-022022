@@ -1,6 +1,7 @@
 package com.yes.yes;
 
 import com.yes.yes.managers.GameManager;
+import com.yes.yes.managers.HubManager;
 import com.yes.yes.managers.PlayerManager;
 import com.yes.yes.managers.UiManager;
 import javafx.application.Platform;
@@ -13,15 +14,18 @@ public class MainController {
     private VBox root;
 
     public void initialize() {
-        GameManager gameManager = new GameManager(root);
-        gameManager.initialize();
-
         Platform.runLater(() -> {
+            GameManager gameManager = new GameManager(root);
+            gameManager.initialize();
+
             UiManager uiManager = new UiManager(root);
             uiManager.initialize();
 
             PlayerManager playerManager = new PlayerManager(gameManager.getWorld(), uiManager.getBuildBox());
             playerManager.initialize();
+
+            HubManager hubManager = new HubManager();
+            hubManager.initialize();
         });
 
     }
