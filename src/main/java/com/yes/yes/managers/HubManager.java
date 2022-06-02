@@ -3,6 +3,7 @@ package com.yes.yes.managers;
 import com.yes.yes.entities.parts.Square;
 import com.yes.yes.utils.GlobalEventHandler;
 import com.yes.yes.utils.Item;
+import com.yes.yes.utils.NoiseGenerator;
 import javafx.scene.paint.Color;
 
 public class HubManager {
@@ -32,15 +33,37 @@ public class HubManager {
 
 
     private Item generateObjective() {
+
+        NoiseGenerator n;
+
         Item item = new Item();
 
         int layerCount = (level / 10) + 1;
-        int complexity = level % 10; //TODO: Make complexity make stuff more complex
+        int complexity = (level % 10) + Math.min(layerCount-1,3) * 3;
 
-        for (int l = 0; l < layerCount && l < 4; l++) {
+        for (int l = 0; l < layerCount && l < 4; l++) { //Find a way to balance this better
+            int color = 0;
             for (int i = 0; i < 4; i++) {
-                item.setPart(l, i, new Square(Color.RED));
-                item.setPart(0, i, new Square(Color.GREEN));
+                double noise = NoiseGenerator.calculate(complexity*level+layerCount+(i+1)*(l+1))/1e8;
+                System.out.println(noise);
+                if(complexity >= 3 && complexity < 5){
+                    if(noise > 10) {
+                        i++;
+                        continue;
+                    }
+                }else if(complexity > 5) {
+                    if(noise > 15-layerCount) {
+                        continue;
+                    }
+                }
+                if(complexity > 1 && complexity < 4 && (i == 0 || i == 2)){
+                    color = ((int)(noise/1.5))%3;
+                }
+                if(complexity > 4){
+                    color = ((int)(noise/1.5))%3;
+                }
+                Color c = (color == 0)? Color.RED : (color==1)? Color.GREEN : Color.BLUE;
+                item.setPart(l, i, new Square(c));
             }
         }
         return item;
