@@ -36,8 +36,8 @@ public class PlayerManager {
         scene.heightProperty().addListener((e) -> redrawChunks());
 
         world.setOnMouseClicked(this::processClick);
-        world.setTranslateX(GameManager.START_POSITION.x);
-        world.setTranslateY(GameManager.START_POSITION.y);
+        world.setTranslateX(GameManager.START_POSITION.x + world.getScene().getWidth() / 2 + 100);
+        world.setTranslateY(GameManager.START_POSITION.y + world.getScene().getHeight() / 2 + 100);
         world.setOnMouseMoved((mouse) -> currentMousePosition = new Coordinate((int) mouse.getX(), (int) mouse.getY()));
 
         redrawChunks();
@@ -83,8 +83,8 @@ public class PlayerManager {
 
     private void processKeyRelease(KeyEvent key) {
         if (HOME_KEY.match(key)) {
-            world.setTranslateX(GameManager.START_POSITION.x);
-            world.setTranslateY(GameManager.START_POSITION.y);
+            world.setTranslateX(GameManager.START_POSITION.x + world.getScene().getWidth() / 2 + 100);
+            world.setTranslateY(GameManager.START_POSITION.y + world.getScene().getHeight() / 2 + 100);
             redrawChunks();
         }
     }
@@ -111,7 +111,7 @@ public class PlayerManager {
         }
 
         Size preferredAmountOfChunks = getPreferredAmountOfChunks();
-        Coordinate chunkPosition = Coordinate.sceneToChunkCoordinate(new Coordinate(((int) world.getTranslateX()), ((int) world.getTranslateY())));
+        Coordinate chunkPosition = Coordinate.sceneToChunkCoordinate(new Coordinate((int) world.getTranslateX() + 100, (int) world.getTranslateY() + 100));
 
         if (chunkPosition.x < chunkPos.x) {
             for (int i = 0; i < preferredAmountOfChunks.y; i++) {
@@ -146,7 +146,7 @@ public class PlayerManager {
 
     private void redrawChunks() {
         Size preferredAmountOfChunks = getPreferredAmountOfChunks();
-        Coordinate chunkPosition = Coordinate.sceneToChunkCoordinate(new Coordinate(((int) world.getTranslateX()), ((int) world.getTranslateY())));
+        Coordinate chunkPosition = Coordinate.sceneToChunkCoordinate(new Coordinate((int) world.getTranslateX() + 100, (int) world.getTranslateY() + 100));
 
         world.unloadAllChunks();
 
